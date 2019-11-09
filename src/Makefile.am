@@ -166,8 +166,26 @@ endif # USE_SWIG_JAVA
 if USE_SWIG_GO
 # We must sed the wrapper to workaround SWIGs odd library naming conventions
 SWIG_INT_GO_SIZE=32
+if IS_MINGW
+LOAD_SSP = -lssp
+else
+LOAD_SSP = 
+endif  # IS_MINGW
+if SHARED_BUILD_ENABLED
 swig_go/wallycore.cxx :
-	cd .. && $(SWIG) -go -c++ $(SWIG_GEN_FLAGS) -outdir . -o wallycore.cxx -cgo -intgosize $(SWIG_INT_GO_SIZE) src/swig_go/swig.i
+	cp swig_go/swig.i swig_go/temp_swig.i && \
+	$(GNU_SED) -i 's/-lwallycore/-lwallycore $(LOAD_SSP)/g' swig_go/temp_swig.i && \
+	cd .. && \
+	$(SWIG) -go -c++ $(SWIG_GEN_FLAGS) -outdir . -o wallycore.cxx -cgo -intgosize $(SWIG_INT_GO_SIZE) src/swig_go/temp_swig.i \
+	rm src/swig_go/temp_swig.i
+else
+swig_go/wallycore.cxx :
+	cp swig_go/swig.i swig_go/temp_swig.i && \
+	$(GNU_SED) -i 's/-lwallycore/-lwallycore -lsecp256k1 $(LOAD_SSP)/g' swig_go/temp_swig.i && \
+	cd .. && \
+	$(SWIG) -go -c++ $(SWIG_GEN_FLAGS) -outdir . -o wallycore.cxx -cgo -intgosize $(SWIG_INT_GO_SIZE) src/swig_go/temp_swig.i && \
+	rm src/swig_go/temp_swig.i
+endif # SHARED_BUILD_ENABLED
 
 all: swig_go/wallycore.cxx
 
@@ -214,6 +232,15 @@ libwallycore_la_INCLUDES = \
     include/wally_elements.h \
     include/wally_script.h \
     include/wally_transaction.h
+
+if SHARED_BUILD_ENABLED
+WALLYCORE_LDFLAGS = -Wl,-rpath=@rpath -Wl,-rpath=./ -Wl,-rpath=./build/Release
+if IS_MINGW
+libwallycore_la_LDFLAGS = -no-undefined $(WALLYCORE_LDFLAGS)
+else
+libwallycore_la_LDFLAGS = $(WALLYCORE_LDFLAGS)
+endif
+endif # SHARED_BUILD_ENABLED
 
 libwallycore_la_CFLAGS = -I$(top_srcdir) -Iccan -DWALLY_CORE_BUILD=1 $(AM_CFLAGS)
 libwallycore_la_LIBADD = $(LIBADD_SECP256K1) $(noinst_LTLIBRARIES)

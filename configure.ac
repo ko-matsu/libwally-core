@@ -24,6 +24,13 @@ esac
 AM_CONDITIONAL([IS_OSX], [test "x$is_osx" == "xyes"])
 AC_SUBST([LDPATH_VAR])
 
+case $host in
+*mingw*)
+    is_mingw="yes"
+    ;;
+esac
+AM_CONDITIONAL([IS_MINGW], [test "x$is_mingw" == "xyes"])
+
 AM_INIT_AUTOMAKE([foreign subdir-objects])
 LT_INIT([disable-static])
 
