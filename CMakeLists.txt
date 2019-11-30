@@ -25,6 +25,7 @@ option(ENABLE_ELEMENTS "enable elements tx code (ON or OFF. default:OFF)" OFF)
 option(ENABLE_SWIG_PYTHON "enable the SWIG python interface (ON or OFF. default:OFF)" OFF)
 option(ENABLE_SWIG_GO "enable the SWIG Go interface (ON or OFF. default:OFF)" OFF)
 option(GENERATE_WALLY "generate the wally.xxx library (ON or OFF. default:ON)" ON)
+option(DISABLE_GCC_LINK "disabled gc link for windows (ON or OFF. default:OFF)" OFF)
 
 if(CMAKE_JS_INC)
 option(ENABLE_JS_WRAPPER "enable the Javascript interface wrappers (ON or OFF. default:ON)" ON)
@@ -162,7 +163,7 @@ check_function_exists(mmap HAVE_MMAP)
 check_cxx_source_compiles("int main() { __builtin_clzll(0); return 0; }"
   HAVE_BUILTIN_CLZLL)
 
-set(HAVE___INT128  "1")
+# set(HAVE___INT128  "1")
 check_include_file("unistd.h" HAVE_UNISTD_H)
 
 find_package(LIBCRYPTO QUIET)
@@ -247,6 +248,13 @@ set(ssize_t "int64_t")
 else()
 set(ssize_t "int32_t")
 endif()
+endif()
+
+check_type_size(__int128 SIZEOF_INT128_T LANGUAGE C)
+if(NOT SIZEOF_INT128_T)
+# set(HAVE___INT128 "0")
+else()
+set(HAVE___INT128  "1")
 endif()
 
 # secp256k1 configure options
@@ -595,7 +603,7 @@ target_link_libraries(${NODE_LIBRARY_NAME}
   PRIVATE $<$<BOOL:$<CXX_COMPILER_ID:GNU>>:-static-libgcc>
   PRIVATE $<$<BOOL:$<CXX_COMPILER_ID:GNU>>:-static-libstdc++>
   PRIVATE $<$<NOT:$<CXX_COMPILER_ID:MSVC>>:pthread>
-  PRIVATE $<IF:$<OR:$<PLATFORM_ID:Darwin>,$<CXX_COMPILER_ID:MSVC>>,,rt>
+  PRIVATE $<IF:$<OR:$<PLATFORM_ID:Darwin>,$<CXX_COMPILER_ID:MSVC>,$<BOOL:DISABLE_GCC_LINK>>,,rt>
   PRIVATE
     ${CMAKE_JS_LIB}
 )
@@ -1080,7 +1088,7 @@ target_link_directories(${TEST_BECH32_NAME}  PRIVATE ./ )
 target_link_libraries(${TEST_BECH32_NAME}
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:MSVC>>:winmm.lib>
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:MSVC>>:ws2_32.lib>
-  PRIVATE $<IF:$<OR:$<PLATFORM_ID:Darwin>,$<C_COMPILER_ID:MSVC>>,,rt>
+  PRIVATE $<IF:$<OR:$<PLATFORM_ID:Darwin>,$<C_COMPILER_ID:MSVC>,$<BOOL:DISABLE_GCC_LINK>>,,rt>
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:GCC>>:-static-libgcc>
   PRIVATE $<$<NOT:$<C_COMPILER_ID:MSVC>>:pthread>
   PRIVATE
@@ -1117,7 +1125,7 @@ target_link_directories(${TEST_CLEAR_NAME}  PRIVATE ./ )
 target_link_libraries(${TEST_CLEAR_NAME}
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:MSVC>>:winmm.lib>
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:MSVC>>:ws2_32.lib>
-  PRIVATE $<IF:$<OR:$<PLATFORM_ID:Darwin>,$<C_COMPILER_ID:MSVC>>,,rt>
+  PRIVATE $<IF:$<OR:$<PLATFORM_ID:Darwin>,$<C_COMPILER_ID:MSVC>,$<BOOL:DISABLE_GCC_LINK>>,,rt>
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:GCC>>:-static-libgcc>
   PRIVATE $<$<NOT:$<C_COMPILER_ID:MSVC>>:pthread>
   PRIVATE
@@ -1154,7 +1162,7 @@ target_link_directories(${TEST_TX_NAME}  PRIVATE ./ )
 target_link_libraries(${TEST_TX_NAME}
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:MSVC>>:winmm.lib>
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:MSVC>>:ws2_32.lib>
-  PRIVATE $<IF:$<OR:$<PLATFORM_ID:Darwin>,$<C_COMPILER_ID:MSVC>>,,rt>
+  PRIVATE $<IF:$<OR:$<PLATFORM_ID:Darwin>,$<C_COMPILER_ID:MSVC>,$<BOOL:DISABLE_GCC_LINK>>,,rt>
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:GCC>>:-static-libgcc>
   PRIVATE $<$<NOT:$<C_COMPILER_ID:MSVC>>:pthread>
   PRIVATE
@@ -1195,7 +1203,7 @@ target_link_directories(${TEST_ELEMENTS_TX_NAME}  PRIVATE ./ )
 target_link_libraries(${TEST_ELEMENTS_TX_NAME}
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:MSVC>>:winmm.lib>
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:MSVC>>:ws2_32.lib>
-  PRIVATE $<IF:$<OR:$<PLATFORM_ID:Darwin>,$<C_COMPILER_ID:MSVC>>,,rt>
+  PRIVATE $<IF:$<OR:$<PLATFORM_ID:Darwin>,$<C_COMPILER_ID:MSVC>,$<BOOL:DISABLE_GCC_LINK>>,,rt>
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:GCC>>:-static-libgcc>
   PRIVATE $<$<NOT:$<C_COMPILER_ID:MSVC>>:pthread>
   PRIVATE
@@ -1232,7 +1240,7 @@ target_link_directories(${TEST_BLECH32_NAME}  PRIVATE ./ )
 target_link_libraries(${TEST_BLECH32_NAME}
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:MSVC>>:winmm.lib>
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:MSVC>>:ws2_32.lib>
-  PRIVATE $<IF:$<OR:$<PLATFORM_ID:Darwin>,$<C_COMPILER_ID:MSVC>>,,rt>
+  PRIVATE $<IF:$<OR:$<PLATFORM_ID:Darwin>,$<C_COMPILER_ID:MSVC>,$<BOOL:DISABLE_GCC_LINK>>,,rt>
   PRIVATE $<$<BOOL:$<C_COMPILER_ID:GCC>>:-static-libgcc>
   PRIVATE $<$<NOT:$<C_COMPILER_ID:MSVC>>:pthread>
   PRIVATE
