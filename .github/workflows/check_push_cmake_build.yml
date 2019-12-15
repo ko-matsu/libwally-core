@@ -15,7 +15,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [macos-latest, windows-latest, ubuntu-latest]
+        os: [macos-latest, ubuntu-latest]
         node: [8, 12]
 
     steps:
@@ -140,7 +140,9 @@ jobs:
         cmake --version
         cmake --build build --config Release
     - name: test
-      run: npm run ctest
+      run: |
+        cd build
+        ctest -C Release
     - name: ubuntu-after
       if: matrix.os == 'ubuntu-latest'
       run: rm -rf cache/cmake/cmake-3.15.5-Linux-x86_64
