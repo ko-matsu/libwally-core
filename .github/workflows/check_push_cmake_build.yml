@@ -20,6 +20,8 @@ jobs:
         exclude:
           - os: macos-latest
             node: 13
+          - os: ubuntu-latest
+            node: 13
 
     steps:
     - uses: actions/setup-node@v1
@@ -118,6 +120,9 @@ jobs:
         export CURRENT_DIR=$(pwd)
         echo ::add-path::$CURRENT_DIR/$cmake_file_name/bin
         cd ../..
+    - name: ubuntu-install-swig
+      if: matrix.os == 'ubuntu-latest' && matrix.target != 'cpp'
+      run: sudo apt install swig
     - name: cmake-generate
       if: matrix.os != 'windows-latest'
       run: |
