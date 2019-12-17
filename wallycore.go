@@ -8,7 +8,7 @@
  * interface file instead.
  * ----------------------------------------------------------------------------- */
 
-// source: src/swig_go/swig.i
+// source: src/swig_go/temp_swig.i
 
 package wallycore
 
@@ -29,7 +29,9 @@ typedef struct { void* array; intgo len; intgo cap; } _goslice_;
 
 
 
-#cgo LDFLAGS: -L/usr/local/lib -L/usr/local/lib64 -L${SRCDIR}/build/Release -L${SRCDIR}/src/.libs -L${SRCDIR}/src/secp256k1/.libs -lwallycore
+
+#cgo CXXFLAGS: -I./include -I/usr/local/include
+#cgo LDFLAGS: -L/usr/local/lib -L/usr/local/lib64 -L${SRCDIR}/build/Release -L${SRCDIR}/src/.libs -L${SRCDIR}/src/secp256k1/.libs -lwallycore 
 
 typedef long long swig_type_1;
 typedef _gostring_ swig_type_2;
@@ -142,15 +144,15 @@ typedef long long swig_type_108;
 typedef long long swig_type_109;
 typedef long long swig_type_110;
 typedef _gostring_ swig_type_111;
-typedef _gostring_ swig_type_112;
-typedef long long swig_type_113;
+typedef long long swig_type_112;
+typedef _gostring_ swig_type_113;
 typedef long long swig_type_114;
-typedef _gostring_ swig_type_115;
-typedef long long swig_type_116;
-typedef _gostring_ swig_type_117;
+typedef long long swig_type_115;
+typedef _gostring_ swig_type_116;
+typedef long long swig_type_117;
 typedef _gostring_ swig_type_118;
 typedef _gostring_ swig_type_119;
-typedef long long swig_type_120;
+typedef _gostring_ swig_type_120;
 typedef long long swig_type_121;
 typedef long long swig_type_122;
 typedef long long swig_type_123;
@@ -170,8 +172,8 @@ typedef long long swig_type_136;
 typedef long long swig_type_137;
 typedef long long swig_type_138;
 typedef long long swig_type_139;
-typedef _gostring_ swig_type_140;
-typedef long long swig_type_141;
+typedef long long swig_type_140;
+typedef _gostring_ swig_type_141;
 typedef long long swig_type_142;
 typedef long long swig_type_143;
 typedef long long swig_type_144;
@@ -341,160 +343,167 @@ typedef long long swig_type_307;
 typedef long long swig_type_308;
 typedef long long swig_type_309;
 typedef long long swig_type_310;
-extern void _wrap_Swig_free_wallycore_982945dfd8db849f(uintptr_t arg1);
-extern uintptr_t _wrap_Swig_malloc_wallycore_982945dfd8db849f(swig_intgo arg1);
-extern swig_intgo _wrap_wally_init_wallycore_982945dfd8db849f(uintptr_t arg1);
-extern swig_intgo _wrap_wally_cleanup_wallycore_982945dfd8db849f(uintptr_t arg1);
-extern swig_intgo _wrap_wally_bzero_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_1 arg2);
-extern swig_intgo _wrap_wally_free_string_wallycore_982945dfd8db849f(swig_type_2 arg1);
-extern swig_intgo _wrap_wally_secp_randomize_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_3 arg2);
-extern swig_intgo _wrap_wally_hex_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_4 arg2, swig_voidp arg3);
-extern swig_intgo _wrap_wally_hex_to_bytes_wallycore_982945dfd8db849f(swig_type_5 arg1, swig_voidp arg2, swig_type_6 arg3, swig_voidp arg4);
-extern swig_intgo _wrap_wally_base58_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_7 arg2, uintptr_t arg3, swig_voidp arg4);
-extern swig_intgo _wrap_wally_base58_to_bytes_wallycore_982945dfd8db849f(swig_type_8 arg1, uintptr_t arg2, swig_voidp arg3, swig_type_9 arg4, swig_voidp arg5);
-extern swig_intgo _wrap_wally_base58_get_length_wallycore_982945dfd8db849f(swig_type_10 arg1, swig_voidp arg2);
-extern swig_intgo _wrap_wally_is_elements_build_wallycore_982945dfd8db849f(uintptr_t arg1);
-extern swig_intgo _wrap_wally_scrypt_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_11 arg2, swig_voidp arg3, swig_type_12 arg4, uintptr_t arg5, uintptr_t arg6, uintptr_t arg7, swig_voidp arg8, swig_type_13 arg9);
-extern swig_intgo _wrap_wally_aes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_14 arg2, swig_voidp arg3, swig_type_15 arg4, uintptr_t arg5, swig_voidp arg6, swig_type_16 arg7);
-extern swig_intgo _wrap_wally_aes_cbc_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_17 arg2, swig_voidp arg3, swig_type_18 arg4, swig_voidp arg5, swig_type_19 arg6, uintptr_t arg7, swig_voidp arg8, swig_type_20 arg9, swig_voidp arg10);
-extern swig_intgo _wrap_wally_sha256_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_21 arg2, swig_voidp arg3, swig_type_22 arg4);
-extern swig_intgo _wrap_wally_sha256_midstate_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_23 arg2, swig_voidp arg3, swig_type_24 arg4);
-extern swig_intgo _wrap_wally_sha256d_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_25 arg2, swig_voidp arg3, swig_type_26 arg4);
-extern swig_intgo _wrap_wally_sha512_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_27 arg2, swig_voidp arg3, swig_type_28 arg4);
-extern swig_intgo _wrap_wally_hash160_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_29 arg2, swig_voidp arg3, swig_type_30 arg4);
-extern swig_intgo _wrap_wally_hmac_sha256_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_31 arg2, swig_voidp arg3, swig_type_32 arg4, swig_voidp arg5, swig_type_33 arg6);
-extern swig_intgo _wrap_wally_hmac_sha512_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_34 arg2, swig_voidp arg3, swig_type_35 arg4, swig_voidp arg5, swig_type_36 arg6);
-extern swig_intgo _wrap_wally_pbkdf2_hmac_sha256_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_37 arg2, swig_voidp arg3, swig_type_38 arg4, uintptr_t arg5, uintptr_t arg6, swig_voidp arg7, swig_type_39 arg8);
-extern swig_intgo _wrap_wally_pbkdf2_hmac_sha512_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_40 arg2, swig_voidp arg3, swig_type_41 arg4, uintptr_t arg5, uintptr_t arg6, swig_voidp arg7, swig_type_42 arg8);
-extern swig_intgo _wrap_wally_ec_private_key_verify_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_43 arg2);
-extern swig_intgo _wrap_wally_ec_public_key_verify_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_44 arg2);
-extern swig_intgo _wrap_wally_ec_public_key_from_private_key_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_45 arg2, swig_voidp arg3, swig_type_46 arg4);
-extern swig_intgo _wrap_wally_ec_public_key_decompress_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_47 arg2, swig_voidp arg3, swig_type_48 arg4);
-extern swig_intgo _wrap_wally_ec_public_key_negate_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_49 arg2, swig_voidp arg3, swig_type_50 arg4);
-extern swig_intgo _wrap_wally_ec_sig_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_51 arg2, swig_voidp arg3, swig_type_52 arg4, uintptr_t arg5, swig_voidp arg6, swig_type_53 arg7);
-extern swig_intgo _wrap_wally_ec_sig_normalize_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_54 arg2, swig_voidp arg3, swig_type_55 arg4);
-extern swig_intgo _wrap_wally_ec_sig_to_der_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_56 arg2, swig_voidp arg3, swig_type_57 arg4, swig_voidp arg5);
-extern swig_intgo _wrap_wally_ec_sig_from_der_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_58 arg2, swig_voidp arg3, swig_type_59 arg4);
-extern swig_intgo _wrap_wally_ec_sig_verify_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_60 arg2, swig_voidp arg3, swig_type_61 arg4, uintptr_t arg5, swig_voidp arg6, swig_type_62 arg7);
-extern swig_intgo _wrap_wally_ec_sig_to_public_key_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_63 arg2, swig_voidp arg3, swig_type_64 arg4, swig_voidp arg5, swig_type_65 arg6);
-extern swig_intgo _wrap_BITCOIN_MESSAGE_MAX_LEN_wallycore_982945dfd8db849f(void);
-extern swig_intgo _wrap_wally_format_bitcoin_message_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_66 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_67 arg5, swig_voidp arg6);
-extern swig_intgo _wrap_wally_ecdh_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_68 arg2, swig_voidp arg3, swig_type_69 arg4, swig_voidp arg5, swig_type_70 arg6);
-extern swig_intgo _wrap_wally_addr_segwit_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_71 arg2, swig_type_72 arg3, uintptr_t arg4, swig_voidp arg5);
-extern swig_intgo _wrap_wally_addr_segwit_to_bytes_wallycore_982945dfd8db849f(swig_type_73 arg1, swig_type_74 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_75 arg5, swig_voidp arg6);
-extern swig_intgo _wrap_wally_address_to_scriptpubkey_wallycore_982945dfd8db849f(swig_type_76 arg1, uintptr_t arg2, swig_voidp arg3, swig_type_77 arg4, swig_voidp arg5);
-extern swig_intgo _wrap_wally_wif_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_78 arg2, uintptr_t arg3, uintptr_t arg4, swig_voidp arg5);
-extern swig_intgo _wrap_wally_wif_to_bytes_wallycore_982945dfd8db849f(swig_type_79 arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, swig_type_80 arg5);
-extern swig_intgo _wrap_wally_wif_is_uncompressed_wallycore_982945dfd8db849f(swig_type_81 arg1, swig_voidp arg2);
-extern swig_intgo _wrap_wally_wif_to_public_key_wallycore_982945dfd8db849f(swig_type_82 arg1, uintptr_t arg2, swig_voidp arg3, swig_type_83 arg4, swig_voidp arg5);
-extern swig_intgo _wrap_wally_bip32_key_to_address_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4);
-extern swig_intgo _wrap_wally_bip32_key_to_addr_segwit_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_84 arg2, uintptr_t arg3, swig_voidp arg4);
-extern swig_intgo _wrap_wally_wif_to_address_wallycore_982945dfd8db849f(swig_type_85 arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4);
-extern swig_intgo _wrap_wally_confidential_addr_to_addr_wallycore_982945dfd8db849f(swig_type_86 arg1, uintptr_t arg2, swig_voidp arg3);
-extern swig_intgo _wrap_wally_confidential_addr_to_ec_public_key_wallycore_982945dfd8db849f(swig_type_87 arg1, uintptr_t arg2, swig_voidp arg3, swig_type_88 arg4);
-extern swig_intgo _wrap_wally_confidential_addr_from_addr_wallycore_982945dfd8db849f(swig_type_89 arg1, uintptr_t arg2, swig_voidp arg3, swig_type_90 arg4, swig_voidp arg5);
-extern swig_intgo _wrap_wally_confidential_addr_to_addr_segwit_wallycore_982945dfd8db849f(swig_type_91 arg1, swig_type_92 arg2, swig_type_93 arg3, swig_voidp arg4);
-extern swig_intgo _wrap_wally_confidential_addr_segwit_to_ec_public_key_wallycore_982945dfd8db849f(swig_type_94 arg1, swig_type_95 arg2, swig_voidp arg3, swig_type_96 arg4);
-extern swig_intgo _wrap_wally_confidential_addr_from_addr_segwit_wallycore_982945dfd8db849f(swig_type_97 arg1, swig_type_98 arg2, swig_type_99 arg3, swig_voidp arg4, swig_type_100 arg5, swig_voidp arg6);
-extern swig_intgo _wrap_bip32_key_free_wallycore_982945dfd8db849f(uintptr_t arg1);
-extern swig_intgo _wrap_bip32_key_init_alloc_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, swig_type_101 arg5, swig_voidp arg6, swig_type_102 arg7, swig_voidp arg8, swig_type_103 arg9, swig_voidp arg10, swig_type_104 arg11, swig_voidp arg12, swig_type_105 arg13, uintptr_t arg14);
-extern swig_intgo _wrap_bip32_key_from_seed_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_106 arg2, uintptr_t arg3, uintptr_t arg4, uintptr_t arg5);
-extern swig_intgo _wrap_bip32_key_serialize_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3, swig_type_107 arg4);
-extern swig_intgo _wrap_bip32_key_unserialize_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_108 arg2, uintptr_t arg3);
-extern swig_intgo _wrap_bip32_key_from_parent_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
-extern swig_intgo _wrap_bip32_key_from_parent_path_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2, swig_type_109 arg3, uintptr_t arg4, uintptr_t arg5);
-extern swig_intgo _wrap_bip32_key_with_tweak_from_parent_path_alloc_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2, swig_type_110 arg3, uintptr_t arg4, uintptr_t arg5);
-extern swig_intgo _wrap_bip32_key_to_base58_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3);
-extern swig_intgo _wrap_bip32_key_from_base58_wallycore_982945dfd8db849f(swig_type_111 arg1, uintptr_t arg2);
-extern swig_intgo _wrap_bip32_key_strip_private_key_wallycore_982945dfd8db849f(uintptr_t arg1);
-extern swig_intgo _wrap_bip39_get_languages_wallycore_982945dfd8db849f(swig_voidp arg1);
-extern swig_intgo _wrap_bip39_get_wordlist_wallycore_982945dfd8db849f(swig_type_112 arg1, uintptr_t arg2);
-extern swig_intgo _wrap_bip39_get_word_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_113 arg2, swig_voidp arg3);
-extern swig_intgo _wrap_bip39_mnemonic_from_bytes_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2, swig_type_114 arg3, swig_voidp arg4);
-extern swig_intgo _wrap_bip39_mnemonic_to_bytes_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_115 arg2, swig_voidp arg3, swig_type_116 arg4, swig_voidp arg5);
-extern swig_intgo _wrap_bip39_mnemonic_validate_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_117 arg2);
-extern swig_intgo _wrap_bip39_mnemonic_to_seed_wallycore_982945dfd8db849f(swig_type_118 arg1, swig_type_119 arg2, swig_voidp arg3, swig_type_120 arg4, swig_voidp arg5);
-extern swig_intgo _wrap_WALLY_TX_ISSUANCE_FLAG_wallycore_982945dfd8db849f(void);
-extern swig_intgo _wrap_WALLY_TX_PEGIN_FLAG_wallycore_982945dfd8db849f(void);
-extern swig_intgo _wrap_wally_tx_witness_stack_init_alloc_wallycore_982945dfd8db849f(swig_type_121 arg1, uintptr_t arg2);
-extern swig_intgo _wrap_wally_tx_witness_stack_add_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2, swig_type_122 arg3);
-extern swig_intgo _wrap_wally_tx_witness_stack_add_dummy_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_wally_tx_witness_stack_set_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_123 arg2, swig_voidp arg3, swig_type_124 arg4);
-extern swig_intgo _wrap_wally_tx_witness_stack_set_dummy_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_125 arg2, uintptr_t arg3);
-extern swig_intgo _wrap_wally_tx_witness_stack_free_wallycore_982945dfd8db849f(uintptr_t arg1);
-extern swig_intgo _wrap_wally_tx_input_init_alloc_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_126 arg2, uintptr_t arg3, uintptr_t arg4, swig_voidp arg5, swig_type_127 arg6, uintptr_t arg7, uintptr_t arg8);
-extern swig_intgo _wrap_wally_tx_input_free_wallycore_982945dfd8db849f(uintptr_t arg1);
-extern swig_intgo _wrap_wally_tx_output_init_alloc_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2, swig_type_128 arg3, uintptr_t arg4);
-extern swig_intgo _wrap_wally_tx_output_free_wallycore_982945dfd8db849f(uintptr_t arg1);
-extern swig_intgo _wrap_wally_tx_init_alloc_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2, swig_type_129 arg3, swig_type_130 arg4, uintptr_t arg5);
-extern swig_intgo _wrap_wally_tx_add_input_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_wally_tx_add_raw_input_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2, swig_type_131 arg3, uintptr_t arg4, uintptr_t arg5, swig_voidp arg6, swig_type_132 arg7, uintptr_t arg8, uintptr_t arg9);
-extern swig_intgo _wrap_wally_tx_remove_input_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_133 arg2);
-extern swig_intgo _wrap_wally_tx_set_input_script_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_134 arg2, swig_voidp arg3, swig_type_135 arg4);
-extern swig_intgo _wrap_wally_tx_set_input_witness_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_136 arg2, uintptr_t arg3);
-extern swig_intgo _wrap_wally_tx_add_output_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_wally_tx_add_raw_output_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3, swig_type_137 arg4, uintptr_t arg5);
-extern swig_intgo _wrap_wally_tx_remove_output_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_138 arg2);
-extern swig_intgo _wrap_wally_tx_get_witness_count_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_wally_tx_free_wallycore_982945dfd8db849f(uintptr_t arg1);
-extern swig_intgo _wrap_wally_tx_get_length_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3);
-extern swig_intgo _wrap_wally_tx_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_139 arg2, uintptr_t arg3, uintptr_t arg4);
-extern swig_intgo _wrap_wally_tx_from_hex_wallycore_982945dfd8db849f(swig_type_140 arg1, uintptr_t arg2, uintptr_t arg3);
-extern swig_intgo _wrap_wally_tx_to_bytes_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3, swig_type_141 arg4, swig_voidp arg5);
-extern swig_intgo _wrap_wally_tx_to_hex_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3);
-extern swig_intgo _wrap_wally_tx_get_weight_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_wally_tx_get_vsize_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_wally_tx_vsize_from_weight_wallycore_982945dfd8db849f(swig_type_142 arg1, swig_voidp arg2);
-extern swig_intgo _wrap_wally_tx_get_total_output_satoshi_wallycore_982945dfd8db849f(uintptr_t arg1, uintptr_t arg2);
-extern swig_intgo _wrap_wally_tx_get_btc_signature_hash_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_143 arg2, swig_voidp arg3, swig_type_144 arg4, uintptr_t arg5, uintptr_t arg6, uintptr_t arg7, swig_voidp arg8, swig_type_145 arg9);
-extern swig_intgo _wrap_wally_tx_get_signature_hash_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_146 arg2, swig_voidp arg3, swig_type_147 arg4, swig_voidp arg5, swig_type_148 arg6, uintptr_t arg7, uintptr_t arg8, uintptr_t arg9, uintptr_t arg10, uintptr_t arg11, swig_voidp arg12, swig_type_149 arg13);
-extern swig_intgo _wrap_wally_tx_is_coinbase_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_wally_tx_elements_input_issuance_set_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2, swig_type_150 arg3, swig_voidp arg4, swig_type_151 arg5, swig_voidp arg6, swig_type_152 arg7, swig_voidp arg8, swig_type_153 arg9, swig_voidp arg10, swig_type_154 arg11, swig_voidp arg12, swig_type_155 arg13);
-extern swig_intgo _wrap_wally_tx_elements_input_issuance_free_wallycore_982945dfd8db849f(uintptr_t arg1);
-extern swig_intgo _wrap_wally_tx_elements_input_init_alloc_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_156 arg2, uintptr_t arg3, uintptr_t arg4, swig_voidp arg5, swig_type_157 arg6, uintptr_t arg7, swig_voidp arg8, swig_type_158 arg9, swig_voidp arg10, swig_type_159 arg11, swig_voidp arg12, swig_type_160 arg13, swig_voidp arg14, swig_type_161 arg15, swig_voidp arg16, swig_type_162 arg17, swig_voidp arg18, swig_type_163 arg19, uintptr_t arg20, uintptr_t arg21);
-extern swig_intgo _wrap_wally_tx_elements_input_is_pegin_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_wally_tx_elements_output_commitment_set_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2, swig_type_164 arg3, swig_voidp arg4, swig_type_165 arg5, swig_voidp arg6, swig_type_166 arg7, swig_voidp arg8, swig_type_167 arg9, swig_voidp arg10, swig_type_168 arg11);
-extern swig_intgo _wrap_wally_tx_elements_output_commitment_free_wallycore_982945dfd8db849f(uintptr_t arg1);
-extern swig_intgo _wrap_wally_tx_elements_output_init_alloc_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_169 arg2, swig_voidp arg3, swig_type_170 arg4, swig_voidp arg5, swig_type_171 arg6, swig_voidp arg7, swig_type_172 arg8, swig_voidp arg9, swig_type_173 arg10, swig_voidp arg11, swig_type_174 arg12, uintptr_t arg13);
-extern swig_intgo _wrap_wally_tx_add_elements_raw_input_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2, swig_type_175 arg3, uintptr_t arg4, uintptr_t arg5, swig_voidp arg6, swig_type_176 arg7, uintptr_t arg8, swig_voidp arg9, swig_type_177 arg10, swig_voidp arg11, swig_type_178 arg12, swig_voidp arg13, swig_type_179 arg14, swig_voidp arg15, swig_type_180 arg16, swig_voidp arg17, swig_type_181 arg18, swig_voidp arg19, swig_type_182 arg20, uintptr_t arg21, uintptr_t arg22);
-extern swig_intgo _wrap_wally_tx_add_elements_raw_output_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2, swig_type_183 arg3, swig_voidp arg4, swig_type_184 arg5, swig_voidp arg6, swig_type_185 arg7, swig_voidp arg8, swig_type_186 arg9, swig_voidp arg10, swig_type_187 arg11, swig_voidp arg12, swig_type_188 arg13, uintptr_t arg14);
-extern swig_intgo _wrap_wally_tx_is_elements_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2);
-extern swig_intgo _wrap_wally_tx_confidential_value_from_satoshi_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2, swig_type_189 arg3);
-extern swig_intgo _wrap_wally_tx_confidential_value_to_satoshi_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_190 arg2, uintptr_t arg3);
-extern swig_intgo _wrap_wally_tx_get_elements_signature_hash_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_191 arg2, swig_voidp arg3, swig_type_192 arg4, swig_voidp arg5, swig_type_193 arg6, uintptr_t arg7, uintptr_t arg8, swig_voidp arg9, swig_type_194 arg10);
-extern swig_intgo _wrap_wally_tx_elements_issuance_generate_entropy_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_195 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_196 arg5, swig_voidp arg6, swig_type_197 arg7);
-extern swig_intgo _wrap_wally_tx_elements_issuance_calculate_asset_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_198 arg2, swig_voidp arg3, swig_type_199 arg4);
-extern swig_intgo _wrap_wally_tx_elements_issuance_calculate_reissuance_token_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_200 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_201 arg5);
-extern swig_intgo _wrap_wally_asset_generator_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_202 arg2, swig_voidp arg3, swig_type_203 arg4, swig_voidp arg5, swig_type_204 arg6);
-extern swig_intgo _wrap_wally_asset_final_vbf_wallycore_982945dfd8db849f(uintptr_t arg1, swig_type_205 arg2, swig_type_206 arg3, swig_voidp arg4, swig_type_207 arg5, swig_voidp arg6, swig_type_208 arg7, swig_voidp arg8, swig_type_209 arg9);
-extern swig_intgo _wrap_wally_asset_value_commitment_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2, swig_type_210 arg3, swig_voidp arg4, swig_type_211 arg5, swig_voidp arg6, swig_type_212 arg7);
-extern swig_intgo _wrap_wally_asset_rangeproof_with_nonce_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2, swig_type_213 arg3, swig_voidp arg4, swig_type_214 arg5, swig_voidp arg6, swig_type_215 arg7, swig_voidp arg8, swig_type_216 arg9, swig_voidp arg10, swig_type_217 arg11, swig_voidp arg12, swig_type_218 arg13, swig_voidp arg14, swig_type_219 arg15, uintptr_t arg16, swig_intgo arg17, swig_intgo arg18, swig_voidp arg19, swig_type_220 arg20, swig_voidp arg21);
-extern swig_intgo _wrap_wally_asset_rangeproof_wallycore_982945dfd8db849f(uintptr_t arg1, swig_voidp arg2, swig_type_221 arg3, swig_voidp arg4, swig_type_222 arg5, swig_voidp arg6, swig_type_223 arg7, swig_voidp arg8, swig_type_224 arg9, swig_voidp arg10, swig_type_225 arg11, swig_voidp arg12, swig_type_226 arg13, swig_voidp arg14, swig_type_227 arg15, swig_voidp arg16, swig_type_228 arg17, uintptr_t arg18, swig_intgo arg19, swig_intgo arg20, swig_voidp arg21, swig_type_229 arg22, swig_voidp arg23);
-extern swig_intgo _wrap_wally_asset_surjectionproof_size_wallycore_982945dfd8db849f(swig_type_230 arg1, swig_voidp arg2);
-extern swig_intgo _wrap_wally_asset_surjectionproof_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_231 arg2, swig_voidp arg3, swig_type_232 arg4, swig_voidp arg5, swig_type_233 arg6, swig_voidp arg7, swig_type_234 arg8, swig_voidp arg9, swig_type_235 arg10, swig_voidp arg11, swig_type_236 arg12, swig_voidp arg13, swig_type_237 arg14, swig_voidp arg15, swig_type_238 arg16, swig_voidp arg17);
-extern swig_intgo _wrap_wally_asset_unblind_with_nonce_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_239 arg2, swig_voidp arg3, swig_type_240 arg4, swig_voidp arg5, swig_type_241 arg6, swig_voidp arg7, swig_type_242 arg8, swig_voidp arg9, swig_type_243 arg10, swig_voidp arg11, swig_type_244 arg12, swig_voidp arg13, swig_type_245 arg14, swig_voidp arg15, swig_type_246 arg16, uintptr_t arg17);
-extern swig_intgo _wrap_wally_asset_unblind_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_247 arg2, swig_voidp arg3, swig_type_248 arg4, swig_voidp arg5, swig_type_249 arg6, swig_voidp arg7, swig_type_250 arg8, swig_voidp arg9, swig_type_251 arg10, swig_voidp arg11, swig_type_252 arg12, swig_voidp arg13, swig_type_253 arg14, swig_voidp arg15, swig_type_254 arg16, swig_voidp arg17, swig_type_255 arg18, uintptr_t arg19);
-extern swig_intgo _wrap_wally_asset_blinding_key_from_seed_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_256 arg2, swig_voidp arg3, swig_type_257 arg4);
-extern swig_intgo _wrap_wally_asset_blinding_key_to_ec_private_key_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_258 arg2, swig_voidp arg3, swig_type_259 arg4, swig_voidp arg5, swig_type_260 arg6);
-extern swig_intgo _wrap_wally_asset_pak_whitelistproof_size_wallycore_982945dfd8db849f(swig_type_261 arg1, swig_voidp arg2);
-extern swig_intgo _wrap_wally_asset_pak_whitelistproof_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_262 arg2, swig_voidp arg3, swig_type_263 arg4, swig_type_264 arg5, swig_voidp arg6, swig_type_265 arg7, swig_voidp arg8, swig_type_266 arg9, swig_voidp arg10, swig_type_267 arg11, swig_voidp arg12, swig_type_268 arg13);
-extern swig_intgo _wrap_wally_scriptpubkey_get_type_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_269 arg2, swig_voidp arg3);
-extern swig_intgo _wrap_wally_scriptpubkey_p2pkh_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_270 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_271 arg5, swig_voidp arg6);
-extern swig_intgo _wrap_wally_scriptsig_p2pkh_from_sig_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_272 arg2, swig_voidp arg3, swig_type_273 arg4, uintptr_t arg5, swig_voidp arg6, swig_type_274 arg7, swig_voidp arg8);
-extern swig_intgo _wrap_wally_witness_p2wpkh_from_sig_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_275 arg2, swig_voidp arg3, swig_type_276 arg4, uintptr_t arg5, uintptr_t arg6);
-extern swig_intgo _wrap_wally_scriptsig_p2pkh_from_der_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_277 arg2, swig_voidp arg3, swig_type_278 arg4, swig_voidp arg5, swig_type_279 arg6, swig_voidp arg7);
-extern swig_intgo _wrap_wally_witness_p2wpkh_from_der_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_280 arg2, swig_voidp arg3, swig_type_281 arg4, uintptr_t arg5);
-extern swig_intgo _wrap_wally_scriptpubkey_op_return_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_282 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_283 arg5, swig_voidp arg6);
-extern swig_intgo _wrap_wally_scriptpubkey_p2sh_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_284 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_285 arg5, swig_voidp arg6);
-extern swig_intgo _wrap_wally_scriptpubkey_multisig_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_286 arg2, uintptr_t arg3, uintptr_t arg4, swig_voidp arg5, swig_type_287 arg6, swig_voidp arg7);
-extern swig_intgo _wrap_wally_scriptsig_multisig_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_288 arg2, swig_voidp arg3, swig_type_289 arg4, uintptr_t arg5, swig_type_290 arg6, uintptr_t arg7, swig_voidp arg8, swig_type_291 arg9, swig_voidp arg10);
-extern swig_intgo _wrap_wally_witness_multisig_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_292 arg2, swig_voidp arg3, swig_type_293 arg4, uintptr_t arg5, swig_type_294 arg6, uintptr_t arg7, uintptr_t arg8);
-extern swig_intgo _wrap_wally_scriptpubkey_csv_2of2_then_1_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_295 arg2, uintptr_t arg3, uintptr_t arg4, swig_voidp arg5, swig_type_296 arg6, swig_voidp arg7);
-extern swig_intgo _wrap_wally_scriptpubkey_csv_2of3_then_2_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_297 arg2, uintptr_t arg3, uintptr_t arg4, swig_voidp arg5, swig_type_298 arg6, swig_voidp arg7);
-extern swig_intgo _wrap_wally_script_push_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_299 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_300 arg5, swig_voidp arg6);
-extern swig_intgo _wrap_wally_witness_program_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_301 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_302 arg5, swig_voidp arg6);
-extern swig_intgo _wrap_wally_elements_pegout_script_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_303 arg2, swig_voidp arg3, swig_type_304 arg4, swig_voidp arg5, swig_type_305 arg6, swig_voidp arg7, swig_type_306 arg8, uintptr_t arg9, swig_voidp arg10, swig_type_307 arg11, swig_voidp arg12);
-extern swig_intgo _wrap_wally_elements_pegin_contract_script_from_bytes_wallycore_982945dfd8db849f(swig_voidp arg1, swig_type_308 arg2, swig_voidp arg3, swig_type_309 arg4, uintptr_t arg5, swig_voidp arg6, swig_type_310 arg7, swig_voidp arg8);
+typedef long long swig_type_311;
+typedef long long swig_type_312;
+typedef long long swig_type_313;
+typedef long long swig_type_314;
+typedef long long swig_type_315;
+extern void _wrap_Swig_free_wallycore_d04cfd8a1b92e42f(uintptr_t arg1);
+extern uintptr_t _wrap_Swig_malloc_wallycore_d04cfd8a1b92e42f(swig_intgo arg1);
+extern swig_intgo _wrap_wally_init_wallycore_d04cfd8a1b92e42f(uintptr_t arg1);
+extern swig_intgo _wrap_wally_cleanup_wallycore_d04cfd8a1b92e42f(uintptr_t arg1);
+extern swig_intgo _wrap_wally_bzero_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_1 arg2);
+extern swig_intgo _wrap_wally_free_string_wallycore_d04cfd8a1b92e42f(swig_type_2 arg1);
+extern swig_intgo _wrap_wally_secp_randomize_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_3 arg2);
+extern swig_intgo _wrap_wally_hex_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_4 arg2, swig_voidp arg3);
+extern swig_intgo _wrap_wally_hex_to_bytes_wallycore_d04cfd8a1b92e42f(swig_type_5 arg1, swig_voidp arg2, swig_type_6 arg3, swig_voidp arg4);
+extern swig_intgo _wrap_wally_base58_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_7 arg2, uintptr_t arg3, swig_voidp arg4);
+extern swig_intgo _wrap_wally_base58_to_bytes_wallycore_d04cfd8a1b92e42f(swig_type_8 arg1, uintptr_t arg2, swig_voidp arg3, swig_type_9 arg4, swig_voidp arg5);
+extern swig_intgo _wrap_wally_base58_get_length_wallycore_d04cfd8a1b92e42f(swig_type_10 arg1, swig_voidp arg2);
+extern swig_intgo _wrap_wally_is_elements_build_wallycore_d04cfd8a1b92e42f(uintptr_t arg1);
+extern swig_intgo _wrap_wally_scrypt_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_11 arg2, swig_voidp arg3, swig_type_12 arg4, uintptr_t arg5, uintptr_t arg6, uintptr_t arg7, swig_voidp arg8, swig_type_13 arg9);
+extern swig_intgo _wrap_wally_aes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_14 arg2, swig_voidp arg3, swig_type_15 arg4, uintptr_t arg5, swig_voidp arg6, swig_type_16 arg7);
+extern swig_intgo _wrap_wally_aes_cbc_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_17 arg2, swig_voidp arg3, swig_type_18 arg4, swig_voidp arg5, swig_type_19 arg6, uintptr_t arg7, swig_voidp arg8, swig_type_20 arg9, swig_voidp arg10);
+extern swig_intgo _wrap_wally_sha256_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_21 arg2, swig_voidp arg3, swig_type_22 arg4);
+extern swig_intgo _wrap_wally_sha256_midstate_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_23 arg2, swig_voidp arg3, swig_type_24 arg4);
+extern swig_intgo _wrap_wally_sha256d_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_25 arg2, swig_voidp arg3, swig_type_26 arg4);
+extern swig_intgo _wrap_wally_sha512_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_27 arg2, swig_voidp arg3, swig_type_28 arg4);
+extern swig_intgo _wrap_wally_hash160_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_29 arg2, swig_voidp arg3, swig_type_30 arg4);
+extern swig_intgo _wrap_wally_hmac_sha256_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_31 arg2, swig_voidp arg3, swig_type_32 arg4, swig_voidp arg5, swig_type_33 arg6);
+extern swig_intgo _wrap_wally_hmac_sha512_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_34 arg2, swig_voidp arg3, swig_type_35 arg4, swig_voidp arg5, swig_type_36 arg6);
+extern swig_intgo _wrap_wally_pbkdf2_hmac_sha256_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_37 arg2, swig_voidp arg3, swig_type_38 arg4, uintptr_t arg5, uintptr_t arg6, swig_voidp arg7, swig_type_39 arg8);
+extern swig_intgo _wrap_wally_pbkdf2_hmac_sha512_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_40 arg2, swig_voidp arg3, swig_type_41 arg4, uintptr_t arg5, uintptr_t arg6, swig_voidp arg7, swig_type_42 arg8);
+extern swig_intgo _wrap_wally_ec_private_key_verify_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_43 arg2);
+extern swig_intgo _wrap_wally_ec_public_key_verify_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_44 arg2);
+extern swig_intgo _wrap_wally_ec_public_key_from_private_key_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_45 arg2, swig_voidp arg3, swig_type_46 arg4);
+extern swig_intgo _wrap_wally_ec_public_key_decompress_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_47 arg2, swig_voidp arg3, swig_type_48 arg4);
+extern swig_intgo _wrap_wally_ec_public_key_negate_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_49 arg2, swig_voidp arg3, swig_type_50 arg4);
+extern swig_intgo _wrap_wally_ec_sig_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_51 arg2, swig_voidp arg3, swig_type_52 arg4, uintptr_t arg5, swig_voidp arg6, swig_type_53 arg7);
+extern swig_intgo _wrap_wally_ec_sig_normalize_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_54 arg2, swig_voidp arg3, swig_type_55 arg4);
+extern swig_intgo _wrap_wally_ec_sig_to_der_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_56 arg2, swig_voidp arg3, swig_type_57 arg4, swig_voidp arg5);
+extern swig_intgo _wrap_wally_ec_sig_from_der_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_58 arg2, swig_voidp arg3, swig_type_59 arg4);
+extern swig_intgo _wrap_wally_ec_sig_verify_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_60 arg2, swig_voidp arg3, swig_type_61 arg4, uintptr_t arg5, swig_voidp arg6, swig_type_62 arg7);
+extern swig_intgo _wrap_wally_ec_sig_to_public_key_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_63 arg2, swig_voidp arg3, swig_type_64 arg4, swig_voidp arg5, swig_type_65 arg6);
+extern swig_intgo _wrap_BITCOIN_MESSAGE_MAX_LEN_wallycore_d04cfd8a1b92e42f(void);
+extern swig_intgo _wrap_wally_format_bitcoin_message_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_66 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_67 arg5, swig_voidp arg6);
+extern swig_intgo _wrap_wally_ecdh_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_68 arg2, swig_voidp arg3, swig_type_69 arg4, swig_voidp arg5, swig_type_70 arg6);
+extern swig_intgo _wrap_wally_addr_segwit_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_71 arg2, swig_type_72 arg3, uintptr_t arg4, swig_voidp arg5);
+extern swig_intgo _wrap_wally_addr_segwit_to_bytes_wallycore_d04cfd8a1b92e42f(swig_type_73 arg1, swig_type_74 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_75 arg5, swig_voidp arg6);
+extern swig_intgo _wrap_wally_address_to_scriptpubkey_wallycore_d04cfd8a1b92e42f(swig_type_76 arg1, uintptr_t arg2, swig_voidp arg3, swig_type_77 arg4, swig_voidp arg5);
+extern swig_intgo _wrap_wally_wif_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_78 arg2, uintptr_t arg3, uintptr_t arg4, swig_voidp arg5);
+extern swig_intgo _wrap_wally_wif_to_bytes_wallycore_d04cfd8a1b92e42f(swig_type_79 arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, swig_type_80 arg5);
+extern swig_intgo _wrap_wally_wif_is_uncompressed_wallycore_d04cfd8a1b92e42f(swig_type_81 arg1, swig_voidp arg2);
+extern swig_intgo _wrap_wally_wif_to_public_key_wallycore_d04cfd8a1b92e42f(swig_type_82 arg1, uintptr_t arg2, swig_voidp arg3, swig_type_83 arg4, swig_voidp arg5);
+extern swig_intgo _wrap_wally_bip32_key_to_address_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4);
+extern swig_intgo _wrap_wally_bip32_key_to_addr_segwit_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_84 arg2, uintptr_t arg3, swig_voidp arg4);
+extern swig_intgo _wrap_wally_wif_to_address_wallycore_d04cfd8a1b92e42f(swig_type_85 arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4);
+extern swig_intgo _wrap_wally_confidential_addr_to_addr_wallycore_d04cfd8a1b92e42f(swig_type_86 arg1, uintptr_t arg2, swig_voidp arg3);
+extern swig_intgo _wrap_wally_confidential_addr_to_ec_public_key_wallycore_d04cfd8a1b92e42f(swig_type_87 arg1, uintptr_t arg2, swig_voidp arg3, swig_type_88 arg4);
+extern swig_intgo _wrap_wally_confidential_addr_from_addr_wallycore_d04cfd8a1b92e42f(swig_type_89 arg1, uintptr_t arg2, swig_voidp arg3, swig_type_90 arg4, swig_voidp arg5);
+extern swig_intgo _wrap_wally_confidential_addr_to_addr_segwit_wallycore_d04cfd8a1b92e42f(swig_type_91 arg1, swig_type_92 arg2, swig_type_93 arg3, swig_voidp arg4);
+extern swig_intgo _wrap_wally_confidential_addr_segwit_to_ec_public_key_wallycore_d04cfd8a1b92e42f(swig_type_94 arg1, swig_type_95 arg2, swig_voidp arg3, swig_type_96 arg4);
+extern swig_intgo _wrap_wally_confidential_addr_from_addr_segwit_wallycore_d04cfd8a1b92e42f(swig_type_97 arg1, swig_type_98 arg2, swig_type_99 arg3, swig_voidp arg4, swig_type_100 arg5, swig_voidp arg6);
+extern swig_intgo _wrap_bip32_key_free_wallycore_d04cfd8a1b92e42f(uintptr_t arg1);
+extern swig_intgo _wrap_bip32_key_init_alloc_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, swig_voidp arg4, swig_type_101 arg5, swig_voidp arg6, swig_type_102 arg7, swig_voidp arg8, swig_type_103 arg9, swig_voidp arg10, swig_type_104 arg11, swig_voidp arg12, swig_type_105 arg13, uintptr_t arg14);
+extern swig_intgo _wrap_bip32_key_from_seed_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_106 arg2, uintptr_t arg3, uintptr_t arg4, uintptr_t arg5);
+extern swig_intgo _wrap_bip32_key_serialize_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3, swig_type_107 arg4);
+extern swig_intgo _wrap_bip32_key_unserialize_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_108 arg2, uintptr_t arg3);
+extern swig_intgo _wrap_bip32_key_from_parent_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2, uintptr_t arg3, uintptr_t arg4);
+extern swig_intgo _wrap_bip32_key_from_parent_path_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2, swig_type_109 arg3, uintptr_t arg4, uintptr_t arg5);
+extern swig_intgo _wrap_bip32_key_with_tweak_from_parent_path_alloc_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2, swig_type_110 arg3, uintptr_t arg4, uintptr_t arg5);
+extern swig_intgo _wrap_bip32_key_to_base58_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3);
+extern swig_intgo _wrap_bip32_key_from_base58_wallycore_d04cfd8a1b92e42f(swig_type_111 arg1, uintptr_t arg2);
+extern swig_intgo _wrap_bip32_key_strip_private_key_wallycore_d04cfd8a1b92e42f(uintptr_t arg1);
+extern swig_intgo _wrap_bip32_key_get_fingerprint_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_112 arg3);
+extern swig_intgo _wrap_bip39_get_languages_wallycore_d04cfd8a1b92e42f(swig_voidp arg1);
+extern swig_intgo _wrap_bip39_get_wordlist_wallycore_d04cfd8a1b92e42f(swig_type_113 arg1, uintptr_t arg2);
+extern swig_intgo _wrap_bip39_get_word_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_114 arg2, swig_voidp arg3);
+extern swig_intgo _wrap_bip39_mnemonic_from_bytes_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_115 arg3, swig_voidp arg4);
+extern swig_intgo _wrap_bip39_mnemonic_to_bytes_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_116 arg2, swig_voidp arg3, swig_type_117 arg4, swig_voidp arg5);
+extern swig_intgo _wrap_bip39_mnemonic_validate_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_118 arg2);
+extern swig_intgo _wrap_bip39_mnemonic_to_seed_wallycore_d04cfd8a1b92e42f(swig_type_119 arg1, swig_type_120 arg2, swig_voidp arg3, swig_type_121 arg4, swig_voidp arg5);
+extern swig_intgo _wrap_WALLY_TX_ISSUANCE_FLAG_wallycore_d04cfd8a1b92e42f(void);
+extern swig_intgo _wrap_WALLY_TX_PEGIN_FLAG_wallycore_d04cfd8a1b92e42f(void);
+extern swig_intgo _wrap_wally_tx_witness_stack_init_alloc_wallycore_d04cfd8a1b92e42f(swig_type_122 arg1, uintptr_t arg2);
+extern swig_intgo _wrap_wally_tx_witness_stack_add_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_123 arg3);
+extern swig_intgo _wrap_wally_tx_witness_stack_add_dummy_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_wally_tx_witness_stack_set_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_124 arg2, swig_voidp arg3, swig_type_125 arg4);
+extern swig_intgo _wrap_wally_tx_witness_stack_set_dummy_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_126 arg2, uintptr_t arg3);
+extern swig_intgo _wrap_wally_tx_witness_stack_free_wallycore_d04cfd8a1b92e42f(uintptr_t arg1);
+extern swig_intgo _wrap_wally_tx_input_init_alloc_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_127 arg2, uintptr_t arg3, uintptr_t arg4, swig_voidp arg5, swig_type_128 arg6, uintptr_t arg7, uintptr_t arg8);
+extern swig_intgo _wrap_wally_tx_input_free_wallycore_d04cfd8a1b92e42f(uintptr_t arg1);
+extern swig_intgo _wrap_wally_tx_output_init_alloc_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_129 arg3, uintptr_t arg4);
+extern swig_intgo _wrap_wally_tx_output_free_wallycore_d04cfd8a1b92e42f(uintptr_t arg1);
+extern swig_intgo _wrap_wally_tx_init_alloc_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2, swig_type_130 arg3, swig_type_131 arg4, uintptr_t arg5);
+extern swig_intgo _wrap_wally_tx_add_input_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_wally_tx_add_raw_input_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_132 arg3, uintptr_t arg4, uintptr_t arg5, swig_voidp arg6, swig_type_133 arg7, uintptr_t arg8, uintptr_t arg9);
+extern swig_intgo _wrap_wally_tx_remove_input_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_134 arg2);
+extern swig_intgo _wrap_wally_tx_set_input_script_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_135 arg2, swig_voidp arg3, swig_type_136 arg4);
+extern swig_intgo _wrap_wally_tx_set_input_witness_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_137 arg2, uintptr_t arg3);
+extern swig_intgo _wrap_wally_tx_add_output_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_wally_tx_add_raw_output_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3, swig_type_138 arg4, uintptr_t arg5);
+extern swig_intgo _wrap_wally_tx_remove_output_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_139 arg2);
+extern swig_intgo _wrap_wally_tx_get_witness_count_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_wally_tx_free_wallycore_d04cfd8a1b92e42f(uintptr_t arg1);
+extern swig_intgo _wrap_wally_tx_get_length_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3);
+extern swig_intgo _wrap_wally_tx_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_140 arg2, uintptr_t arg3, uintptr_t arg4);
+extern swig_intgo _wrap_wally_tx_from_hex_wallycore_d04cfd8a1b92e42f(swig_type_141 arg1, uintptr_t arg2, uintptr_t arg3);
+extern swig_intgo _wrap_wally_tx_to_bytes_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3, swig_type_142 arg4, swig_voidp arg5);
+extern swig_intgo _wrap_wally_tx_to_hex_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2, swig_voidp arg3);
+extern swig_intgo _wrap_wally_tx_get_weight_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_wally_tx_get_vsize_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_wally_tx_vsize_from_weight_wallycore_d04cfd8a1b92e42f(swig_type_143 arg1, swig_voidp arg2);
+extern swig_intgo _wrap_wally_tx_get_total_output_satoshi_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, uintptr_t arg2);
+extern swig_intgo _wrap_wally_tx_get_btc_signature_hash_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_144 arg2, swig_voidp arg3, swig_type_145 arg4, uintptr_t arg5, uintptr_t arg6, uintptr_t arg7, swig_voidp arg8, swig_type_146 arg9);
+extern swig_intgo _wrap_wally_tx_get_signature_hash_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_147 arg2, swig_voidp arg3, swig_type_148 arg4, swig_voidp arg5, swig_type_149 arg6, uintptr_t arg7, uintptr_t arg8, uintptr_t arg9, uintptr_t arg10, uintptr_t arg11, swig_voidp arg12, swig_type_150 arg13);
+extern swig_intgo _wrap_wally_tx_is_coinbase_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_wally_tx_elements_input_issuance_set_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_151 arg3, swig_voidp arg4, swig_type_152 arg5, swig_voidp arg6, swig_type_153 arg7, swig_voidp arg8, swig_type_154 arg9, swig_voidp arg10, swig_type_155 arg11, swig_voidp arg12, swig_type_156 arg13);
+extern swig_intgo _wrap_wally_tx_elements_input_issuance_free_wallycore_d04cfd8a1b92e42f(uintptr_t arg1);
+extern swig_intgo _wrap_wally_tx_elements_input_init_alloc_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_157 arg2, uintptr_t arg3, uintptr_t arg4, swig_voidp arg5, swig_type_158 arg6, uintptr_t arg7, swig_voidp arg8, swig_type_159 arg9, swig_voidp arg10, swig_type_160 arg11, swig_voidp arg12, swig_type_161 arg13, swig_voidp arg14, swig_type_162 arg15, swig_voidp arg16, swig_type_163 arg17, swig_voidp arg18, swig_type_164 arg19, uintptr_t arg20, uintptr_t arg21);
+extern swig_intgo _wrap_wally_tx_elements_input_is_pegin_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_wally_tx_elements_output_commitment_set_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_165 arg3, swig_voidp arg4, swig_type_166 arg5, swig_voidp arg6, swig_type_167 arg7, swig_voidp arg8, swig_type_168 arg9, swig_voidp arg10, swig_type_169 arg11);
+extern swig_intgo _wrap_wally_tx_elements_output_commitment_free_wallycore_d04cfd8a1b92e42f(uintptr_t arg1);
+extern swig_intgo _wrap_wally_tx_elements_output_init_alloc_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_170 arg2, swig_voidp arg3, swig_type_171 arg4, swig_voidp arg5, swig_type_172 arg6, swig_voidp arg7, swig_type_173 arg8, swig_voidp arg9, swig_type_174 arg10, swig_voidp arg11, swig_type_175 arg12, uintptr_t arg13);
+extern swig_intgo _wrap_wally_tx_add_elements_raw_input_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_176 arg3, uintptr_t arg4, uintptr_t arg5, swig_voidp arg6, swig_type_177 arg7, uintptr_t arg8, swig_voidp arg9, swig_type_178 arg10, swig_voidp arg11, swig_type_179 arg12, swig_voidp arg13, swig_type_180 arg14, swig_voidp arg15, swig_type_181 arg16, swig_voidp arg17, swig_type_182 arg18, swig_voidp arg19, swig_type_183 arg20, uintptr_t arg21, uintptr_t arg22);
+extern swig_intgo _wrap_wally_tx_add_elements_raw_output_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_184 arg3, swig_voidp arg4, swig_type_185 arg5, swig_voidp arg6, swig_type_186 arg7, swig_voidp arg8, swig_type_187 arg9, swig_voidp arg10, swig_type_188 arg11, swig_voidp arg12, swig_type_189 arg13, uintptr_t arg14);
+extern swig_intgo _wrap_wally_tx_is_elements_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2);
+extern swig_intgo _wrap_wally_tx_confidential_value_from_satoshi_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_190 arg3);
+extern swig_intgo _wrap_wally_tx_confidential_value_to_satoshi_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_191 arg2, uintptr_t arg3);
+extern swig_intgo _wrap_wally_tx_get_elements_signature_hash_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_192 arg2, swig_voidp arg3, swig_type_193 arg4, swig_voidp arg5, swig_type_194 arg6, uintptr_t arg7, uintptr_t arg8, swig_voidp arg9, swig_type_195 arg10);
+extern swig_intgo _wrap_wally_tx_elements_issuance_generate_entropy_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_196 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_197 arg5, swig_voidp arg6, swig_type_198 arg7);
+extern swig_intgo _wrap_wally_tx_elements_issuance_calculate_asset_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_199 arg2, swig_voidp arg3, swig_type_200 arg4);
+extern swig_intgo _wrap_wally_tx_elements_issuance_calculate_reissuance_token_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_201 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_202 arg5);
+extern swig_intgo _wrap_wally_asset_generator_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_203 arg2, swig_voidp arg3, swig_type_204 arg4, swig_voidp arg5, swig_type_205 arg6);
+extern swig_intgo _wrap_wally_asset_final_vbf_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_type_206 arg2, swig_type_207 arg3, swig_voidp arg4, swig_type_208 arg5, swig_voidp arg6, swig_type_209 arg7, swig_voidp arg8, swig_type_210 arg9);
+extern swig_intgo _wrap_wally_asset_value_commitment_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_211 arg3, swig_voidp arg4, swig_type_212 arg5, swig_voidp arg6, swig_type_213 arg7);
+extern swig_intgo _wrap_wally_asset_rangeproof_with_nonce_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_214 arg3, swig_voidp arg4, swig_type_215 arg5, swig_voidp arg6, swig_type_216 arg7, swig_voidp arg8, swig_type_217 arg9, swig_voidp arg10, swig_type_218 arg11, swig_voidp arg12, swig_type_219 arg13, swig_voidp arg14, swig_type_220 arg15, uintptr_t arg16, swig_intgo arg17, swig_intgo arg18, swig_voidp arg19, swig_type_221 arg20, swig_voidp arg21);
+extern swig_intgo _wrap_wally_asset_rangeproof_wallycore_d04cfd8a1b92e42f(uintptr_t arg1, swig_voidp arg2, swig_type_222 arg3, swig_voidp arg4, swig_type_223 arg5, swig_voidp arg6, swig_type_224 arg7, swig_voidp arg8, swig_type_225 arg9, swig_voidp arg10, swig_type_226 arg11, swig_voidp arg12, swig_type_227 arg13, swig_voidp arg14, swig_type_228 arg15, swig_voidp arg16, swig_type_229 arg17, uintptr_t arg18, swig_intgo arg19, swig_intgo arg20, swig_voidp arg21, swig_type_230 arg22, swig_voidp arg23);
+extern swig_intgo _wrap_wally_asset_surjectionproof_size_wallycore_d04cfd8a1b92e42f(swig_type_231 arg1, swig_voidp arg2);
+extern swig_intgo _wrap_wally_asset_surjectionproof_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_232 arg2, swig_voidp arg3, swig_type_233 arg4, swig_voidp arg5, swig_type_234 arg6, swig_voidp arg7, swig_type_235 arg8, swig_voidp arg9, swig_type_236 arg10, swig_voidp arg11, swig_type_237 arg12, swig_voidp arg13, swig_type_238 arg14, swig_voidp arg15, swig_type_239 arg16, swig_voidp arg17);
+extern swig_intgo _wrap_wally_asset_unblind_with_nonce_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_240 arg2, swig_voidp arg3, swig_type_241 arg4, swig_voidp arg5, swig_type_242 arg6, swig_voidp arg7, swig_type_243 arg8, swig_voidp arg9, swig_type_244 arg10, swig_voidp arg11, swig_type_245 arg12, swig_voidp arg13, swig_type_246 arg14, swig_voidp arg15, swig_type_247 arg16, uintptr_t arg17);
+extern swig_intgo _wrap_wally_asset_unblind_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_248 arg2, swig_voidp arg3, swig_type_249 arg4, swig_voidp arg5, swig_type_250 arg6, swig_voidp arg7, swig_type_251 arg8, swig_voidp arg9, swig_type_252 arg10, swig_voidp arg11, swig_type_253 arg12, swig_voidp arg13, swig_type_254 arg14, swig_voidp arg15, swig_type_255 arg16, swig_voidp arg17, swig_type_256 arg18, uintptr_t arg19);
+extern swig_intgo _wrap_wally_asset_blinding_key_from_seed_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_257 arg2, swig_voidp arg3, swig_type_258 arg4);
+extern swig_intgo _wrap_wally_asset_blinding_key_to_ec_private_key_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_259 arg2, swig_voidp arg3, swig_type_260 arg4, swig_voidp arg5, swig_type_261 arg6);
+extern swig_intgo _wrap_wally_asset_pak_whitelistproof_size_wallycore_d04cfd8a1b92e42f(swig_type_262 arg1, swig_voidp arg2);
+extern swig_intgo _wrap_wally_asset_pak_whitelistproof_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_263 arg2, swig_voidp arg3, swig_type_264 arg4, swig_type_265 arg5, swig_voidp arg6, swig_type_266 arg7, swig_voidp arg8, swig_type_267 arg9, swig_voidp arg10, swig_type_268 arg11, swig_voidp arg12, swig_type_269 arg13);
+extern swig_intgo _wrap_wally_scriptpubkey_get_type_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_270 arg2, swig_voidp arg3);
+extern swig_intgo _wrap_wally_scriptpubkey_p2pkh_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_271 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_272 arg5, swig_voidp arg6);
+extern swig_intgo _wrap_wally_scriptsig_p2pkh_from_sig_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_273 arg2, swig_voidp arg3, swig_type_274 arg4, uintptr_t arg5, swig_voidp arg6, swig_type_275 arg7, swig_voidp arg8);
+extern swig_intgo _wrap_wally_witness_p2wpkh_from_sig_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_276 arg2, swig_voidp arg3, swig_type_277 arg4, uintptr_t arg5, uintptr_t arg6);
+extern swig_intgo _wrap_wally_scriptsig_p2pkh_from_der_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_278 arg2, swig_voidp arg3, swig_type_279 arg4, swig_voidp arg5, swig_type_280 arg6, swig_voidp arg7);
+extern swig_intgo _wrap_wally_witness_p2wpkh_from_der_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_281 arg2, swig_voidp arg3, swig_type_282 arg4, uintptr_t arg5);
+extern swig_intgo _wrap_wally_scriptpubkey_op_return_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_283 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_284 arg5, swig_voidp arg6);
+extern swig_intgo _wrap_wally_scriptpubkey_p2sh_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_285 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_286 arg5, swig_voidp arg6);
+extern swig_intgo _wrap_wally_scriptpubkey_multisig_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_287 arg2, uintptr_t arg3, uintptr_t arg4, swig_voidp arg5, swig_type_288 arg6, swig_voidp arg7);
+extern swig_intgo _wrap_wally_scriptsig_multisig_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_289 arg2, swig_voidp arg3, swig_type_290 arg4, uintptr_t arg5, swig_type_291 arg6, uintptr_t arg7, swig_voidp arg8, swig_type_292 arg9, swig_voidp arg10);
+extern swig_intgo _wrap_wally_witness_multisig_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_293 arg2, swig_voidp arg3, swig_type_294 arg4, uintptr_t arg5, swig_type_295 arg6, uintptr_t arg7, uintptr_t arg8);
+extern swig_intgo _wrap_wally_scriptpubkey_csv_2of2_then_1_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_296 arg2, uintptr_t arg3, uintptr_t arg4, swig_voidp arg5, swig_type_297 arg6, swig_voidp arg7);
+extern swig_intgo _wrap_wally_scriptpubkey_csv_2of3_then_2_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_298 arg2, uintptr_t arg3, uintptr_t arg4, swig_voidp arg5, swig_type_299 arg6, swig_voidp arg7);
+extern swig_intgo _wrap_wally_script_push_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_300 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_301 arg5, swig_voidp arg6);
+extern swig_intgo _wrap_wally_witness_program_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_302 arg2, uintptr_t arg3, swig_voidp arg4, swig_type_303 arg5, swig_voidp arg6);
+extern swig_intgo _wrap_wally_elements_pegout_script_size_wallycore_d04cfd8a1b92e42f(swig_type_304 arg1, swig_type_305 arg2, swig_type_306 arg3, swig_type_307 arg4, swig_voidp arg5);
+extern swig_intgo _wrap_wally_elements_pegout_script_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_308 arg2, swig_voidp arg3, swig_type_309 arg4, swig_voidp arg5, swig_type_310 arg6, swig_voidp arg7, swig_type_311 arg8, uintptr_t arg9, swig_voidp arg10, swig_type_312 arg11, swig_voidp arg12);
+extern swig_intgo _wrap_wally_elements_pegin_contract_script_from_bytes_wallycore_d04cfd8a1b92e42f(swig_voidp arg1, swig_type_313 arg2, swig_voidp arg3, swig_type_314 arg4, uintptr_t arg5, swig_voidp arg6, swig_type_315 arg7, swig_voidp arg8);
 #undef intgo
 */
 import "C"
@@ -520,13 +529,13 @@ type _ sync.Mutex
 
 func Swig_free(arg1 uintptr) {
 	_swig_i_0 := arg1
-	C._wrap_Swig_free_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0))
+	C._wrap_Swig_free_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0))
 }
 
 func Swig_malloc(arg1 int) (_swig_ret uintptr) {
 	var swig_r uintptr
 	_swig_i_0 := arg1
-	swig_r = (uintptr)(C._wrap_Swig_malloc_wallycore_982945dfd8db849f(C.swig_intgo(_swig_i_0)))
+	swig_r = (uintptr)(C._wrap_Swig_malloc_wallycore_d04cfd8a1b92e42f(C.swig_intgo(_swig_i_0)))
 	return swig_r
 }
 
@@ -534,17 +543,18 @@ const WALLY_OK int = 0
 const WALLY_ERROR int = -1
 const WALLY_EINVAL int = -2
 const WALLY_ENOMEM int = -3
+const FINGERPRINT_LEN int = 4
 func Wally_init(arg1 Uint32_t) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (int)(C._wrap_wally_init_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_wally_init_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
 func Wally_cleanup(arg1 Uint32_t) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (int)(C._wrap_wally_cleanup_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_wally_cleanup_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -552,14 +562,14 @@ func Wally_bzero(arg1 uintptr, arg2 int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_bzero_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_type_1(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_bzero_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_type_1(_swig_i_1)))
 	return swig_r
 }
 
 func Wally_free_string(arg1 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_wally_free_string_wallycore_982945dfd8db849f(*(*C.swig_type_2)(unsafe.Pointer(&_swig_i_0))))
+	swig_r = (int)(C._wrap_wally_free_string_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_2)(unsafe.Pointer(&_swig_i_0))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -571,7 +581,7 @@ func Wally_secp_randomize(arg1 *byte, arg2 int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_secp_randomize_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_3(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_secp_randomize_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_3(_swig_i_1)))
 	return swig_r
 }
 
@@ -580,7 +590,7 @@ func Wally_hex_from_bytes(arg1 *byte, arg2 int64, arg3 *string) (_swig_ret int) 
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_wally_hex_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_4(_swig_i_1), C.swig_voidp(_swig_i_2)))
+	swig_r = (int)(C._wrap_wally_hex_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_4(_swig_i_1), C.swig_voidp(_swig_i_2)))
 	return swig_r
 }
 
@@ -590,7 +600,7 @@ func Wally_hex_to_bytes(arg1 string, arg2 *byte, arg3 int64, arg4 *int64) (_swig
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_hex_to_bytes_wallycore_982945dfd8db849f(*(*C.swig_type_5)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1), C.swig_type_6(_swig_i_2), C.swig_voidp(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_hex_to_bytes_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_5)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1), C.swig_type_6(_swig_i_2), C.swig_voidp(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -605,7 +615,7 @@ func Wally_base58_from_bytes(arg1 *byte, arg2 int64, arg3 Uint32_t, arg4 *string
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_base58_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_7(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_base58_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_7(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3)))
 	return swig_r
 }
 
@@ -616,7 +626,7 @@ func Wally_base58_to_bytes(arg1 string, arg2 Uint32_t, arg3 *byte, arg4 int64, a
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_wally_base58_to_bytes_wallycore_982945dfd8db849f(*(*C.swig_type_8)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_9(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_base58_to_bytes_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_8)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_9(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -627,7 +637,7 @@ func Wally_base58_get_length(arg1 string, arg2 *int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_base58_get_length_wallycore_982945dfd8db849f(*(*C.swig_type_10)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_base58_get_length_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_10)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -637,7 +647,7 @@ func Wally_base58_get_length(arg1 string, arg2 *int64) (_swig_ret int) {
 func Wally_is_elements_build(arg1 Uint64_t) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (int)(C._wrap_wally_is_elements_build_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_wally_is_elements_build_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -684,7 +694,7 @@ func Wally_scrypt(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, arg5 Uint32_t,
 	_swig_i_6 := arg7.Swigcptr()
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
-	swig_r = (int)(C._wrap_wally_scrypt_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_11(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_12(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5), C.uintptr_t(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_13(_swig_i_8)))
+	swig_r = (int)(C._wrap_wally_scrypt_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_11(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_12(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5), C.uintptr_t(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_13(_swig_i_8)))
 	return swig_r
 }
 
@@ -703,7 +713,7 @@ func Wally_aes(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, arg5 Uint32_t, ar
 	_swig_i_4 := arg5.Swigcptr()
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_wally_aes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_14(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_15(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_16(_swig_i_6)))
+	swig_r = (int)(C._wrap_wally_aes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_14(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_15(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_16(_swig_i_6)))
 	return swig_r
 }
 
@@ -719,7 +729,7 @@ func Wally_aes_cbc(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, arg5 *byte, a
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
 	_swig_i_9 := arg10
-	swig_r = (int)(C._wrap_wally_aes_cbc_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_17(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_18(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_19(_swig_i_5), C.uintptr_t(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_20(_swig_i_8), C.swig_voidp(_swig_i_9)))
+	swig_r = (int)(C._wrap_wally_aes_cbc_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_17(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_18(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_19(_swig_i_5), C.uintptr_t(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_20(_swig_i_8), C.swig_voidp(_swig_i_9)))
 	return swig_r
 }
 
@@ -731,7 +741,7 @@ func Wally_sha256(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64) (_swig_ret int
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_sha256_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_21(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_22(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_sha256_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_21(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_22(_swig_i_3)))
 	return swig_r
 }
 
@@ -741,7 +751,7 @@ func Wally_sha256_midstate(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64) (_swi
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_sha256_midstate_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_23(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_24(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_sha256_midstate_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_23(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_24(_swig_i_3)))
 	return swig_r
 }
 
@@ -751,7 +761,7 @@ func Wally_sha256d(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64) (_swig_ret in
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_sha256d_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_25(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_26(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_sha256d_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_25(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_26(_swig_i_3)))
 	return swig_r
 }
 
@@ -761,7 +771,7 @@ func Wally_sha512(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64) (_swig_ret int
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_sha512_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_27(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_28(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_sha512_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_27(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_28(_swig_i_3)))
 	return swig_r
 }
 
@@ -772,7 +782,7 @@ func Wally_hash160(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64) (_swig_ret in
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_hash160_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_29(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_30(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_hash160_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_29(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_30(_swig_i_3)))
 	return swig_r
 }
 
@@ -786,7 +796,7 @@ func Wally_hmac_sha256(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, arg5 *byt
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_hmac_sha256_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_31(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_32(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_33(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_hmac_sha256_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_31(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_32(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_33(_swig_i_5)))
 	return swig_r
 }
 
@@ -798,7 +808,7 @@ func Wally_hmac_sha512(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, arg5 *byt
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_hmac_sha512_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_34(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_35(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_36(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_hmac_sha512_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_34(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_35(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_36(_swig_i_5)))
 	return swig_r
 }
 
@@ -814,7 +824,7 @@ func Wally_pbkdf2_hmac_sha256(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, ar
 	_swig_i_5 := arg6.Swigcptr()
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
-	swig_r = (int)(C._wrap_wally_pbkdf2_hmac_sha256_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_37(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_38(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_39(_swig_i_7)))
+	swig_r = (int)(C._wrap_wally_pbkdf2_hmac_sha256_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_37(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_38(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_39(_swig_i_7)))
 	return swig_r
 }
 
@@ -828,7 +838,7 @@ func Wally_pbkdf2_hmac_sha512(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, ar
 	_swig_i_5 := arg6.Swigcptr()
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
-	swig_r = (int)(C._wrap_wally_pbkdf2_hmac_sha512_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_40(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_41(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_42(_swig_i_7)))
+	swig_r = (int)(C._wrap_wally_pbkdf2_hmac_sha512_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_40(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_41(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_42(_swig_i_7)))
 	return swig_r
 }
 
@@ -848,7 +858,7 @@ func Wally_ec_private_key_verify(arg1 *byte, arg2 int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_ec_private_key_verify_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_43(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_ec_private_key_verify_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_43(_swig_i_1)))
 	return swig_r
 }
 
@@ -856,7 +866,7 @@ func Wally_ec_public_key_verify(arg1 *byte, arg2 int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_ec_public_key_verify_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_44(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_ec_public_key_verify_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_44(_swig_i_1)))
 	return swig_r
 }
 
@@ -866,7 +876,7 @@ func Wally_ec_public_key_from_private_key(arg1 *byte, arg2 int64, arg3 *byte, ar
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_ec_public_key_from_private_key_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_45(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_46(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_ec_public_key_from_private_key_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_45(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_46(_swig_i_3)))
 	return swig_r
 }
 
@@ -876,7 +886,7 @@ func Wally_ec_public_key_decompress(arg1 *byte, arg2 int64, arg3 *byte, arg4 int
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_ec_public_key_decompress_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_47(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_48(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_ec_public_key_decompress_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_47(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_48(_swig_i_3)))
 	return swig_r
 }
 
@@ -886,7 +896,7 @@ func Wally_ec_public_key_negate(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64) 
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_ec_public_key_negate_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_49(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_50(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_ec_public_key_negate_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_49(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_50(_swig_i_3)))
 	return swig_r
 }
 
@@ -899,7 +909,7 @@ func Wally_ec_sig_from_bytes(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, arg
 	_swig_i_4 := arg5.Swigcptr()
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_wally_ec_sig_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_51(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_52(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_53(_swig_i_6)))
+	swig_r = (int)(C._wrap_wally_ec_sig_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_51(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_52(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_53(_swig_i_6)))
 	return swig_r
 }
 
@@ -909,7 +919,7 @@ func Wally_ec_sig_normalize(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64) (_sw
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_ec_sig_normalize_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_54(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_55(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_ec_sig_normalize_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_54(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_55(_swig_i_3)))
 	return swig_r
 }
 
@@ -920,7 +930,7 @@ func Wally_ec_sig_to_der(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, arg5 *i
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_wally_ec_sig_to_der_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_56(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_57(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_ec_sig_to_der_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_56(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_57(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	return swig_r
 }
 
@@ -930,7 +940,7 @@ func Wally_ec_sig_from_der(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64) (_swi
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_ec_sig_from_der_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_58(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_59(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_ec_sig_from_der_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_58(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_59(_swig_i_3)))
 	return swig_r
 }
 
@@ -943,7 +953,7 @@ func Wally_ec_sig_verify(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, arg5 Ui
 	_swig_i_4 := arg5.Swigcptr()
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_wally_ec_sig_verify_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_60(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_61(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_62(_swig_i_6)))
+	swig_r = (int)(C._wrap_wally_ec_sig_verify_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_60(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_61(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_62(_swig_i_6)))
 	return swig_r
 }
 
@@ -955,13 +965,13 @@ func Wally_ec_sig_to_public_key(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, 
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_ec_sig_to_public_key_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_63(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_64(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_65(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_ec_sig_to_public_key_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_63(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_64(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_65(_swig_i_5)))
 	return swig_r
 }
 
 func _swig_getBITCOIN_MESSAGE_MAX_LEN() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_BITCOIN_MESSAGE_MAX_LEN_wallycore_982945dfd8db849f())
+	swig_r = (int)(C._wrap_BITCOIN_MESSAGE_MAX_LEN_wallycore_d04cfd8a1b92e42f())
 	return swig_r
 }
 
@@ -975,7 +985,7 @@ func Wally_format_bitcoin_message(arg1 *byte, arg2 int64, arg3 Uint32_t, arg4 *b
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_format_bitcoin_message_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_66(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_67(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_format_bitcoin_message_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_66(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_67(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r
 }
 
@@ -987,7 +997,7 @@ func Wally_ecdh(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, arg5 *byte, arg6
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_ecdh_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_68(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_69(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_70(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_ecdh_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_68(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_69(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_70(_swig_i_5)))
 	return swig_r
 }
 
@@ -1062,13 +1072,21 @@ const WALLY_CA_PREFIX_LIQUID int = 0x0c
 const WALLY_CA_PREFIX_LIQUID_REGTEST int = 0x04
 const WALLY_NETWORK_BITCOIN_MAINNET int = 0x01
 const WALLY_NETWORK_BITCOIN_TESTNET int = 0x02
+const WALLY_NETWORK_LIQUID int = 0x03
+const WALLY_NETWORK_LIQUID_REGTEST int = 0x04
 const WALLY_ADDRESS_TYPE_P2PKH int = 0x01
 const WALLY_ADDRESS_TYPE_P2SH_P2WPKH int = 0x02
 const WALLY_ADDRESS_TYPE_P2WPKH int = 0x04
 const WALLY_ADDRESS_VERSION_P2PKH_MAINNET int = 0x00
 const WALLY_ADDRESS_VERSION_P2PKH_TESTNET int = 0x6F
+const WALLY_ADDRESS_VERSION_P2PKH_LIQUID int = 0x39
+const WALLY_ADDRESS_VERSION_P2PKH_LIQUID_REGTEST int = 0xEB
 const WALLY_ADDRESS_VERSION_P2SH_MAINNET int = 0x05
 const WALLY_ADDRESS_VERSION_P2SH_TESTNET int = 0xC4
+const WALLY_ADDRESS_VERSION_P2SH_LIQUID int = 0x27
+const WALLY_ADDRESS_VERSION_P2SH_LIQUID_REGTEST int = 0x4B
+const WALLY_ADDRESS_VERSION_WIF_MAINNET int = 0x80
+const WALLY_ADDRESS_VERSION_WIF_TESTNET int = 0xEF
 func Wally_addr_segwit_from_bytes(arg1 *byte, arg2 int64, arg3 string, arg4 Uint32_t, arg5 *string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
@@ -1076,7 +1094,7 @@ func Wally_addr_segwit_from_bytes(arg1 *byte, arg2 int64, arg3 string, arg4 Uint
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_wally_addr_segwit_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_71(_swig_i_1), *(*C.swig_type_72)(unsafe.Pointer(&_swig_i_2)), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_addr_segwit_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_71(_swig_i_1), *(*C.swig_type_72)(unsafe.Pointer(&_swig_i_2)), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg3
 	}
@@ -1091,7 +1109,7 @@ func Wally_addr_segwit_to_bytes(arg1 string, arg2 string, arg3 Uint32_t, arg4 *b
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_addr_segwit_to_bytes_wallycore_982945dfd8db849f(*(*C.swig_type_73)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_74)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_75(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_addr_segwit_to_bytes_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_73)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_74)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_75(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1108,7 +1126,7 @@ func Wally_address_to_scriptpubkey(arg1 string, arg2 Uint32_t, arg3 *byte, arg4 
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_wally_address_to_scriptpubkey_wallycore_982945dfd8db849f(*(*C.swig_type_76)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_77(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_address_to_scriptpubkey_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_76)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_77(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1122,7 +1140,7 @@ func Wally_wif_from_bytes(arg1 *byte, arg2 int64, arg3 Uint32_t, arg4 Uint32_t, 
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_wally_wif_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_78(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_wif_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_78(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	return swig_r
 }
 
@@ -1133,7 +1151,7 @@ func Wally_wif_to_bytes(arg1 string, arg2 Uint32_t, arg3 Uint32_t, arg4 *byte, a
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_wally_wif_to_bytes_wallycore_982945dfd8db849f(*(*C.swig_type_79)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_80(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_wif_to_bytes_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_79)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_80(_swig_i_4)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1144,7 +1162,7 @@ func Wally_wif_is_uncompressed(arg1 string, arg2 *int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_wif_is_uncompressed_wallycore_982945dfd8db849f(*(*C.swig_type_81)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_wif_is_uncompressed_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_81)(unsafe.Pointer(&_swig_i_0)), C.swig_voidp(_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1158,7 +1176,7 @@ func Wally_wif_to_public_key(arg1 string, arg2 Uint32_t, arg3 *byte, arg4 int64,
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_wally_wif_to_public_key_wallycore_982945dfd8db849f(*(*C.swig_type_82)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_83(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_wif_to_public_key_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_82)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_83(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1171,7 +1189,7 @@ func Wally_bip32_key_to_address(arg1 Ext_key, arg2 Uint32_t, arg3 Uint32_t, arg4
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_bip32_key_to_address_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_bip32_key_to_address_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3)))
 	return swig_r
 }
 
@@ -1181,7 +1199,7 @@ func Wally_bip32_key_to_addr_segwit(arg1 Ext_key, arg2 string, arg3 Uint32_t, ar
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_bip32_key_to_addr_segwit_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), *(*C.swig_type_84)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_bip32_key_to_addr_segwit_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), *(*C.swig_type_84)(unsafe.Pointer(&_swig_i_1)), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1194,7 +1212,7 @@ func Wally_wif_to_address(arg1 string, arg2 Uint32_t, arg3 Uint32_t, arg4 *strin
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_wif_to_address_wallycore_982945dfd8db849f(*(*C.swig_type_85)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_wif_to_address_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_85)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1206,7 +1224,7 @@ func Wally_confidential_addr_to_addr(arg1 string, arg2 Uint32_t, arg3 *string) (
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_wally_confidential_addr_to_addr_wallycore_982945dfd8db849f(*(*C.swig_type_86)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2)))
+	swig_r = (int)(C._wrap_wally_confidential_addr_to_addr_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_86)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1219,7 +1237,7 @@ func Wally_confidential_addr_to_ec_public_key(arg1 string, arg2 Uint32_t, arg3 *
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_confidential_addr_to_ec_public_key_wallycore_982945dfd8db849f(*(*C.swig_type_87)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_88(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_confidential_addr_to_ec_public_key_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_87)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_88(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1233,7 +1251,7 @@ func Wally_confidential_addr_from_addr(arg1 string, arg2 Uint32_t, arg3 *byte, a
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_wally_confidential_addr_from_addr_wallycore_982945dfd8db849f(*(*C.swig_type_89)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_90(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_confidential_addr_from_addr_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_89)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_90(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1246,7 +1264,7 @@ func Wally_confidential_addr_to_addr_segwit(arg1 string, arg2 string, arg3 strin
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_confidential_addr_to_addr_segwit_wallycore_982945dfd8db849f(*(*C.swig_type_91)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_92)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_93)(unsafe.Pointer(&_swig_i_2)), C.swig_voidp(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_confidential_addr_to_addr_segwit_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_91)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_92)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_93)(unsafe.Pointer(&_swig_i_2)), C.swig_voidp(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1265,7 +1283,7 @@ func Wally_confidential_addr_segwit_to_ec_public_key(arg1 string, arg2 string, a
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_confidential_addr_segwit_to_ec_public_key_wallycore_982945dfd8db849f(*(*C.swig_type_94)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_95)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2), C.swig_type_96(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_confidential_addr_segwit_to_ec_public_key_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_94)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_95)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2), C.swig_type_96(_swig_i_3)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1283,7 +1301,7 @@ func Wally_confidential_addr_from_addr_segwit(arg1 string, arg2 string, arg3 str
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_confidential_addr_from_addr_segwit_wallycore_982945dfd8db849f(*(*C.swig_type_97)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_98)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_99)(unsafe.Pointer(&_swig_i_2)), C.swig_voidp(_swig_i_3), C.swig_type_100(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_confidential_addr_from_addr_segwit_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_97)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_98)(unsafe.Pointer(&_swig_i_1)), *(*C.swig_type_99)(unsafe.Pointer(&_swig_i_2)), C.swig_voidp(_swig_i_3), C.swig_type_100(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1365,7 +1383,7 @@ const BIP32_VER_TEST_PRIVATE int = 0x04358394
 func Bip32_key_free(arg1 Ext_key) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (int)(C._wrap_bip32_key_free_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_bip32_key_free_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1385,7 +1403,7 @@ func Bip32_key_init_alloc(arg1 Uint32_t, arg2 Uint32_t, arg3 Uint32_t, arg4 *byt
 	_swig_i_11 := arg12
 	_swig_i_12 := arg13
 	_swig_i_13 := arg14.Swigcptr()
-	swig_r = (int)(C._wrap_bip32_key_init_alloc_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_101(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_102(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_103(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_104(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_105(_swig_i_12), C.uintptr_t(_swig_i_13)))
+	swig_r = (int)(C._wrap_bip32_key_init_alloc_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_101(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_102(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_103(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_104(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_105(_swig_i_12), C.uintptr_t(_swig_i_13)))
 	return swig_r
 }
 
@@ -1396,7 +1414,7 @@ func Bip32_key_from_seed(arg1 *byte, arg2 int64, arg3 Uint32_t, arg4 Uint32_t, a
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5.Swigcptr()
-	swig_r = (int)(C._wrap_bip32_key_from_seed_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_106(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4)))
+	swig_r = (int)(C._wrap_bip32_key_from_seed_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_106(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4)))
 	return swig_r
 }
 
@@ -1406,7 +1424,7 @@ func Bip32_key_serialize(arg1 Ext_key, arg2 Uint32_t, arg3 *byte, arg4 int64) (_
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_bip32_key_serialize_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_107(_swig_i_3)))
+	swig_r = (int)(C._wrap_bip32_key_serialize_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_107(_swig_i_3)))
 	return swig_r
 }
 
@@ -1415,7 +1433,7 @@ func Bip32_key_unserialize(arg1 *byte, arg2 int64, arg3 Ext_key) (_swig_ret int)
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (int)(C._wrap_bip32_key_unserialize_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_108(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_bip32_key_unserialize_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_108(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
@@ -1425,7 +1443,7 @@ func Bip32_key_from_parent(arg1 Ext_key, arg2 Uint32_t, arg3 Uint32_t, arg4 Ext_
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
-	swig_r = (int)(C._wrap_bip32_key_from_parent_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3)))
+	swig_r = (int)(C._wrap_bip32_key_from_parent_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3)))
 	return swig_r
 }
 
@@ -1436,7 +1454,7 @@ func Bip32_key_from_parent_path(arg1 Ext_key, arg2 Uint32_t, arg3 int64, arg4 Ui
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5.Swigcptr()
-	swig_r = (int)(C._wrap_bip32_key_from_parent_path_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_type_109(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4)))
+	swig_r = (int)(C._wrap_bip32_key_from_parent_path_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_type_109(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4)))
 	return swig_r
 }
 
@@ -1447,7 +1465,7 @@ func Bip32_key_with_tweak_from_parent_path_alloc(arg1 Ext_key, arg2 Uint32_t, ar
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4.Swigcptr()
 	_swig_i_4 := arg5.Swigcptr()
-	swig_r = (int)(C._wrap_bip32_key_with_tweak_from_parent_path_alloc_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_type_110(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4)))
+	swig_r = (int)(C._wrap_bip32_key_with_tweak_from_parent_path_alloc_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_type_110(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4)))
 	return swig_r
 }
 
@@ -1456,7 +1474,7 @@ func Bip32_key_to_base58(arg1 Ext_key, arg2 Uint32_t, arg3 *string) (_swig_ret i
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_bip32_key_to_base58_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2)))
+	swig_r = (int)(C._wrap_bip32_key_to_base58_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2)))
 	return swig_r
 }
 
@@ -1464,7 +1482,7 @@ func Bip32_key_from_base58(arg1 string, arg2 Ext_key) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_bip32_key_from_base58_wallycore_982945dfd8db849f(*(*C.swig_type_111)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_bip32_key_from_base58_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_111)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1474,7 +1492,16 @@ func Bip32_key_from_base58(arg1 string, arg2 Ext_key) (_swig_ret int) {
 func Bip32_key_strip_private_key(arg1 Ext_key) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (int)(C._wrap_bip32_key_strip_private_key_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_bip32_key_strip_private_key_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0)))
+	return swig_r
+}
+
+func Bip32_key_get_fingerprint(arg1 Ext_key, arg2 *byte, arg3 int64) (_swig_ret int) {
+	var swig_r int
+	_swig_i_0 := arg1.Swigcptr()
+	_swig_i_1 := arg2
+	_swig_i_2 := arg3
+	swig_r = (int)(C._wrap_bip32_key_get_fingerprint_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_112(_swig_i_2)))
 	return swig_r
 }
 
@@ -1651,7 +1678,7 @@ const BIP39_WORDLIST_LEN int = 2048
 func Bip39_get_languages(arg1 *string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
-	swig_r = (int)(C._wrap_bip39_get_languages_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0)))
+	swig_r = (int)(C._wrap_bip39_get_languages_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0)))
 	return swig_r
 }
 
@@ -1659,7 +1686,7 @@ func Bip39_get_wordlist(arg1 string, arg2 Words) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_bip39_get_wordlist_wallycore_982945dfd8db849f(*(*C.swig_type_112)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_bip39_get_wordlist_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_113)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1671,7 +1698,7 @@ func Bip39_get_word(arg1 Words, arg2 int64, arg3 *string) (_swig_ret int) {
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_bip39_get_word_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_type_113(_swig_i_1), C.swig_voidp(_swig_i_2)))
+	swig_r = (int)(C._wrap_bip39_get_word_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_type_114(_swig_i_1), C.swig_voidp(_swig_i_2)))
 	return swig_r
 }
 
@@ -1681,7 +1708,7 @@ func Bip39_mnemonic_from_bytes(arg1 Words, arg2 *byte, arg3 int64, arg4 *string)
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_bip39_mnemonic_from_bytes_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_114(_swig_i_2), C.swig_voidp(_swig_i_3)))
+	swig_r = (int)(C._wrap_bip39_mnemonic_from_bytes_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_115(_swig_i_2), C.swig_voidp(_swig_i_3)))
 	return swig_r
 }
 
@@ -1692,7 +1719,7 @@ func Bip39_mnemonic_to_bytes(arg1 Words, arg2 string, arg3 *byte, arg4 int64, ar
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_bip39_mnemonic_to_bytes_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), *(*C.swig_type_115)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2), C.swig_type_116(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_bip39_mnemonic_to_bytes_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), *(*C.swig_type_116)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2), C.swig_type_117(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1703,7 +1730,7 @@ func Bip39_mnemonic_validate(arg1 Words, arg2 string) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_bip39_mnemonic_validate_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), *(*C.swig_type_117)(unsafe.Pointer(&_swig_i_1))))
+	swig_r = (int)(C._wrap_bip39_mnemonic_validate_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), *(*C.swig_type_118)(unsafe.Pointer(&_swig_i_1))))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg2
 	}
@@ -1717,7 +1744,7 @@ func Bip39_mnemonic_to_seed(arg1 string, arg2 string, arg3 *byte, arg4 int64, ar
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_bip39_mnemonic_to_seed_wallycore_982945dfd8db849f(*(*C.swig_type_118)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_119)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2), C.swig_type_120(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_bip39_mnemonic_to_seed_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_119)(unsafe.Pointer(&_swig_i_0)), *(*C.swig_type_120)(unsafe.Pointer(&_swig_i_1)), C.swig_voidp(_swig_i_2), C.swig_type_121(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -1762,14 +1789,14 @@ const WALLY_TX_ASSET_CT_NONCE_LEN int = 33
 const WALLY_TX_ASSET_CT_LEN int = 33
 func _swig_getWALLY_TX_ISSUANCE_FLAG() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_WALLY_TX_ISSUANCE_FLAG_wallycore_982945dfd8db849f())
+	swig_r = (int)(C._wrap_WALLY_TX_ISSUANCE_FLAG_wallycore_d04cfd8a1b92e42f())
 	return swig_r
 }
 
 var WALLY_TX_ISSUANCE_FLAG int = _swig_getWALLY_TX_ISSUANCE_FLAG()
 func _swig_getWALLY_TX_PEGIN_FLAG() (_swig_ret int) {
 	var swig_r int
-	swig_r = (int)(C._wrap_WALLY_TX_PEGIN_FLAG_wallycore_982945dfd8db849f())
+	swig_r = (int)(C._wrap_WALLY_TX_PEGIN_FLAG_wallycore_d04cfd8a1b92e42f())
 	return swig_r
 }
 
@@ -1779,7 +1806,7 @@ func Wally_tx_witness_stack_init_alloc(arg1 int64, arg2 Wally_tx_witness_stack) 
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_witness_stack_init_alloc_wallycore_982945dfd8db849f(C.swig_type_121(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_witness_stack_init_alloc_wallycore_d04cfd8a1b92e42f(C.swig_type_122(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -1788,7 +1815,7 @@ func Wally_tx_witness_stack_add(arg1 Wally_tx_witness_stack, arg2 *byte, arg3 in
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_wally_tx_witness_stack_add_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_122(_swig_i_2)))
+	swig_r = (int)(C._wrap_wally_tx_witness_stack_add_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_123(_swig_i_2)))
 	return swig_r
 }
 
@@ -1796,7 +1823,7 @@ func Wally_tx_witness_stack_add_dummy(arg1 Wally_tx_witness_stack, arg2 Uint32_t
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_witness_stack_add_dummy_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_witness_stack_add_dummy_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -1806,7 +1833,7 @@ func Wally_tx_witness_stack_set(arg1 Wally_tx_witness_stack, arg2 int64, arg3 *b
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_tx_witness_stack_set_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_type_123(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_124(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_tx_witness_stack_set_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_type_124(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_125(_swig_i_3)))
 	return swig_r
 }
 
@@ -1815,14 +1842,14 @@ func Wally_tx_witness_stack_set_dummy(arg1 Wally_tx_witness_stack, arg2 int64, a
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_witness_stack_set_dummy_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_type_125(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_wally_tx_witness_stack_set_dummy_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_type_126(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
 func Wally_tx_witness_stack_free(arg1 Wally_tx_witness_stack) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_witness_stack_free_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_wally_tx_witness_stack_free_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1836,14 +1863,14 @@ func Wally_tx_input_init_alloc(arg1 *byte, arg2 int64, arg3 Uint32_t, arg4 Uint3
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7.Swigcptr()
 	_swig_i_7 := arg8.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_input_init_alloc_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_126(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_127(_swig_i_5), C.uintptr_t(_swig_i_6), C.uintptr_t(_swig_i_7)))
+	swig_r = (int)(C._wrap_wally_tx_input_init_alloc_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_127(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_128(_swig_i_5), C.uintptr_t(_swig_i_6), C.uintptr_t(_swig_i_7)))
 	return swig_r
 }
 
 func Wally_tx_input_free(arg1 Wally_tx_input) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_input_free_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_wally_tx_input_free_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1853,14 +1880,14 @@ func Wally_tx_output_init_alloc(arg1 Uint64_t, arg2 *byte, arg3 int64, arg4 Wall
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_output_init_alloc_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_128(_swig_i_2), C.uintptr_t(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_tx_output_init_alloc_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_129(_swig_i_2), C.uintptr_t(_swig_i_3)))
 	return swig_r
 }
 
 func Wally_tx_output_free(arg1 Wally_tx_output) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_output_free_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_wally_tx_output_free_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1871,7 +1898,7 @@ func Wally_tx_init_alloc(arg1 Uint32_t, arg2 Uint32_t, arg3 int64, arg4 int64, a
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_init_alloc_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_type_129(_swig_i_2), C.swig_type_130(_swig_i_3), C.uintptr_t(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_tx_init_alloc_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_type_130(_swig_i_2), C.swig_type_131(_swig_i_3), C.uintptr_t(_swig_i_4)))
 	return swig_r
 }
 
@@ -1879,7 +1906,7 @@ func Wally_tx_add_input(arg1 Wally_tx, arg2 Wally_tx_input) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_add_input_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_add_input_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -1894,7 +1921,7 @@ func Wally_tx_add_raw_input(arg1 Wally_tx, arg2 *byte, arg3 int64, arg4 Uint32_t
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8.Swigcptr()
 	_swig_i_8 := arg9.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_add_raw_input_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_131(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_132(_swig_i_6), C.uintptr_t(_swig_i_7), C.uintptr_t(_swig_i_8)))
+	swig_r = (int)(C._wrap_wally_tx_add_raw_input_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_132(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_133(_swig_i_6), C.uintptr_t(_swig_i_7), C.uintptr_t(_swig_i_8)))
 	return swig_r
 }
 
@@ -1902,7 +1929,7 @@ func Wally_tx_remove_input(arg1 Wally_tx, arg2 int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_tx_remove_input_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_type_133(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_remove_input_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_type_134(_swig_i_1)))
 	return swig_r
 }
 
@@ -1912,7 +1939,7 @@ func Wally_tx_set_input_script(arg1 Wally_tx, arg2 int64, arg3 *byte, arg4 int64
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_tx_set_input_script_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_type_134(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_135(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_tx_set_input_script_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_type_135(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_136(_swig_i_3)))
 	return swig_r
 }
 
@@ -1921,7 +1948,7 @@ func Wally_tx_set_input_witness(arg1 Wally_tx, arg2 int64, arg3 Wally_tx_witness
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_set_input_witness_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_type_136(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_wally_tx_set_input_witness_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_type_137(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
@@ -1929,7 +1956,7 @@ func Wally_tx_add_output(arg1 Wally_tx, arg2 Wally_tx_output) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_add_output_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_add_output_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -1940,7 +1967,7 @@ func Wally_tx_add_raw_output(arg1 Wally_tx, arg2 Uint64_t, arg3 *byte, arg4 int6
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_add_raw_output_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_137(_swig_i_3), C.uintptr_t(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_tx_add_raw_output_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_138(_swig_i_3), C.uintptr_t(_swig_i_4)))
 	return swig_r
 }
 
@@ -1948,7 +1975,7 @@ func Wally_tx_remove_output(arg1 Wally_tx, arg2 int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_tx_remove_output_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_type_138(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_remove_output_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_type_139(_swig_i_1)))
 	return swig_r
 }
 
@@ -1956,14 +1983,14 @@ func Wally_tx_get_witness_count(arg1 Wally_tx, arg2 *int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_tx_get_witness_count_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_get_witness_count_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
 func Wally_tx_free(arg1 Wally_tx) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_free_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_wally_tx_free_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -1972,7 +1999,7 @@ func Wally_tx_get_length(arg1 Wally_tx, arg2 Uint32_t, arg3 *int64) (_swig_ret i
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_wally_tx_get_length_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2)))
+	swig_r = (int)(C._wrap_wally_tx_get_length_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2)))
 	return swig_r
 }
 
@@ -1982,7 +2009,7 @@ func Wally_tx_from_bytes(arg1 *byte, arg2 int64, arg3 Uint32_t, arg4 Wally_tx) (
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_139(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_tx_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_140(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3)))
 	return swig_r
 }
 
@@ -1991,7 +2018,7 @@ func Wally_tx_from_hex(arg1 string, arg2 Uint32_t, arg3 Wally_tx) (_swig_ret int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_from_hex_wallycore_982945dfd8db849f(*(*C.swig_type_140)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_wally_tx_from_hex_wallycore_d04cfd8a1b92e42f(*(*C.swig_type_141)(unsafe.Pointer(&_swig_i_0)), C.uintptr_t(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	if Swig_escape_always_false {
 		Swig_escape_val = arg1
 	}
@@ -2005,7 +2032,7 @@ func Wally_tx_to_bytes(arg1 Wally_tx, arg2 Uint32_t, arg3 *byte, arg4 int64, arg
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_wally_tx_to_bytes_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_141(_swig_i_3), C.swig_voidp(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_tx_to_bytes_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_142(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	return swig_r
 }
 
@@ -2014,7 +2041,7 @@ func Wally_tx_to_hex(arg1 Wally_tx, arg2 Uint32_t, arg3 *string) (_swig_ret int)
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_wally_tx_to_hex_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2)))
+	swig_r = (int)(C._wrap_wally_tx_to_hex_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1), C.swig_voidp(_swig_i_2)))
 	return swig_r
 }
 
@@ -2022,7 +2049,7 @@ func Wally_tx_get_weight(arg1 Wally_tx, arg2 *int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_tx_get_weight_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_get_weight_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -2030,7 +2057,7 @@ func Wally_tx_get_vsize(arg1 Wally_tx, arg2 *int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_tx_get_vsize_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_get_vsize_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -2038,7 +2065,7 @@ func Wally_tx_vsize_from_weight(arg1 int64, arg2 *int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_tx_vsize_from_weight_wallycore_982945dfd8db849f(C.swig_type_142(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_vsize_from_weight_wallycore_d04cfd8a1b92e42f(C.swig_type_143(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -2046,7 +2073,7 @@ func Wally_tx_get_total_output_satoshi(arg1 Wally_tx, arg2 Uint64_t) (_swig_ret 
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_get_total_output_satoshi_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_get_total_output_satoshi_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.uintptr_t(_swig_i_1)))
 	return swig_r
 }
 
@@ -2061,7 +2088,7 @@ func Wally_tx_get_btc_signature_hash(arg1 Wally_tx, arg2 int64, arg3 *byte, arg4
 	_swig_i_6 := arg7.Swigcptr()
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
-	swig_r = (int)(C._wrap_wally_tx_get_btc_signature_hash_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_type_143(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_144(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5), C.uintptr_t(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_145(_swig_i_8)))
+	swig_r = (int)(C._wrap_wally_tx_get_btc_signature_hash_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_type_144(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_145(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5), C.uintptr_t(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_146(_swig_i_8)))
 	return swig_r
 }
 
@@ -2080,7 +2107,7 @@ func Wally_tx_get_signature_hash(arg1 Wally_tx, arg2 int64, arg3 *byte, arg4 int
 	_swig_i_10 := arg11.Swigcptr()
 	_swig_i_11 := arg12
 	_swig_i_12 := arg13
-	swig_r = (int)(C._wrap_wally_tx_get_signature_hash_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_type_146(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_147(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_148(_swig_i_5), C.uintptr_t(_swig_i_6), C.uintptr_t(_swig_i_7), C.uintptr_t(_swig_i_8), C.uintptr_t(_swig_i_9), C.uintptr_t(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_149(_swig_i_12)))
+	swig_r = (int)(C._wrap_wally_tx_get_signature_hash_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_type_147(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_148(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_149(_swig_i_5), C.uintptr_t(_swig_i_6), C.uintptr_t(_swig_i_7), C.uintptr_t(_swig_i_8), C.uintptr_t(_swig_i_9), C.uintptr_t(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_150(_swig_i_12)))
 	return swig_r
 }
 
@@ -2088,7 +2115,7 @@ func Wally_tx_is_coinbase(arg1 Wally_tx, arg2 *int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_tx_is_coinbase_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_is_coinbase_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -2107,14 +2134,14 @@ func Wally_tx_elements_input_issuance_set(arg1 Wally_tx_input, arg2 *byte, arg3 
 	_swig_i_10 := arg11
 	_swig_i_11 := arg12
 	_swig_i_12 := arg13
-	swig_r = (int)(C._wrap_wally_tx_elements_input_issuance_set_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_150(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_151(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_152(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_153(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_154(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_155(_swig_i_12)))
+	swig_r = (int)(C._wrap_wally_tx_elements_input_issuance_set_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_151(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_152(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_153(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_154(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_155(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_156(_swig_i_12)))
 	return swig_r
 }
 
 func Wally_tx_elements_input_issuance_free(arg1 Wally_tx_input) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_elements_input_issuance_free_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_wally_tx_elements_input_issuance_free_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -2141,7 +2168,7 @@ func Wally_tx_elements_input_init_alloc(arg1 *byte, arg2 int64, arg3 Uint32_t, a
 	_swig_i_18 := arg19
 	_swig_i_19 := arg20.Swigcptr()
 	_swig_i_20 := arg21.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_elements_input_init_alloc_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_156(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_157(_swig_i_5), C.uintptr_t(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_158(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_159(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_160(_swig_i_12), C.swig_voidp(_swig_i_13), C.swig_type_161(_swig_i_14), C.swig_voidp(_swig_i_15), C.swig_type_162(_swig_i_16), C.swig_voidp(_swig_i_17), C.swig_type_163(_swig_i_18), C.uintptr_t(_swig_i_19), C.uintptr_t(_swig_i_20)))
+	swig_r = (int)(C._wrap_wally_tx_elements_input_init_alloc_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_157(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_158(_swig_i_5), C.uintptr_t(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_159(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_160(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_161(_swig_i_12), C.swig_voidp(_swig_i_13), C.swig_type_162(_swig_i_14), C.swig_voidp(_swig_i_15), C.swig_type_163(_swig_i_16), C.swig_voidp(_swig_i_17), C.swig_type_164(_swig_i_18), C.uintptr_t(_swig_i_19), C.uintptr_t(_swig_i_20)))
 	return swig_r
 }
 
@@ -2149,7 +2176,7 @@ func Wally_tx_elements_input_is_pegin(arg1 Wally_tx_input, arg2 *int64) (_swig_r
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_tx_elements_input_is_pegin_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_elements_input_is_pegin_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -2166,14 +2193,14 @@ func Wally_tx_elements_output_commitment_set(arg1 Wally_tx_output, arg2 *byte, a
 	_swig_i_8 := arg9
 	_swig_i_9 := arg10
 	_swig_i_10 := arg11
-	swig_r = (int)(C._wrap_wally_tx_elements_output_commitment_set_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_164(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_165(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_166(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_167(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_168(_swig_i_10)))
+	swig_r = (int)(C._wrap_wally_tx_elements_output_commitment_set_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_165(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_166(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_167(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_168(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_169(_swig_i_10)))
 	return swig_r
 }
 
 func Wally_tx_elements_output_commitment_free(arg1 Wally_tx_output) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_elements_output_commitment_free_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0)))
+	swig_r = (int)(C._wrap_wally_tx_elements_output_commitment_free_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0)))
 	return swig_r
 }
 
@@ -2192,7 +2219,7 @@ func Wally_tx_elements_output_init_alloc(arg1 *byte, arg2 int64, arg3 *byte, arg
 	_swig_i_10 := arg11
 	_swig_i_11 := arg12
 	_swig_i_12 := arg13.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_elements_output_init_alloc_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_169(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_170(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_171(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_172(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_type_173(_swig_i_9), C.swig_voidp(_swig_i_10), C.swig_type_174(_swig_i_11), C.uintptr_t(_swig_i_12)))
+	swig_r = (int)(C._wrap_wally_tx_elements_output_init_alloc_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_170(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_171(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_172(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_173(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_type_174(_swig_i_9), C.swig_voidp(_swig_i_10), C.swig_type_175(_swig_i_11), C.uintptr_t(_swig_i_12)))
 	return swig_r
 }
 
@@ -2220,7 +2247,7 @@ func Wally_tx_add_elements_raw_input(arg1 Wally_tx, arg2 *byte, arg3 int64, arg4
 	_swig_i_19 := arg20
 	_swig_i_20 := arg21.Swigcptr()
 	_swig_i_21 := arg22.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_add_elements_raw_input_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_175(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_176(_swig_i_6), C.uintptr_t(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_type_177(_swig_i_9), C.swig_voidp(_swig_i_10), C.swig_type_178(_swig_i_11), C.swig_voidp(_swig_i_12), C.swig_type_179(_swig_i_13), C.swig_voidp(_swig_i_14), C.swig_type_180(_swig_i_15), C.swig_voidp(_swig_i_16), C.swig_type_181(_swig_i_17), C.swig_voidp(_swig_i_18), C.swig_type_182(_swig_i_19), C.uintptr_t(_swig_i_20), C.uintptr_t(_swig_i_21)))
+	swig_r = (int)(C._wrap_wally_tx_add_elements_raw_input_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_176(_swig_i_2), C.uintptr_t(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_177(_swig_i_6), C.uintptr_t(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_type_178(_swig_i_9), C.swig_voidp(_swig_i_10), C.swig_type_179(_swig_i_11), C.swig_voidp(_swig_i_12), C.swig_type_180(_swig_i_13), C.swig_voidp(_swig_i_14), C.swig_type_181(_swig_i_15), C.swig_voidp(_swig_i_16), C.swig_type_182(_swig_i_17), C.swig_voidp(_swig_i_18), C.swig_type_183(_swig_i_19), C.uintptr_t(_swig_i_20), C.uintptr_t(_swig_i_21)))
 	return swig_r
 }
 
@@ -2240,7 +2267,7 @@ func Wally_tx_add_elements_raw_output(arg1 Wally_tx, arg2 *byte, arg3 int64, arg
 	_swig_i_11 := arg12
 	_swig_i_12 := arg13
 	_swig_i_13 := arg14.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_add_elements_raw_output_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_183(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_184(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_185(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_186(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_187(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_188(_swig_i_12), C.uintptr_t(_swig_i_13)))
+	swig_r = (int)(C._wrap_wally_tx_add_elements_raw_output_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_184(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_185(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_186(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_187(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_188(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_189(_swig_i_12), C.uintptr_t(_swig_i_13)))
 	return swig_r
 }
 
@@ -2248,7 +2275,7 @@ func Wally_tx_is_elements(arg1 Wally_tx, arg2 *int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_tx_is_elements_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_tx_is_elements_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -2257,7 +2284,7 @@ func Wally_tx_confidential_value_from_satoshi(arg1 Uint64_t, arg2 *byte, arg3 in
 	_swig_i_0 := arg1.Swigcptr()
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_wally_tx_confidential_value_from_satoshi_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_189(_swig_i_2)))
+	swig_r = (int)(C._wrap_wally_tx_confidential_value_from_satoshi_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_190(_swig_i_2)))
 	return swig_r
 }
 
@@ -2266,7 +2293,7 @@ func Wally_tx_confidential_value_to_satoshi(arg1 *byte, arg2 int64, arg3 Uint64_
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3.Swigcptr()
-	swig_r = (int)(C._wrap_wally_tx_confidential_value_to_satoshi_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_190(_swig_i_1), C.uintptr_t(_swig_i_2)))
+	swig_r = (int)(C._wrap_wally_tx_confidential_value_to_satoshi_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_191(_swig_i_1), C.uintptr_t(_swig_i_2)))
 	return swig_r
 }
 
@@ -2282,7 +2309,7 @@ func Wally_tx_get_elements_signature_hash(arg1 Wally_tx, arg2 int64, arg3 *byte,
 	_swig_i_7 := arg8.Swigcptr()
 	_swig_i_8 := arg9
 	_swig_i_9 := arg10
-	swig_r = (int)(C._wrap_wally_tx_get_elements_signature_hash_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_type_191(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_192(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_193(_swig_i_5), C.uintptr_t(_swig_i_6), C.uintptr_t(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_type_194(_swig_i_9)))
+	swig_r = (int)(C._wrap_wally_tx_get_elements_signature_hash_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_type_192(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_193(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_194(_swig_i_5), C.uintptr_t(_swig_i_6), C.uintptr_t(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_type_195(_swig_i_9)))
 	return swig_r
 }
 
@@ -2295,7 +2322,7 @@ func Wally_tx_elements_issuance_generate_entropy(arg1 *byte, arg2 int64, arg3 Ui
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_wally_tx_elements_issuance_generate_entropy_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_195(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_196(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_197(_swig_i_6)))
+	swig_r = (int)(C._wrap_wally_tx_elements_issuance_generate_entropy_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_196(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_197(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_198(_swig_i_6)))
 	return swig_r
 }
 
@@ -2305,7 +2332,7 @@ func Wally_tx_elements_issuance_calculate_asset(arg1 *byte, arg2 int64, arg3 *by
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_tx_elements_issuance_calculate_asset_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_198(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_199(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_tx_elements_issuance_calculate_asset_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_199(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_200(_swig_i_3)))
 	return swig_r
 }
 
@@ -2316,7 +2343,7 @@ func Wally_tx_elements_issuance_calculate_reissuance_token(arg1 *byte, arg2 int6
 	_swig_i_2 := arg3.Swigcptr()
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
-	swig_r = (int)(C._wrap_wally_tx_elements_issuance_calculate_reissuance_token_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_200(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_201(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_tx_elements_issuance_calculate_reissuance_token_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_201(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_202(_swig_i_4)))
 	return swig_r
 }
 
@@ -2651,6 +2678,7 @@ func WallyTxGetElementsSignatureHash(
 }
 
 const ASSET_TAG_LEN int = 32
+const BLINDING_FACTOR_LEN int = 32
 const ASSET_GENERATOR_LEN int = 33
 const ASSET_COMMITMENT_LEN int = 33
 const ASSET_RANGEPROOF_MAX_LEN int = 5134
@@ -2662,7 +2690,7 @@ func Wally_asset_generator_from_bytes(arg1 *byte, arg2 int64, arg3 *byte, arg4 i
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_asset_generator_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_202(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_203(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_204(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_asset_generator_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_203(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_204(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_205(_swig_i_5)))
 	return swig_r
 }
 
@@ -2677,7 +2705,7 @@ func Wally_asset_final_vbf(arg1 Uint64_t, arg2 int64, arg3 int64, arg4 *byte, ar
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
-	swig_r = (int)(C._wrap_wally_asset_final_vbf_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_type_205(_swig_i_1), C.swig_type_206(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_207(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_208(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_209(_swig_i_8)))
+	swig_r = (int)(C._wrap_wally_asset_final_vbf_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_type_206(_swig_i_1), C.swig_type_207(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_208(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_209(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_210(_swig_i_8)))
 	return swig_r
 }
 
@@ -2690,7 +2718,7 @@ func Wally_asset_value_commitment(arg1 Uint64_t, arg2 *byte, arg3 int64, arg4 *b
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_wally_asset_value_commitment_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_210(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_211(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_212(_swig_i_6)))
+	swig_r = (int)(C._wrap_wally_asset_value_commitment_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_211(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_212(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_213(_swig_i_6)))
 	return swig_r
 }
 
@@ -2717,7 +2745,7 @@ func Wally_asset_rangeproof_with_nonce(arg1 Uint64_t, arg2 *byte, arg3 int64, ar
 	_swig_i_18 := arg19
 	_swig_i_19 := arg20
 	_swig_i_20 := arg21
-	swig_r = (int)(C._wrap_wally_asset_rangeproof_with_nonce_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_213(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_214(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_215(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_216(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_217(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_218(_swig_i_12), C.swig_voidp(_swig_i_13), C.swig_type_219(_swig_i_14), C.uintptr_t(_swig_i_15), C.swig_intgo(_swig_i_16), C.swig_intgo(_swig_i_17), C.swig_voidp(_swig_i_18), C.swig_type_220(_swig_i_19), C.swig_voidp(_swig_i_20)))
+	swig_r = (int)(C._wrap_wally_asset_rangeproof_with_nonce_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_214(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_215(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_216(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_217(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_218(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_219(_swig_i_12), C.swig_voidp(_swig_i_13), C.swig_type_220(_swig_i_14), C.uintptr_t(_swig_i_15), C.swig_intgo(_swig_i_16), C.swig_intgo(_swig_i_17), C.swig_voidp(_swig_i_18), C.swig_type_221(_swig_i_19), C.swig_voidp(_swig_i_20)))
 	return swig_r
 }
 
@@ -2746,7 +2774,7 @@ func Wally_asset_rangeproof(arg1 Uint64_t, arg2 *byte, arg3 int64, arg4 *byte, a
 	_swig_i_20 := arg21
 	_swig_i_21 := arg22
 	_swig_i_22 := arg23
-	swig_r = (int)(C._wrap_wally_asset_rangeproof_wallycore_982945dfd8db849f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_221(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_222(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_223(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_224(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_225(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_226(_swig_i_12), C.swig_voidp(_swig_i_13), C.swig_type_227(_swig_i_14), C.swig_voidp(_swig_i_15), C.swig_type_228(_swig_i_16), C.uintptr_t(_swig_i_17), C.swig_intgo(_swig_i_18), C.swig_intgo(_swig_i_19), C.swig_voidp(_swig_i_20), C.swig_type_229(_swig_i_21), C.swig_voidp(_swig_i_22)))
+	swig_r = (int)(C._wrap_wally_asset_rangeproof_wallycore_d04cfd8a1b92e42f(C.uintptr_t(_swig_i_0), C.swig_voidp(_swig_i_1), C.swig_type_222(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_223(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_224(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_225(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_226(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_227(_swig_i_12), C.swig_voidp(_swig_i_13), C.swig_type_228(_swig_i_14), C.swig_voidp(_swig_i_15), C.swig_type_229(_swig_i_16), C.uintptr_t(_swig_i_17), C.swig_intgo(_swig_i_18), C.swig_intgo(_swig_i_19), C.swig_voidp(_swig_i_20), C.swig_type_230(_swig_i_21), C.swig_voidp(_swig_i_22)))
 	return swig_r
 }
 
@@ -2754,7 +2782,7 @@ func Wally_asset_surjectionproof_size(arg1 int64, arg2 *int64) (_swig_ret int) {
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_asset_surjectionproof_size_wallycore_982945dfd8db849f(C.swig_type_230(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_asset_surjectionproof_size_wallycore_d04cfd8a1b92e42f(C.swig_type_231(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -2777,7 +2805,7 @@ func Wally_asset_surjectionproof(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64,
 	_swig_i_14 := arg15
 	_swig_i_15 := arg16
 	_swig_i_16 := arg17
-	swig_r = (int)(C._wrap_wally_asset_surjectionproof_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_231(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_232(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_233(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_234(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_type_235(_swig_i_9), C.swig_voidp(_swig_i_10), C.swig_type_236(_swig_i_11), C.swig_voidp(_swig_i_12), C.swig_type_237(_swig_i_13), C.swig_voidp(_swig_i_14), C.swig_type_238(_swig_i_15), C.swig_voidp(_swig_i_16)))
+	swig_r = (int)(C._wrap_wally_asset_surjectionproof_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_232(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_233(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_234(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_235(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_type_236(_swig_i_9), C.swig_voidp(_swig_i_10), C.swig_type_237(_swig_i_11), C.swig_voidp(_swig_i_12), C.swig_type_238(_swig_i_13), C.swig_voidp(_swig_i_14), C.swig_type_239(_swig_i_15), C.swig_voidp(_swig_i_16)))
 	return swig_r
 }
 
@@ -2800,7 +2828,7 @@ func Wally_asset_unblind_with_nonce(arg1 *byte, arg2 int64, arg3 *byte, arg4 int
 	_swig_i_14 := arg15
 	_swig_i_15 := arg16
 	_swig_i_16 := arg17.Swigcptr()
-	swig_r = (int)(C._wrap_wally_asset_unblind_with_nonce_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_239(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_240(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_241(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_242(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_type_243(_swig_i_9), C.swig_voidp(_swig_i_10), C.swig_type_244(_swig_i_11), C.swig_voidp(_swig_i_12), C.swig_type_245(_swig_i_13), C.swig_voidp(_swig_i_14), C.swig_type_246(_swig_i_15), C.uintptr_t(_swig_i_16)))
+	swig_r = (int)(C._wrap_wally_asset_unblind_with_nonce_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_240(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_241(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_242(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_243(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_type_244(_swig_i_9), C.swig_voidp(_swig_i_10), C.swig_type_245(_swig_i_11), C.swig_voidp(_swig_i_12), C.swig_type_246(_swig_i_13), C.swig_voidp(_swig_i_14), C.swig_type_247(_swig_i_15), C.uintptr_t(_swig_i_16)))
 	return swig_r
 }
 
@@ -2825,7 +2853,7 @@ func Wally_asset_unblind(arg1 *byte, arg2 int64, arg3 *byte, arg4 int64, arg5 *b
 	_swig_i_16 := arg17
 	_swig_i_17 := arg18
 	_swig_i_18 := arg19.Swigcptr()
-	swig_r = (int)(C._wrap_wally_asset_unblind_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_247(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_248(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_249(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_250(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_type_251(_swig_i_9), C.swig_voidp(_swig_i_10), C.swig_type_252(_swig_i_11), C.swig_voidp(_swig_i_12), C.swig_type_253(_swig_i_13), C.swig_voidp(_swig_i_14), C.swig_type_254(_swig_i_15), C.swig_voidp(_swig_i_16), C.swig_type_255(_swig_i_17), C.uintptr_t(_swig_i_18)))
+	swig_r = (int)(C._wrap_wally_asset_unblind_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_248(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_249(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_250(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_251(_swig_i_7), C.swig_voidp(_swig_i_8), C.swig_type_252(_swig_i_9), C.swig_voidp(_swig_i_10), C.swig_type_253(_swig_i_11), C.swig_voidp(_swig_i_12), C.swig_type_254(_swig_i_13), C.swig_voidp(_swig_i_14), C.swig_type_255(_swig_i_15), C.swig_voidp(_swig_i_16), C.swig_type_256(_swig_i_17), C.uintptr_t(_swig_i_18)))
 	return swig_r
 }
 
@@ -2835,7 +2863,7 @@ func Wally_asset_blinding_key_from_seed(arg1 *byte, arg2 int64, arg3 *byte, arg4
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
-	swig_r = (int)(C._wrap_wally_asset_blinding_key_from_seed_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_256(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_257(_swig_i_3)))
+	swig_r = (int)(C._wrap_wally_asset_blinding_key_from_seed_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_257(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_258(_swig_i_3)))
 	return swig_r
 }
 
@@ -2847,7 +2875,7 @@ func Wally_asset_blinding_key_to_ec_private_key(arg1 *byte, arg2 int64, arg3 *by
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_asset_blinding_key_to_ec_private_key_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_258(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_259(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_260(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_asset_blinding_key_to_ec_private_key_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_259(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_260(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_261(_swig_i_5)))
 	return swig_r
 }
 
@@ -2855,7 +2883,7 @@ func Wally_asset_pak_whitelistproof_size(arg1 int64, arg2 *int64) (_swig_ret int
 	var swig_r int
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
-	swig_r = (int)(C._wrap_wally_asset_pak_whitelistproof_size_wallycore_982945dfd8db849f(C.swig_type_261(_swig_i_0), C.swig_voidp(_swig_i_1)))
+	swig_r = (int)(C._wrap_wally_asset_pak_whitelistproof_size_wallycore_d04cfd8a1b92e42f(C.swig_type_262(_swig_i_0), C.swig_voidp(_swig_i_1)))
 	return swig_r
 }
 
@@ -2874,7 +2902,7 @@ func Wally_asset_pak_whitelistproof(arg1 *byte, arg2 int64, arg3 *byte, arg4 int
 	_swig_i_10 := arg11
 	_swig_i_11 := arg12
 	_swig_i_12 := arg13
-	swig_r = (int)(C._wrap_wally_asset_pak_whitelistproof_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_262(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_263(_swig_i_3), C.swig_type_264(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_265(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_266(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_267(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_268(_swig_i_12)))
+	swig_r = (int)(C._wrap_wally_asset_pak_whitelistproof_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_263(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_264(_swig_i_3), C.swig_type_265(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_266(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_267(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_268(_swig_i_10), C.swig_voidp(_swig_i_11), C.swig_type_269(_swig_i_12)))
 	return swig_r
 }
 
@@ -2943,6 +2971,7 @@ const WALLY_WITNESSSCRIPT_MAX_LEN int = 35
 const WALLY_SCRIPT_HASH160 int = 0x1
 const WALLY_SCRIPT_SHA256 int = 0x2
 const WALLY_SCRIPT_AS_PUSH int = 0x4
+const WALLY_SCRIPT_MULTISIG_SORTED int = 0x8
 const OP_0 int = 0x00
 const OP_FALSE int = 0x00
 const OP_PUSHDATA1 int = 0x4c
@@ -3064,7 +3093,7 @@ func Wally_scriptpubkey_get_type(arg1 *byte, arg2 int64, arg3 *int64) (_swig_ret
 	_swig_i_0 := arg1
 	_swig_i_1 := arg2
 	_swig_i_2 := arg3
-	swig_r = (int)(C._wrap_wally_scriptpubkey_get_type_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_269(_swig_i_1), C.swig_voidp(_swig_i_2)))
+	swig_r = (int)(C._wrap_wally_scriptpubkey_get_type_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_270(_swig_i_1), C.swig_voidp(_swig_i_2)))
 	return swig_r
 }
 
@@ -3076,7 +3105,7 @@ func Wally_scriptpubkey_p2pkh_from_bytes(arg1 *byte, arg2 int64, arg3 Uint32_t, 
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_scriptpubkey_p2pkh_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_270(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_271(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_scriptpubkey_p2pkh_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_271(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_272(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r
 }
 
@@ -3090,7 +3119,7 @@ func Wally_scriptsig_p2pkh_from_sig(arg1 *byte, arg2 int64, arg3 *byte, arg4 int
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
-	swig_r = (int)(C._wrap_wally_scriptsig_p2pkh_from_sig_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_272(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_273(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_274(_swig_i_6), C.swig_voidp(_swig_i_7)))
+	swig_r = (int)(C._wrap_wally_scriptsig_p2pkh_from_sig_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_273(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_274(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_275(_swig_i_6), C.swig_voidp(_swig_i_7)))
 	return swig_r
 }
 
@@ -3102,7 +3131,7 @@ func Wally_witness_p2wpkh_from_sig(arg1 *byte, arg2 int64, arg3 *byte, arg4 int6
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5.Swigcptr()
 	_swig_i_5 := arg6.Swigcptr()
-	swig_r = (int)(C._wrap_wally_witness_p2wpkh_from_sig_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_275(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_276(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_witness_p2wpkh_from_sig_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_276(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_277(_swig_i_3), C.uintptr_t(_swig_i_4), C.uintptr_t(_swig_i_5)))
 	return swig_r
 }
 
@@ -3115,7 +3144,7 @@ func Wally_scriptsig_p2pkh_from_der(arg1 *byte, arg2 int64, arg3 *byte, arg4 int
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_wally_scriptsig_p2pkh_from_der_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_277(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_278(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_279(_swig_i_5), C.swig_voidp(_swig_i_6)))
+	swig_r = (int)(C._wrap_wally_scriptsig_p2pkh_from_der_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_278(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_279(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_280(_swig_i_5), C.swig_voidp(_swig_i_6)))
 	return swig_r
 }
 
@@ -3126,7 +3155,7 @@ func Wally_witness_p2wpkh_from_der(arg1 *byte, arg2 int64, arg3 *byte, arg4 int6
 	_swig_i_2 := arg3
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5.Swigcptr()
-	swig_r = (int)(C._wrap_wally_witness_p2wpkh_from_der_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_280(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_281(_swig_i_3), C.uintptr_t(_swig_i_4)))
+	swig_r = (int)(C._wrap_wally_witness_p2wpkh_from_der_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_281(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_282(_swig_i_3), C.uintptr_t(_swig_i_4)))
 	return swig_r
 }
 
@@ -3138,7 +3167,7 @@ func Wally_scriptpubkey_op_return_from_bytes(arg1 *byte, arg2 int64, arg3 Uint32
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_scriptpubkey_op_return_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_282(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_283(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_scriptpubkey_op_return_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_283(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_284(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r
 }
 
@@ -3150,7 +3179,7 @@ func Wally_scriptpubkey_p2sh_from_bytes(arg1 *byte, arg2 int64, arg3 Uint32_t, a
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_scriptpubkey_p2sh_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_284(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_285(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_scriptpubkey_p2sh_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_285(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_286(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r
 }
 
@@ -3163,7 +3192,7 @@ func Wally_scriptpubkey_multisig_from_bytes(arg1 *byte, arg2 int64, arg3 Uint32_
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_wally_scriptpubkey_multisig_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_286(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_287(_swig_i_5), C.swig_voidp(_swig_i_6)))
+	swig_r = (int)(C._wrap_wally_scriptpubkey_multisig_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_287(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_288(_swig_i_5), C.swig_voidp(_swig_i_6)))
 	return swig_r
 }
 
@@ -3179,7 +3208,7 @@ func Wally_scriptsig_multisig_from_bytes(arg1 *byte, arg2 int64, arg3 *byte, arg
 	_swig_i_7 := arg8
 	_swig_i_8 := arg9
 	_swig_i_9 := arg10
-	swig_r = (int)(C._wrap_wally_scriptsig_multisig_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_288(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_289(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_type_290(_swig_i_5), C.uintptr_t(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_291(_swig_i_8), C.swig_voidp(_swig_i_9)))
+	swig_r = (int)(C._wrap_wally_scriptsig_multisig_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_289(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_290(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_type_291(_swig_i_5), C.uintptr_t(_swig_i_6), C.swig_voidp(_swig_i_7), C.swig_type_292(_swig_i_8), C.swig_voidp(_swig_i_9)))
 	return swig_r
 }
 
@@ -3193,7 +3222,7 @@ func Wally_witness_multisig_from_bytes(arg1 *byte, arg2 int64, arg3 *byte, arg4 
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7.Swigcptr()
 	_swig_i_7 := arg8.Swigcptr()
-	swig_r = (int)(C._wrap_wally_witness_multisig_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_292(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_293(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_type_294(_swig_i_5), C.uintptr_t(_swig_i_6), C.uintptr_t(_swig_i_7)))
+	swig_r = (int)(C._wrap_wally_witness_multisig_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_293(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_294(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_type_295(_swig_i_5), C.uintptr_t(_swig_i_6), C.uintptr_t(_swig_i_7)))
 	return swig_r
 }
 
@@ -3206,7 +3235,7 @@ func Wally_scriptpubkey_csv_2of2_then_1_from_bytes(arg1 *byte, arg2 int64, arg3 
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_wally_scriptpubkey_csv_2of2_then_1_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_295(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_296(_swig_i_5), C.swig_voidp(_swig_i_6)))
+	swig_r = (int)(C._wrap_wally_scriptpubkey_csv_2of2_then_1_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_296(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_297(_swig_i_5), C.swig_voidp(_swig_i_6)))
 	return swig_r
 }
 
@@ -3219,7 +3248,7 @@ func Wally_scriptpubkey_csv_2of3_then_2_from_bytes(arg1 *byte, arg2 int64, arg3 
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
-	swig_r = (int)(C._wrap_wally_scriptpubkey_csv_2of3_then_2_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_297(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_298(_swig_i_5), C.swig_voidp(_swig_i_6)))
+	swig_r = (int)(C._wrap_wally_scriptpubkey_csv_2of3_then_2_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_298(_swig_i_1), C.uintptr_t(_swig_i_2), C.uintptr_t(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_299(_swig_i_5), C.swig_voidp(_swig_i_6)))
 	return swig_r
 }
 
@@ -3231,7 +3260,7 @@ func Wally_script_push_from_bytes(arg1 *byte, arg2 int64, arg3 Uint32_t, arg4 *b
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_script_push_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_299(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_300(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_script_push_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_300(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_301(_swig_i_4), C.swig_voidp(_swig_i_5)))
 	return swig_r
 }
 
@@ -3243,7 +3272,18 @@ func Wally_witness_program_from_bytes(arg1 *byte, arg2 int64, arg3 Uint32_t, arg
 	_swig_i_3 := arg4
 	_swig_i_4 := arg5
 	_swig_i_5 := arg6
-	swig_r = (int)(C._wrap_wally_witness_program_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_301(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_302(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	swig_r = (int)(C._wrap_wally_witness_program_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_302(_swig_i_1), C.uintptr_t(_swig_i_2), C.swig_voidp(_swig_i_3), C.swig_type_303(_swig_i_4), C.swig_voidp(_swig_i_5)))
+	return swig_r
+}
+
+func Wally_elements_pegout_script_size(arg1 int64, arg2 int64, arg3 int64, arg4 int64, arg5 *int64) (_swig_ret int) {
+	var swig_r int
+	_swig_i_0 := arg1
+	_swig_i_1 := arg2
+	_swig_i_2 := arg3
+	_swig_i_3 := arg4
+	_swig_i_4 := arg5
+	swig_r = (int)(C._wrap_wally_elements_pegout_script_size_wallycore_d04cfd8a1b92e42f(C.swig_type_304(_swig_i_0), C.swig_type_305(_swig_i_1), C.swig_type_306(_swig_i_2), C.swig_type_307(_swig_i_3), C.swig_voidp(_swig_i_4)))
 	return swig_r
 }
 
@@ -3261,7 +3301,7 @@ func Wally_elements_pegout_script_from_bytes(arg1 *byte, arg2 int64, arg3 *byte,
 	_swig_i_9 := arg10
 	_swig_i_10 := arg11
 	_swig_i_11 := arg12
-	swig_r = (int)(C._wrap_wally_elements_pegout_script_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_303(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_304(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_305(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_306(_swig_i_7), C.uintptr_t(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_307(_swig_i_10), C.swig_voidp(_swig_i_11)))
+	swig_r = (int)(C._wrap_wally_elements_pegout_script_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_308(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_309(_swig_i_3), C.swig_voidp(_swig_i_4), C.swig_type_310(_swig_i_5), C.swig_voidp(_swig_i_6), C.swig_type_311(_swig_i_7), C.uintptr_t(_swig_i_8), C.swig_voidp(_swig_i_9), C.swig_type_312(_swig_i_10), C.swig_voidp(_swig_i_11)))
 	return swig_r
 }
 
@@ -3275,7 +3315,7 @@ func Wally_elements_pegin_contract_script_from_bytes(arg1 *byte, arg2 int64, arg
 	_swig_i_5 := arg6
 	_swig_i_6 := arg7
 	_swig_i_7 := arg8
-	swig_r = (int)(C._wrap_wally_elements_pegin_contract_script_from_bytes_wallycore_982945dfd8db849f(C.swig_voidp(_swig_i_0), C.swig_type_308(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_309(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_310(_swig_i_6), C.swig_voidp(_swig_i_7)))
+	swig_r = (int)(C._wrap_wally_elements_pegin_contract_script_from_bytes_wallycore_d04cfd8a1b92e42f(C.swig_voidp(_swig_i_0), C.swig_type_313(_swig_i_1), C.swig_voidp(_swig_i_2), C.swig_type_314(_swig_i_3), C.uintptr_t(_swig_i_4), C.swig_voidp(_swig_i_5), C.swig_type_315(_swig_i_6), C.swig_voidp(_swig_i_7)))
 	return swig_r
 }
 
