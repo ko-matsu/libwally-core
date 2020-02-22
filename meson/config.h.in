@@ -1,0 +1,160 @@
+#ifndef LIBWALLYCORE_CONFIG_H
+#define LIBWALLYCORE_CONFIG_H
+
+/* Define if building universal (internal helper macro) */
+#define AC_APPLE_UNIVERSAL_BUILD @AC_APPLE_UNIVERSAL_BUILD@
+
+/* Define to 1 if you have the <asm/page.h> header file. */
+#define HAVE_ASM_PAGE_H @HAVE_ASM_PAGE_H@
+
+/* Define if we have __attribute__((weak)) */
+#define HAVE_ATTRIBUTE_WEAK @HAVE_ATTRIBUTE_WEAK@
+
+/* Define to 1 if you have the <byteswap.h,> header file. */
+#define HAVE_BYTESWAP_H_ @HAVE_BYTESWAP_H_@
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#define HAVE_DLFCN_H @HAVE_DLFCN_H@
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#define HAVE_INTTYPES_H @HAVE_INTTYPES_H@
+
+/* Define to 1 if you have the <memory.h> header file. */
+#define HAVE_MEMORY_H @HAVE_MEMORY_H@
+
+/* Define if we have memset_s */
+#define HAVE_MEMSET_S @HAVE_MEMSET_S@
+
+/* Define if we have mmap */
+#define HAVE_MMAP @HAVE_MMAP@
+
+/* Define if we have posix_memalign */
+#define HAVE_POSIX_MEMALIGN @HAVE_POSIX_MEMALIGN@
+
+/* Define if we have pthread support */
+#define HAVE_PTHREAD @HAVE_PTHREAD@
+
+/* Have PTHREAD_PRIO_INHERIT. */
+#define HAVE_PTHREAD_PRIO_INHERIT @HAVE_PTHREAD_PRIO_INHERIT@
+
+/* If available, contains the Python version number currently in use. */
+#define HAVE_PYTHON @HAVE_PYTHON@
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#define HAVE_STDINT_H @HAVE_STDINT_H@
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#define HAVE_STDLIB_H @HAVE_STDLIB_H@
+
+/* Define to 1 if you have the <strings.h> header file. */
+#define HAVE_STRINGS_H @HAVE_STRINGS_H@
+
+/* Define to 1 if you have the <string.h> header file. */
+#define HAVE_STRING_H @HAVE_STRING_H@
+
+/* Define to 1 if you have the <sys/mman.h> header file. */
+#define HAVE_SYS_MMAN_H @HAVE_SYS_MMAN_H@
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#define HAVE_SYS_STAT_H @HAVE_SYS_STAT_H@
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#define HAVE_SYS_TYPES_H @HAVE_SYS_TYPES_H@
+
+/* Define if we have unaligned access */
+#define HAVE_UNALIGNED_ACCESS @HAVE_UNALIGNED_ACCESS@
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#define HAVE_UNISTD_H @HAVE_UNISTD_H@
+
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
+#define LT_OBJDIR @LT_OBJDIR@
+
+/* Name of package */
+#define PACKAGE @PACKAGE@
+
+/* Define to the address where bug reports for this package should be sent. */
+#define PACKAGE_BUGREPORT @PACKAGE_BUGREPORT@
+
+/* Define to the full name of this package. */
+#define PACKAGE_NAME @PACKAGE_NAME@
+
+/* Define to the full name and version of this package. */
+#define PACKAGE_STRING @PACKAGE_STRING@
+
+/* Define to the one symbol short name of this package. */
+#define PACKAGE_TARNAME @PACKAGE_TARNAME@
+
+/* Define to the home page for this package. */
+#define PACKAGE_URL @PACKAGE_URL@
+
+/* Define to the version of this package. */
+#define PACKAGE_VERSION @WALLY_PACKAGE_VERSION@
+
+/* Define to necessary symbol if this constant uses a non-standard name on
+   your system. */
+#define PTHREAD_CREATE_JOINABLE @PTHREAD_CREATE_JOINABLE@
+
+/* Define to 1 if you have the ANSI C header files. */
+#define STDC_HEADERS @STDC_HEADERS@
+
+/* Version number of package */
+#define VERSION @WALLY_PACKAGE_VERSION@
+
+/* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
+   significant byte first (like Motorola and SPARC, unlike Intel). */
+#if defined AC_APPLE_UNIVERSAL_BUILD
+# if defined __BIG_ENDIAN__
+#  define WORDS_BIGENDIAN 1
+# endif
+#else
+# ifndef WORDS_BIGENDIAN
+#define WORDS_BIGENDIAN @WORDS_BIGENDIAN@
+# endif
+#endif
+
+/* Define for Solaris 2.5.1 so the uint32_t typedef from <sys/synch.h>,
+   <pthread.h>, or <semaphore.h> is not used. If the typedef were allowed, the
+   #define below would cause a syntax error. */
+#define _UINT32_T @_UINT32_T@
+
+/* Define for Solaris 2.5.1 so the uint64_t typedef from <sys/synch.h>,
+   <pthread.h>, or <semaphore.h> is not used. If the typedef were allowed, the
+   #define below would cause a syntax error. */
+#define _UINT64_T @_UINT64_T@
+
+/* Define for Solaris 2.5.1 so the uint8_t typedef from <sys/synch.h>,
+   <pthread.h>, or <semaphore.h> is not used. If the typedef were allowed, the
+   #define below would cause a syntax error. */
+#define _UINT8_T @_UINT8_T@
+
+/* Define to `__inline__' or `__inline' if that's what the C compiler
+   calls it, or to nothing if 'inline' is not supported under any name.  */
+#ifndef __cplusplus
+#define inline @inline@
+#endif
+
+/* Define to `unsigned int' if <sys/types.h> does not define. */
+#define size_t @size_t@
+
+/* Define to `signed int' if <sys/types.h> does not define. */
+#define ssize_t @ssize_t@
+
+/* Define to the type of an unsigned integer type of width exactly 16 bits if
+   such a type exists and the standard includes do not define it. */
+#define uint16_t @uint16_t@
+
+/* Define to the type of an unsigned integer type of width exactly 32 bits if
+   such a type exists and the standard includes do not define it. */
+#define uint32_t @uint32_t@
+
+/* Define to the type of an unsigned integer type of width exactly 64 bits if
+   such a type exists and the standard includes do not define it. */
+#define uint64_t @uint64_t@
+
+/* Define to the type of an unsigned integer type of width exactly 8 bits if
+   such a type exists and the standard includes do not define it. */
+#define uint8_t @uint8_t@
+
+#include "ccan_config.h"
+#endif /*LIBWALLYCORE_CONFIG_H*/

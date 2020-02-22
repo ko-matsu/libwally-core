@@ -1,0 +1,176 @@
+#ifndef LIBSECP256K1_CONFIG_H
+
+#define LIBSECP256K1_CONFIG_H
+
+/* Define if building universal (internal helper macro) */
+#mesondefine AC_APPLE_UNIVERSAL_BUILD
+
+/* Define this symbol to compile out all VERIFY code */
+#mesondefine COVERAGE
+
+/* Set window size for ecmult precomputation */
+#define ECMULT_WINDOW_SIZE @ECMULT_WINDOW_SIZE@
+
+/* Define this symbol to enable the ECDH module */
+#mesondefine ENABLE_MODULE_ECDH
+
+/* Define this symbol to enable the NUMS generator module */
+#mesondefine ENABLE_MODULE_GENERATOR
+
+/* Define this symbol to enable the MuSig module */
+#mesondefine ENABLE_MODULE_MUSIG
+
+/* Define this symbol to enable the Pedersen / zero knowledge range proof
+   module */
+#mesondefine ENABLE_MODULE_RANGEPROOF
+
+/* Define this symbol to enable the ECDSA pubkey recovery module */
+#mesondefine ENABLE_MODULE_RECOVERY
+
+/* Define this symbol to enable the schnorrsig module */
+#mesondefine ENABLE_MODULE_SCHNORRSIG
+
+/* Define this symbol to enable the surjection proof module */
+#mesondefine ENABLE_MODULE_SURJECTIONPROOF
+
+/* Define this symbol to enable the key whitelisting module */
+#mesondefine ENABLE_MODULE_WHITELIST
+
+/* Define this symbol if OpenSSL EC functions are available */
+#mesondefine ENABLE_OPENSSL_TESTS
+
+/* Define this symbol if __builtin_clzll is available */
+#mesondefine HAVE_BUILTIN_CLZLL
+
+/* Define this symbol if __builtin_popcount is available */
+#mesondefine HAVE_BUILTIN_POPCOUNT
+
+/* Define to 1 if you have the <dlfcn.h> header file. */
+#mesondefine HAVE_DLFCN_H
+
+/* Define to 1 if you have the <inttypes.h> header file. */
+#mesondefine HAVE_INTTYPES_H
+
+/* Define this symbol if libcrypto is installed */
+#mesondefine HAVE_LIBCRYPTO
+
+/* Define this symbol if libgmp is installed */
+#mesondefine HAVE_LIBGMP
+
+/* Define to 1 if you have the <memory.h> header file. */
+#mesondefine HAVE_MEMORY_H
+
+/* Define to 1 if you have the <stdint.h> header file. */
+#mesondefine HAVE_STDINT_H
+
+/* Define to 1 if you have the <stdlib.h> header file. */
+#mesondefine HAVE_STDLIB_H
+
+/* Define to 1 if you have the <strings.h> header file. */
+#mesondefine HAVE_STRINGS_H
+
+/* Define to 1 if you have the <string.h> header file. */
+#mesondefine HAVE_STRING_H
+
+/* Define to 1 if you have the <sys/stat.h> header file. */
+#mesondefine HAVE_SYS_STAT_H
+
+/* Define to 1 if you have the <sys/types.h> header file. */
+#mesondefine HAVE_SYS_TYPES_H
+
+/* Define to 1 if you have the <unistd.h> header file. */
+#mesondefine HAVE_UNISTD_H
+
+/* Define to 1 if the system has the type `__int128'. */
+#mesondefine HAVE___INT128
+
+/* Define to the sub-directory where libtool stores uninstalled libraries. */
+#define LT_OBJDIR @LT_OBJDIR@
+
+/* Name of package */
+#define PACKAGE @PACKAGE@
+
+/* Define to the address where bug reports for this package should be sent. */
+#define PACKAGE_BUGREPORT @PACKAGE_BUGREPORT@
+
+/* Define to the full name of this package. */
+#define PACKAGE_NAME @PACKAGE_NAME@
+
+/* Define to the full name and version of this package. */
+#define PACKAGE_STRING @PACKAGE_STRING@
+
+/* Define to the one symbol short name of this package. */
+#define PACKAGE_TARNAME @PACKAGE_TARNAME@
+
+/* Define to the home page for this package. */
+#define PACKAGE_URL @PACKAGE_URL@
+
+/* Define to the version of this package. */
+#define PACKAGE_VERSION @SECP256K1_PACKAGE_VERSION@
+
+/* Define to 1 if you have the ANSI C header files. */
+#define STDC_HEADERS @STDC_HEADERS@
+
+/* Define this symbol to enable x86_64 assembly optimizations */
+#define USE_ASM_X86_64 @USE_ASM_X86_64@
+
+/* Define this symbol to use a statically generated ecmult table */
+#define USE_ECMULT_STATIC_PRECOMPUTATION @USE_ECMULT_STATIC_PRECOMPUTATION@
+
+/* Define this symbol to use endomorphism optimization */
+#define USE_ENDOMORPHISM @USE_ENDOMORPHISM@
+
+/* Define this symbol if an external (non-inline) assembly implementation is
+   used */
+#define USE_EXTERNAL_ASM @USE_EXTERNAL_ASM@
+
+/* Define this symbol if an external implementation of the default callbacks
+   is used */
+#define USE_EXTERNAL_DEFAULT_CALLBACKS @USE_EXTERNAL_DEFAULT_CALLBACKS@
+
+/* Define this symbol to use the FIELD_10X26 implementation */
+#define USE_FIELD_10X26 @USE_FIELD_10X26@
+
+/* Define this symbol to use the FIELD_5X52 implementation */
+#define USE_FIELD_5X52 @USE_FIELD_5X52@
+
+/* Define this symbol to use the native field inverse implementation */
+#define USE_FIELD_INV_BUILTIN @USE_FIELD_INV_BUILTIN@
+
+/* Define this symbol to use the num-based field inverse implementation */
+#define USE_FIELD_INV_NUM @USE_FIELD_INV_NUM@
+
+/* Define this symbol to use the gmp implementation for num */
+#define USE_NUM_GMP @USE_NUM_GMP@
+
+/* Define this symbol to use no num implementation */
+#define USE_NUM_NONE @USE_NUM_NONE@
+
+/* Define this symbol to use the 4x64 scalar implementation */
+#define USE_SCALAR_4X64 @USE_SCALAR_4X64@
+
+/* Define this symbol to use the 8x32 scalar implementation */
+#define USE_SCALAR_8X32 @USE_SCALAR_8X32@
+
+/* Define this symbol to use the native scalar inverse implementation */
+#define USE_SCALAR_INV_BUILTIN @USE_SCALAR_INV_BUILTIN@
+
+/* Define this symbol to use the num-based scalar inverse implementation */
+#define USE_SCALAR_INV_NUM @USE_SCALAR_INV_NUM@
+
+/* Version number of package */
+#define VERSION @SECP256K1_PACKAGE_VERSION@
+
+/* Define WORDS_BIGENDIAN to 1 if your processor stores words with the most
+   significant byte first (like Motorola and SPARC, unlike Intel). */
+#if defined AC_APPLE_UNIVERSAL_BUILD
+# if defined __BIG_ENDIAN__
+#  define WORDS_BIGENDIAN 1
+# endif
+#else
+# ifndef WORDS_BIGENDIAN
+#define WORDS_BIGENDIAN @WORDS_BIGENDIAN@
+# endif
+#endif
+
+#endif /*LIBSECP256K1_CONFIG_H*/

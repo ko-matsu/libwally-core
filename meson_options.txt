@@ -1,0 +1,6 @@
+option('ENABLE_SHARED', type : 'boolean', value : true, description : 'make shared library.')
+option('ENABLE_ELEMENTS', type : 'boolean', value : false, description : 'use elements function.')
+option('ENABLE_TESTS', type : 'boolean', value : true, description : 'use test.')
+option('TARGET_RPATH', type : 'string', value : '', description : 'target rpath list (separator is \';\') (default:)')
+option('ENABLE_COVERAGE', type : 'boolean', value : false, description : 'enable code coverage (ON or OFF. default:OFF)')
+option('ENABLE_EXPORT_ALL', type : 'boolean', value : false, description : 'enable export all functions (for testing) (ON or OFF. default:OFF)')

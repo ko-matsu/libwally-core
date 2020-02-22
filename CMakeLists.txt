@@ -15,6 +15,7 @@ set(CMAKE_VERBOSE_MAKEFILE TRUE)
 # options
 ####################
 include(./cmake/EnableCcache.cmake)
+include(./cmake/ConvertSrclistFunction.cmake)
 
 if(CMAKE_JS_INC)
 option(ENABLE_SHARED "enable shared library (ON or OFF. default:ON)" ON)
@@ -378,57 +379,13 @@ add_custom_command(OUTPUT  ${ECMULT_STATIC_CONTEXT_H}
 ####################
 # libwally sources
 ####################
+transform_makefile_srclist("Makefile.srclist" "${CMAKE_CURRENT_BINARY_DIR}/Makefile.srclist.cmake")
+include(${CMAKE_CURRENT_BINARY_DIR}/Makefile.srclist.cmake)
+
 set(LIBWALLY_FILES
+    ${LIBWALLY_SOURCES}
     ${CONFIG_HEADER_DIRECTORY}/config.h
     ${CONFIG_HEADER_DIRECTORY}/libsecp256k1-config.h
-    src/address.c
-    src/aes.c
-    src/base58.c
-    src/bip32.c
-    src/bip38.c
-    src/bip39.c
-    src/bech32.c
-    src/blech32.c
-    src/elements.c
-    src/ecdh.c
-    src/hex.c
-    src/hmac.c
-    src/internal.c
-    src/mnemonic.c
-    src/pbkdf2.c
-    src/psbt.c
-    src/script.c
-    src/scrypt.c
-    src/sign.c
-    src/transaction.c
-    src/wif.c
-    src/wordlist.c
-    src/symmetric.c
-    src/ccan/ccan/crypto/ripemd160/ripemd160.c
-    src/ccan/ccan/crypto/sha256/sha256.c
-    src/ccan/ccan/crypto/sha512/sha512.c
-    src/ccan/ccan/str/hex/hex.c
-    src/ccan/ccan/base64/base64.c
-    src/ccan/ccan/base64/base64.h
-    src/secp256k1/src/secp256k1.c
-    include/wally.hpp
-    include/wally_address.h
-    include/wally_bip32.h
-    include/wally_bip38.h
-    include/wally_bip39.h
-    include/wally_core.h
-    include/wally_crypto.h
-    include/wally_elements.h
-    include/wally_script.h
-    include/wally_transaction.h
-    include/wally_symmetric.h
-    include/wally_psbt.h
-    src/secp256k1/include/secp256k1.h
-    src/secp256k1/include/secp256k1_recovery.h
-    src/bip32_int.h
-    src/script_int.h
-    src/transaction_int.h
-    src/transaction_shared.h
     ${ECMULT_STATIC_CONTEXT_H}
 )
 
