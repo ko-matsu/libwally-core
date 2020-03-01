@@ -395,6 +395,7 @@ set(LIBWALLY_FILES
     src/hmac.c
     src/internal.c
     src/mnemonic.c
+    src/miniscript.c
     src/pbkdf2.c
     src/psbt.c
     src/script.c
