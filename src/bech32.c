@@ -170,6 +170,7 @@ static int segwit_addr_encode(char *output, const char *hrp, int witver, const u
     size_t datalen = 0;
     if (witver > 16) goto fail;
     if (witver == 0 && witprog_len != 20 && witprog_len != 32) goto fail;
+    if (witver == 1 && witprog_len != 32) goto fail;
     if (witprog_len < 2 || witprog_len > 40) goto fail;
     data[0] = witver;
     convert_bits(data + 1, &datalen, 5, witprog, witprog_len, 8, 1);
@@ -192,6 +193,7 @@ static int segwit_addr_decode(int *witver, uint8_t *witdata, size_t *witdata_len
     if (!convert_bits(witdata, witdata_len, 8, data + 1, data_len - 1, 5, 0)) goto fail;
     if (*witdata_len < 2 || *witdata_len > 40) goto fail;
     if (data[0] == 0 && *witdata_len != 20 && *witdata_len != 32) goto fail;
+    if (data[0] == 1 && *witdata_len != 32) goto fail;
     *witver = data[0];
     return 1;
 fail:
@@ -205,6 +207,7 @@ int wally_addr_segwit_from_bytes(const unsigned char *bytes, size_t bytes_len,
 {
     char result[90];
     size_t push_size;
+    int witver;
     int ret;
 
     if (output)
@@ -213,15 +216,16 @@ int wally_addr_segwit_from_bytes(const unsigned char *bytes, size_t bytes_len,
     if (!addr_family || flags || !bytes || !bytes_len || !output)
         return WALLY_EINVAL;
 
-    if (bytes[0] != 0)
-        return WALLY_EINVAL; /* Only v0 witness programs are currently allowed */
+    if (bytes[0] != 0 && bytes[0] != 1)
+        return WALLY_EINVAL; /* Only v0 or v1 witness programs are currently allowed */
 
     ret = script_get_push_size_from_bytes(bytes + 1, bytes_len - 1, &push_size);
     if (ret != WALLY_OK || (push_size != HASH160_LEN && push_size != SHA256_LEN))
         return WALLY_EINVAL;
 
+    witver = bytes[0];
     result[0] = '\0';
-    if (!segwit_addr_encode(result, addr_family, 0, bytes + 2, bytes_len - 2))
+    if (!segwit_addr_encode(result, addr_family, witver, bytes + 2, bytes_len - 2))
         return WALLY_ERROR;
 
     *output = wally_strdup(result);

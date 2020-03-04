@@ -173,6 +173,7 @@ static int blech32_addr_encode(char *output, const char *hrp, int witver, const 
     size_t datalen = 0;
     if (witver > 16) goto fail;
     if (witver == 0 && witprog_len != 53 && witprog_len != 65) goto fail;
+    if (witver == 1 && witprog_len != 65) goto fail;
     if (witprog_len < 2 || witprog_len > 65) goto fail;
     data[0] = witver;
     blech32_convert_bits(data + 1, &datalen, 5, witprog, witprog_len, 8, 1);
@@ -195,6 +196,7 @@ static int blech32_addr_decode(int *witver, uint8_t *witdata, size_t *witdata_le
     if (!blech32_convert_bits(witdata, witdata_len, 8, data + 1, data_len - 1, 5, 0)) goto fail;
     if (*witdata_len < 2 || *witdata_len > 65) goto fail;
     if (data[0] == 0 && *witdata_len != 53 && *witdata_len != 65) goto fail;
+    if (data[0] == 1 && *witdata_len != 65) goto fail;
     *witver = data[0];
     return 1;
 fail:
@@ -220,10 +222,15 @@ int wally_confidential_addr_to_addr_segwit(
     if (!address || !output)
         return WALLY_EINVAL;
 
+    /* v0 or v1 witness programs are currently allowed */
     if (!blech32_addr_decode(&witver, buf, &written, confidential_addr_family, address))
         ret = WALLY_EINVAL;
-    else if (witver != 0 || (written != 53 && written != 65))
-        ret = WALLY_EINVAL;    /* Only v0 witness programs are currently allowed */
+    else if (witver != 0 && witver != 1)
+        ret = WALLY_EINVAL;
+    else if (witver == 0 && written != 53 && written != 65)
+        ret = WALLY_EINVAL;
+    else if (witver == 1 && written != 65)
+        ret = WALLY_EINVAL;
     else {
         written = written - EC_PUBLIC_KEY_LEN + 2;
         hash_bytes_p[0] = (unsigned char) witver;
@@ -250,10 +257,14 @@ int wally_confidential_addr_segwit_to_ec_public_key(
     if (!address || !bytes_out || !confidential_addr_family || len != EC_PUBLIC_KEY_LEN)
         return WALLY_EINVAL;
 
-    /* Only v0 witness programs are currently allowed */
+    /* v0 or v1 witness programs are currently allowed */
     if (!blech32_addr_decode(&witver, buf, &written, confidential_addr_family, address))
         ret = WALLY_EINVAL;
-    else if (witver != 0 || (written != 53 && written != 65))
+    else if (witver != 0 && witver != 1)
+        ret = WALLY_EINVAL;
+    else if (witver == 0 && written != 53 && written != 65)
+        ret = WALLY_EINVAL;
+    else if (witver == 1 && written != 65)
         ret = WALLY_EINVAL;
     else
         memcpy(bytes_out, buf, EC_PUBLIC_KEY_LEN);
@@ -274,6 +285,7 @@ int wally_confidential_addr_from_addr_segwit(
     unsigned char buf[EC_PUBLIC_KEY_LEN + SHA256_LEN];
     unsigned char *hash_bytes_p = &buf[EC_PUBLIC_KEY_LEN - 2];
     size_t written = SHA256_LEN + 2;
+    int witver;
     int ret;
 
     if (output)
@@ -291,11 +303,12 @@ int wally_confidential_addr_from_addr_segwit(
         if ((written != (HASH160_LEN + 2)) && (written != (SHA256_LEN + 2)))
             ret = WALLY_EINVAL;
         else {
+            witver = hash_bytes_p[0];
             /* Copy the confidentialKey / v0 witness programs */
             memcpy(buf, pub_key, pub_key_len);
             written -= 2;   /* ignore witnessVersion & hashSize */
             written += EC_PUBLIC_KEY_LEN;
-            if (!blech32_addr_encode(result, confidential_addr_family, 0, buf, written))
+            if (!blech32_addr_encode(result, confidential_addr_family, witver, buf, written))
                 return WALLY_ERROR;
 
             *output = wally_strdup(result);
