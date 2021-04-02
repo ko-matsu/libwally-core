@@ -1909,8 +1909,8 @@ static inline int tx_to_bip143_bytes(const struct wally_tx *tx,
                                 confidential_nonce_length_from_bytes(tx->outputs[i].nonce);
 
                 if (sh_rangeproof) {
-                    rangeproof_size += varbuff_get_length(tx->outputs[opts->index].rangeproof_len) +
-                                       varbuff_get_length(tx->outputs[opts->index].surjectionproof_len);
+                    rangeproof_size += varbuff_get_length(tx->outputs[i].rangeproof_len) +
+                                       varbuff_get_length(tx->outputs[i].surjectionproof_len);
                 }
             }
 #else
