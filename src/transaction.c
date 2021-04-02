@@ -1633,6 +1633,7 @@ static int tx_get_lengths(const struct wally_tx *tx,
                           sizeof(uint64_t)) + /* amount */
                          sizeof(uint32_t) + /* input sequence */
                          SHA256_LEN + /* hash outputs */
+                         ((is_elements && sh_rangeproof) ? SHA256_LEN : 0) + /* rangeproof */
                          sizeof(uint32_t) + /* nlocktime */
                          sizeof(uint32_t); /* tx sighash */
 #ifdef BUILD_ELEMENTS
@@ -1709,7 +1710,7 @@ static int tx_get_lengths(const struct wally_tx *tx,
                 n += varbuff_get_length(output->script_len);
 
 #ifdef BUILD_ELEMENTS
-                if (is_elements && sh_rangeproof && !(flags & WALLY_TX_FLAG_USE_WITNESS)) {
+                if (is_elements && sh_rangeproof) {
                     n += varbuff_get_length(output->rangeproof_len) +
                          varbuff_get_length(output->surjectionproof_len);
                 }
