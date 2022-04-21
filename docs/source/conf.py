@@ -62,7 +62,7 @@ def extract_docs(infile, outfile):
 # Generate the documentation source files
 for m in [
     'core', 'crypto', 'address', 'bip32', 'bip38', 'bip39', 'script', 'psbt',
-    'symmetric', 'transaction', 'elements', 'anti_exfil'
+    'symmetric', 'transaction', 'elements', 'anti_exfil', 'descriptor'
     ]:
     extract_docs('../../include/wally_%s.h' % m, '%s.rst' % m)
 

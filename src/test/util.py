@@ -53,6 +53,15 @@ class ext_key(Structure):
                 ('pub_key', c_ubyte * 33),
                 ('pub_key_tweak_sum', c_ubyte * 32)]
 
+class wally_descriptor_address_item(Structure):
+    _fields_ = [('child_num', c_uint),
+                ('address', c_char_p),
+                ('address_len', c_size_t)]
+
+class wally_descriptor_addresses(Structure):
+    _fields_ = [('items',  POINTER(wally_descriptor_address_item)),
+                ('num_items', c_size_t)]
+
 # Sentinel classes for returning output parameters
 class c_char_p_p_class(object):
     pass
@@ -294,6 +303,11 @@ for f in (
     ('wally_confidential_addr_to_addr', c_int, [c_char_p, c_uint32, c_char_p_p]),
     ('wally_confidential_addr_to_addr_segwit', c_int, [c_char_p, c_char_p, c_char_p, c_char_p_p]),
     ('wally_confidential_addr_to_ec_public_key', c_int, [c_char_p, c_uint32, c_void_p, c_size_t]),
+    ('wally_descriptor_create_checksum', c_int, [c_char_p, c_void_p, c_void_p, c_size_t, c_uint32, c_char_p_p]),
+    ('wally_descriptor_parse_miniscript', c_int, [c_char_p, c_void_p, c_void_p, c_size_t, c_uint32, c_uint32, c_void_p, c_size_t, c_size_t_p]),
+    ('wally_descriptor_to_address', c_int, [c_char_p, c_void_p, c_void_p, c_size_t, c_uint32, c_uint32, c_uint32, c_char_p_p]),
+    ('wally_descriptor_to_addresses', c_int, [c_char_p, c_void_p, c_void_p, c_size_t, c_uint32, c_uint32, c_uint32, c_uint32, POINTER(wally_descriptor_addresses)]),
+    ('wally_descriptor_to_scriptpubkey', c_int, [c_char_p, c_void_p, c_void_p, c_size_t, c_uint32, c_uint32, c_uint32, c_uint32, c_uint32, c_void_p, c_size_t, c_size_t_p]),
     ('wally_ec_private_key_verify', c_int, [c_void_p, c_size_t]),
     ('wally_ec_public_key_decompress', c_int, [c_void_p, c_size_t, c_void_p, c_size_t]),
     ('wally_ec_public_key_from_private_key', c_int, [c_void_p, c_size_t, c_void_p, c_size_t]),
@@ -310,6 +324,7 @@ for f in (
     ('wally_elements_pegout_script_from_bytes', c_int, [c_void_p, c_size_t, c_void_p, c_size_t, c_void_p, c_size_t, c_void_p, c_size_t, c_uint32, c_void_p, c_size_t, c_size_t_p]),
     ('wally_elements_pegout_script_size', c_int, [c_size_t, c_size_t, c_size_t, c_size_t, c_size_t_p]),
     ('wally_format_bitcoin_message', c_int, [c_void_p, c_size_t, c_uint32, c_void_p, c_size_t, c_size_t_p]),
+    ('wally_free_descriptor_addresses', c_int, [POINTER(wally_descriptor_addresses)]),
     ('wally_free_string', c_int, [c_char_p]),
     ('wally_get_operations', c_int, [POINTER(wally_operations)]),
     ('wally_hash160', c_int, [c_void_p, c_size_t, c_void_p, c_size_t]),
@@ -503,6 +518,11 @@ for f in (
             # Internal function and 'configure --enable-export-all' not used,
             # or an Elements function and Elements support not enabled.
             return None
+        except TypeError as e:
+            print(f'bind_fn:name[{name}]')
+            print(f'bind_fn:res[{res}]')
+            print(f'bind_fn:args[{args}]')
+            raise e
 
     def in_string_fn_wrapper(fn, pos, *args):
         if isinstance(args[pos], str):

@@ -3,6 +3,7 @@ name: push check
 on: 
   push:
     branches:
+    - work_20220421
     - cmake_build
     - cfd-develop
     - dlc-develop
