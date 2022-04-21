@@ -87,6 +87,8 @@ def gen_python_cffi(funcs):
         argtype = arg.type[6:] if arg.is_const else arg.type # Strip const
         if argtype == u'uint64_t*' and n != num_args - 1:
             return u'POINTER(c_uint64)'
+        if argtype == u'char**' and n != num_args - 1:
+            return u'POINTER(c_char_p)'
         if argtype in typemap:
             return typemap[argtype]
         if arg.is_struct:
