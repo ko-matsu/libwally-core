@@ -36,6 +36,11 @@ static const uint8_t PSBT_MAGIC[5] = {'p', 's', 'b', 't', 0xff};
 static const uint8_t PSET_MAGIC[5] = {'p', 's', 'e', 't', 0xff};
 
 #define MAX_INVALID_SATOSHI ((uint64_t) -1)
+/* Note we mask given indices regardless of PSBT/PSET, since enormous
+ * indices can never be valid on BTC either */
+#define MASK_INDEX(index) ((index) & WALLY_TX_INDEX_MASK)
+
+#define TR_MAX_MERKLE_PATH_LEN 128u
 
 #ifdef BUILD_ELEMENTS
 /* The PSET key prefix is the same as the first 4 PSET magic bytes */
@@ -334,6 +339,11 @@ int wally_psbt_input_set_sighash(struct wally_psbt_input *input, uint32_t sighas
 
     if (!input)
         return WALLY_EINVAL;
+    /* Note we do not skip this check if sighash == input->sighash.
+     * This is because we set the loaded value again after reading a PSBT
+     * input, in order to ensure the loaded signatures are compatible with
+     * it (since they can be read in any order).
+     */
     if (sighash) {
         for (i = 0; i < input->signatures.num_items; ++i) {
             const struct wally_map_item *item = &input->signatures.items[i];
@@ -352,7 +362,8 @@ int wally_psbt_input_set_output_index(struct wally_psbt_input *input, uint32_t i
 {
     if (!input)
         return WALLY_EINVAL;
-    input->index = index;
+    /* The PSBT index ignores any elements issuance/pegin flags */
+    input->index = MASK_INDEX(index);
     return WALLY_OK;
 }
 
@@ -416,6 +427,18 @@ static int pubkey_sig_verify(const unsigned char *key, size_t key_len,
     int ret = wally_ec_public_key_verify(key, key_len);
     if (ret == WALLY_OK)
         ret = der_sig_verify(val, val_len);
+    return ret;
+}
+
+static int map_leaf_hashes_verify(const unsigned char *key, size_t key_len,
+                                  const unsigned char *val, size_t val_len)
+{
+    int ret = wally_ec_xonly_public_key_verify(key, key_len);
+    if (ret == WALLY_OK) {
+        if (BYTES_INVALID(val, val_len) || (val_len && val_len % SHA256_LEN) ||
+            val_len > TR_MAX_MERKLE_PATH_LEN * SHA256_LEN)
+            ret = WALLY_EINVAL;
+    }
     return ret;
 }
 
@@ -700,7 +723,7 @@ static void psbt_input_init(struct wally_psbt_input *input)
     wally_map_init(0, psbt_map_input_field_verify, &input->psbt_fields);
     wally_map_init(0, NULL /* FIXME */, &input->taproot_leaf_signatures);
     wally_map_init(0, NULL /* FIXME */, &input->taproot_leaf_scripts);
-    wally_map_init(0, NULL /* FIXME */, &input->taproot_leaf_hashes);
+    wally_map_init(0, map_leaf_hashes_verify, &input->taproot_leaf_hashes);
     wally_map_init(0, wally_keypath_xonly_public_key_verify, &input->taproot_leaf_paths);
 #ifdef BUILD_ELEMENTS
     wally_map_init(0, pset_map_input_field_verify, &input->pset_fields);
@@ -968,7 +991,7 @@ static void psbt_output_init(struct wally_psbt_output *output)
     wally_map_init(0, NULL, &output->unknowns);
     wally_map_init(0, psbt_map_output_field_verify, &output->psbt_fields);
     wally_map_init(0, NULL, &output->taproot_tree);
-    wally_map_init(0, NULL /* FIXME */, &output->taproot_leaf_hashes);
+    wally_map_init(0, map_leaf_hashes_verify, &output->taproot_leaf_hashes);
     wally_map_init(0, wally_keypath_xonly_public_key_verify, &output->taproot_leaf_paths);
 #ifdef BUILD_ELEMENTS
     wally_map_init(0, pset_map_output_field_verify, &output->pset_fields);
@@ -1395,7 +1418,7 @@ static int psbt_input_from_tx_input(struct wally_psbt *psbt,
         return WALLY_OK; /* Nothing to do */
 
     memcpy(dst->txhash, txin->txhash, WALLY_TXHASH_LEN);
-    dst->index = txin->index;
+    dst->index = MASK_INDEX(txin->index);
     dst->sequence = txin->sequence;
 
     if (psbt->version == PSBT_2) {
@@ -1916,8 +1939,8 @@ static int pull_taproot_derivation(const unsigned char **cursor, size_t *max,
     size_t xonly_len = *key_len, num_hashes, hashes_len, val_len;
     int ret;
 
-    if ((ret = wally_ec_xonly_public_key_verify(xonly, xonly_len)) != WALLY_OK)
-        return ret;
+    if (xonly_len != EC_XONLY_PUBLIC_KEY_LEN)
+        return WALLY_EINVAL;;
     pull_subfield_start(cursor, max, pull_varint(cursor, max), &val, &val_len);
     num_hashes = pull_varint(&val, &val_len);
     hashes_len = num_hashes * SHA256_LEN;
@@ -2051,6 +2074,10 @@ static int pull_psbt_input(const struct wally_psbt *psbt,
                 break;
             case PSBT_IN_OUTPUT_INDEX:
                 result->index = pull_le32_subfield(cursor, max);
+                if (is_pset && (result->index & ~WALLY_TX_INDEX_MASK) &&
+                    (flags & WALLY_PSBT_PARSE_FLAG_STRICT))
+                    ret = WALLY_EINVAL;
+                result->index = MASK_INDEX(result->index);
                 break;
             case PSBT_IN_SEQUENCE:
                 result->sequence = pull_le32_subfield(cursor, max);
@@ -2128,9 +2155,14 @@ unknown:
     }
 
     if (mandatory && (keyset & mandatory) != mandatory)
-        ret = WALLY_EINVAL; /* Mandatory field is missing*/
+        ret = WALLY_EINVAL; /* Mandatory field is missing */
     else if (disallowed && (keyset & disallowed))
         ret = WALLY_EINVAL; /* Disallowed field present */
+
+    if (ret == WALLY_OK && result->sighash) {
+        /* Verify that the sighash provided matches any signatures given */
+        ret = wally_psbt_input_set_sighash(result, result->sighash);
+    }
 
 #ifdef BUILD_ELEMENTS
     if (ret == WALLY_OK && is_pset) {
@@ -2739,7 +2771,8 @@ static int push_varbuff_from_map(unsigned char **cursor, size_t *max,
 }
 
 static int push_psbt_input(const struct wally_psbt *psbt,
-                           unsigned char **cursor, size_t *max, uint32_t tx_flags,
+                           unsigned char **cursor, size_t *max,
+                           uint32_t tx_flags, uint32_t flags,
                            const struct wally_psbt_input *input)
 {
     const bool is_pset = (tx_flags & WALLY_TX_FLAG_USE_ELEMENTS) != 0;
@@ -2770,7 +2803,19 @@ static int push_psbt_input(const struct wally_psbt *psbt,
     }
 
     final_scriptsig = wally_map_get_integer(&input->psbt_fields, PSBT_IN_FINAL_SCRIPTSIG);
-    if (!input->final_witness && !final_scriptsig) {
+    if ((!input->final_witness && !final_scriptsig) ||
+        (flags & WALLY_PSBT_SERIALIZE_FLAG_REDUNDANT)) {
+        /* BIP-0174 is clear that once finalized, these members should be
+         * removed from the PSBT and therefore obviously not serialized.
+         * If an input is finalized eternally (by setting final_witness/
+         * final_scriptsig directly), then these fields may still be present
+         * in the PSBT. By default, wally will not serialize them in that case
+         * unless WALLY_PSBT_SERIALIZE_FLAG_REDUNDANT is given, since doing so
+         * violates the spec and makes the PSBT unnecessarily larger.
+         * WALLY_PSBT_SERIALIZE_FLAG_REDUNDANT is supported to allow matching
+         * the buggy behaviour of other implementations, since it seems there
+         * is already code incorrectly relying on this behaviour in the wild.
+         */
         /* Partial sigs */
         push_psbt_map(cursor, max, PSBT_IN_PARTIAL_SIG, false, &input->signatures);
         /* Sighash type */
@@ -3002,7 +3047,8 @@ int wally_psbt_to_bytes(const struct wally_psbt *psbt, uint32_t flags,
     if (written)
         *written = 0;
 
-    if (!psbt_is_valid(psbt) || flags || !written)
+    if (!psbt_is_valid(psbt) || flags & ~WALLY_PSBT_SERIALIZE_FLAG_REDUNDANT ||
+        !written)
         return WALLY_EINVAL;
 
     if ((ret = wally_psbt_is_elements(psbt, &is_pset)) != WALLY_OK)
@@ -3067,7 +3113,7 @@ int wally_psbt_to_bytes(const struct wally_psbt *psbt, uint32_t flags,
     /* Push each input and output */
     for (i = 0; i < psbt->num_inputs; ++i) {
         const struct wally_psbt_input *input = &psbt->inputs[i];
-        if ((ret = push_psbt_input(psbt, &cursor, &max, tx_flags, input)) != WALLY_OK)
+        if ((ret = push_psbt_input(psbt, &cursor, &max, tx_flags, flags, input)) != WALLY_OK)
             return ret;
     }
     for (i = 0; i < psbt->num_outputs; ++i) {
@@ -3683,7 +3729,7 @@ static int psbt_v0_to_v2(struct wally_psbt *psbt)
         struct wally_psbt_input *pi = &psbt->inputs[i];
         const struct wally_tx_input *txin = &psbt->tx->inputs[i];
         memcpy(pi->txhash, txin->txhash, sizeof(pi->txhash));
-        pi->index = txin->index;
+        pi->index = txin->index; /* No mask, since PSET is v2 only */
         pi->sequence = txin->sequence;
     }
 
@@ -4359,82 +4405,77 @@ fail:
     return ret;
 }
 
-int wally_psbt_finalize(struct wally_psbt *psbt)
+int wally_psbt_finalize_input(struct wally_psbt *psbt, size_t index, uint32_t flags)
 {
-    size_t i;
-    struct wally_tx *tx;
-    bool is_pset;
-    int ret;
+    struct wally_psbt_input *input = psbt_get_input(psbt, index);
+    const struct wally_map_item *script;
+    unsigned char *out_script = NULL;
+    size_t out_script_len = 0, type = WALLY_SCRIPT_TYPE_UNKNOWN;
+    uint32_t utxo_index;
+    bool is_witness = false, is_p2sh = false;
 
-    if ((ret = psbt_build_tx(psbt, &tx, &is_pset, false)) != WALLY_OK)
-        return ret;
+    if (!psbt_is_valid(psbt) || !input || (flags & ~WALLY_PSBT_FINALIZE_NO_CLEAR))
+        return WALLY_EINVAL;
 
-    for (i = 0; i < psbt->num_inputs; ++i) {
-        const struct wally_map_item *script;
-        struct wally_psbt_input *input = &psbt->inputs[i];
-        const uint32_t utxo_index = tx->inputs[i].index;
+    if (wally_psbt_get_input_output_index(psbt, index, &utxo_index) != WALLY_OK)
+        return WALLY_EINVAL;
 
-        /* Script for this input. originally set to the input's scriptPubKey, but in the case of a p2sh/p2wsh
-         * input, it will be eventually be set to the unhashed script, if known */
-        unsigned char *out_script = NULL;
-        size_t out_script_len, type;
-        bool is_witness = false, is_p2sh = false;
+    if (input->final_witness ||
+        wally_map_get_integer(&input->psbt_fields, PSBT_IN_FINAL_SCRIPTSIG))
+        goto done; /* Already finalized */
 
-        if (input->final_witness ||
-            wally_map_get_integer(&input->psbt_fields, PSBT_IN_FINAL_SCRIPTSIG))
-            continue; /* Already finalized */
+    /* Note that if we supply the non-witness utxo tx field (tx) for
+     * witness inputs also, we'll need a different way to signal
+     * p2sh-p2wpkh scripts */
+    if (input->witness_utxo && input->witness_utxo->script_len) {
+        out_script = input->witness_utxo->script;
+        out_script_len = input->witness_utxo->script_len;
+        is_witness = true;
+    } else if (input->utxo && utxo_index < input->utxo->num_outputs) {
+        struct wally_tx_output *utxo = &input->utxo->outputs[utxo_index];
+        out_script = utxo->script;
+        out_script_len = utxo->script_len;
+    }
+    script = wally_map_get_integer(&input->psbt_fields, PSBT_IN_REDEEM_SCRIPT);
+    if (script) {
+        out_script = script->value;
+        out_script_len = script->value_len;
+        is_p2sh = true;
+    }
+    script = wally_map_get_integer(&input->psbt_fields, PSBT_IN_WITNESS_SCRIPT);
+    if (script) {
+        out_script = script->value;
+        out_script_len = script->value_len;
+        is_witness = true;
+    }
 
-        /* Note that if we patch libwally to supply the non-witness utxo tx field (tx) for
-        * witness inputs also, we'll need a different way to signal p2sh-p2wpkh scripts */
-        if (input->witness_utxo && input->witness_utxo->script_len) {
-            out_script = input->witness_utxo->script;
-            out_script_len = input->witness_utxo->script_len;
-            is_witness = true;
-        } else if (input->utxo && utxo_index < input->utxo->num_outputs) {
-            struct wally_tx_output *utxo = &input->utxo->outputs[utxo_index];
-            out_script = utxo->script;
-            out_script_len = utxo->script_len;
-        }
-        script = wally_map_get_integer(&input->psbt_fields, PSBT_IN_REDEEM_SCRIPT);
-        if (script) {
-            out_script = script->value;
-            out_script_len = script->value_len;
-            is_p2sh = true;
-        }
-        script = wally_map_get_integer(&input->psbt_fields, PSBT_IN_WITNESS_SCRIPT);
-        if (script) {
-            out_script = script->value;
-            out_script_len = script->value_len;
-            is_witness = true;
-        }
+    if (out_script &&
+        wally_scriptpubkey_get_type(out_script, out_script_len, &type) != WALLY_OK)
+        return WALLY_OK; /* Invalid/missing script */
 
-        if (!out_script)
-            continue; /* We need an outscript to do anything */
+    switch (type) {
+    case WALLY_SCRIPT_TYPE_P2PKH:
+        if (!finalize_p2pkh(input))
+            return WALLY_OK;
+        break;
+    case WALLY_SCRIPT_TYPE_P2WPKH:
+        if (!finalize_p2wpkh(input))
+            return WALLY_OK;
+        break;
+    case WALLY_SCRIPT_TYPE_P2WSH:
+        if (!finalize_p2wsh(input))
+            return WALLY_OK;
+        break;
+    case WALLY_SCRIPT_TYPE_MULTISIG:
+        if (!finalize_multisig(input, out_script, out_script_len, is_witness, is_p2sh))
+            return WALLY_OK;
+        break;
+    default:
+        return WALLY_OK; /* Unhandled script type  */
+    }
 
-        if (wally_scriptpubkey_get_type(out_script, out_script_len, &type) != WALLY_OK)
-            continue; /* Can't identify the type, skip */
-
-        switch(type) {
-        case WALLY_SCRIPT_TYPE_P2PKH:
-            if (!finalize_p2pkh(input))
-                continue;
-            break;
-        case WALLY_SCRIPT_TYPE_P2WPKH:
-            if (!finalize_p2wpkh(input))
-                continue;
-            break;
-        case WALLY_SCRIPT_TYPE_P2WSH:
-            if (!finalize_p2wsh(input))
-                continue;
-            break;
-        case WALLY_SCRIPT_TYPE_MULTISIG:
-            if (!finalize_multisig(input, out_script, out_script_len, is_witness, is_p2sh))
-                continue;
-            break;
-        default:
-            continue; /* Can't finalize this input, skip */
-        }
-
+done:
+    if (!(flags & WALLY_PSBT_FINALIZE_NO_CLEAR)) {
         /* Clear non-final things */
         wally_map_remove_integer(&input->psbt_fields, PSBT_IN_REDEEM_SCRIPT);
         wally_map_remove_integer(&input->psbt_fields, PSBT_IN_WITNESS_SCRIPT);
@@ -4442,9 +4483,17 @@ int wally_psbt_finalize(struct wally_psbt *psbt)
         wally_map_clear(&input->signatures);
         input->sighash = 0;
     }
-
-    wally_tx_free(tx);
     return WALLY_OK;
+}
+
+int wally_psbt_finalize(struct wally_psbt *psbt, uint32_t flags)
+{
+    size_t i;
+    int ret = WALLY_OK;
+
+    for (i = 0; ret == WALLY_OK && i < psbt->num_inputs; ++i)
+        ret = wally_psbt_finalize_input(psbt, i, flags);
+    return ret;
 }
 
 int wally_psbt_extract(const struct wally_psbt *psbt, uint32_t flags, struct wally_tx **output)
@@ -5021,7 +5070,7 @@ int wally_psbt_get_input_previous_txid(const struct wally_psbt *psbt, size_t ind
 }
 
 int wally_psbt_get_input_output_index(const struct wally_psbt *psbt, size_t index,
-                                      size_t *written)
+                                      uint32_t *written)
 {
     struct wally_psbt_input *p = psbt_get_input(psbt, index);
     if (written)
@@ -5033,7 +5082,7 @@ int wally_psbt_get_input_output_index(const struct wally_psbt *psbt, size_t inde
 }
 
 int wally_psbt_get_input_sequence(const struct wally_psbt *psbt, size_t index,
-                                  size_t *written)
+                                  uint32_t *written)
 {
     struct wally_psbt_input *p = psbt_get_input(psbt, index);
     if (written)
@@ -5044,7 +5093,9 @@ int wally_psbt_get_input_sequence(const struct wally_psbt *psbt, size_t index,
     return WALLY_OK;
 }
 
-int wally_psbt_get_input_required_locktime(const struct wally_psbt *psbt, size_t index, size_t *written) {
+int wally_psbt_get_input_required_locktime(const struct wally_psbt *psbt,
+                                           size_t index, uint32_t *written)
+{
     struct wally_psbt_input *p = psbt_get_input(psbt, index);
     if (written) *written = 0;
     if (!p || !written || psbt->version != PSBT_2) return WALLY_EINVAL;
@@ -5052,7 +5103,10 @@ int wally_psbt_get_input_required_locktime(const struct wally_psbt *psbt, size_t
     *written = p->required_locktime;
     return WALLY_OK;
 }
-int wally_psbt_has_input_required_locktime(const struct wally_psbt *psbt, size_t index, size_t *written) {
+
+int wally_psbt_has_input_required_locktime(const struct wally_psbt *psbt,
+                                           size_t index, size_t *written)
+{
     struct wally_psbt_input *p = psbt_get_input(psbt, index);
     if (written) *written = 0;
     if (!p || !written || psbt->version != PSBT_2) return WALLY_EINVAL;
@@ -5060,7 +5114,9 @@ int wally_psbt_has_input_required_locktime(const struct wally_psbt *psbt, size_t
     return WALLY_OK;
 }
 
-int wally_psbt_get_input_required_lockheight(const struct wally_psbt *psbt, size_t index, size_t *written) {
+int wally_psbt_get_input_required_lockheight(const struct wally_psbt *psbt,
+                                             size_t index, uint32_t *written)
+{
     struct wally_psbt_input *p = psbt_get_input(psbt, index);
     if (written) *written = 0;
     if (!p || !written || psbt->version != PSBT_2) return WALLY_EINVAL;
@@ -5068,7 +5124,10 @@ int wally_psbt_get_input_required_lockheight(const struct wally_psbt *psbt, size
     *written = p->required_lockheight;
     return WALLY_OK;
 }
-int wally_psbt_has_input_required_lockheight(const struct wally_psbt *psbt, size_t index, size_t *written) {
+
+int wally_psbt_has_input_required_lockheight(const struct wally_psbt *psbt,
+                                             size_t index, size_t *written)
+{
     struct wally_psbt_input *p = psbt_get_input(psbt, index);
     if (written) *written = 0;
     if (!p || !written || psbt->version != PSBT_2) return WALLY_EINVAL;

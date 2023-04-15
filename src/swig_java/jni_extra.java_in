@@ -162,6 +162,10 @@
       return ec_sig_from_bytes(jarg1, jarg2, jarg3, null);
   }
 
+  public final static byte[] ec_sig_from_bytes_aux(byte[] jarg1, byte[] jarg2, byte[] jarg3, long jarg4) {
+      return ec_sig_from_bytes_aux(jarg1, jarg2, jarg3, jarg4, null);
+  }
+
   public final static byte[] ec_sig_normalize(byte[] jarg1) {
       return ec_sig_normalize(jarg1, null);
   }
@@ -369,6 +373,11 @@
   public final static Object psbt_extract(Object psbt)
   {
       return psbt_extract(psbt, 0); // Default flags to 0 for back compat.
+  }
+
+  public final static void psbt_finalize(Object psbt)
+  {
+      psbt_finalize(psbt, 0); // Default flags to 0 for back compat.
   }
 
   public final static byte[] psbt_get_input_final_scriptsig(Object psbt, long idx) {

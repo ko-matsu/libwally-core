@@ -18,7 +18,7 @@ class PSBTTests(unittest.TestCase):
         self.assertEqual(ret, expected, "{0}".format(src_base64))
         return psbt
 
-    def to_base64(self, psbt, mod_flags=None):
+    def to_base64(self, psbt, mod_flags=None, flags=0):
         """Dump a PSBT to base64, optionally overriding tx modifiable flags"""
         if mod_flags is not None:
             version = wally_psbt_get_version(psbt)[1]
@@ -29,7 +29,7 @@ class PSBTTests(unittest.TestCase):
                 self.assertEqual(ret, WALLY_OK)
                 ret = wally_psbt_set_tx_modifiable_flags(psbt, mod_flags)
                 self.assertEqual(ret, WALLY_OK)
-        ret, base64 = wally_psbt_to_base64(psbt, 0)
+        ret, base64 = wally_psbt_to_base64(psbt, flags)
         self.assertEqual(ret, WALLY_OK)
         if mod_flags is not None:
             ret = wally_psbt_set_tx_modifiable_flags(psbt, old_flags)
@@ -175,7 +175,7 @@ class PSBTTests(unittest.TestCase):
         """Test the PSBT finalizer role"""
         for case in JSON['finalizer']:
             psbt = self.parse_base64(case['psbt'])
-            self.assertEqual(WALLY_OK, wally_psbt_finalize(psbt))
+            self.assertEqual(WALLY_OK, wally_psbt_finalize(psbt, 0))
             ret, is_finalized = wally_psbt_is_finalized(psbt)
             self.assertEqual((ret, is_finalized), (WALLY_OK, 1))
             self.assertEqual(self.to_base64(psbt), case['result'])
@@ -207,7 +207,7 @@ class PSBTTests(unittest.TestCase):
                      'cR5yyo2g1SzzwCw2QAREzF7XhYuXZS9SzTTf8A9qerri9EXZcRYS']:
             self.assertEqual(wally_wif_to_bytes(priv, 0xEF, 0, buf, buf_len), WALLY_OK)
             self.assertEqual(wally_psbt_sign(psbt, buf, buf_len, FLAG_GRIND_R), WALLY_OK)
-        self.assertEqual(wally_psbt_finalize(psbt), WALLY_OK)
+        self.assertEqual(wally_psbt_finalize(psbt, 0), WALLY_OK)
 
         expected = 'cHNidP8BAJoCAAAAAvezqpNxOIDkwNFhfZVLYvuhQxqmqNPJwlyXbhc8cuLPAQAAAAD9////krlOMdd9VVzPWn5+oadTb4C3NnUFWA3tF6cb1RiI4JAAAAAAAP3///8CESYAAAAAAAAWABQn/PFABd2EW5RsCUvJitAYNshf9BAnAAAAAAAAFgAUFpodxCngMIyYnbJ1mhpDwQykN4cAAAAAAAEAiQIAAAABfRJscM0GWu793LYoAX15Mnj+dVr0G7yvRMBeWSmvPpQAAAAAFxYAFESkW2FnrJlkwmQZjTXL1IVM95lW/f///wK76QAAAAAAABYAFB33sq8WtoOlpvUpCvoWbxJJl5rhECcAAAAAAAAXqRTFhAlcZBMRkG4iAustDT6iSw6wkIcAAAAAAQEgECcAAAAAAAAXqRTFhAlcZBMRkG4iAustDT6iSw6wkIcBBxcWABSLInl3egAHj/E1xymd9vWdJ7knmQEIawJHMEQCIAkPXe9sdpRjSDTjJ0gIrpwGGIWJby9xSd1rS9hPe1f0AiAJgqR7PL3G/MXyUu4KZdS1Z2O14fjxstF43k634u+4GAEhA/2o8s1fdIIUPtMyDtplUnd3xmIb8GI2pBgmOFjWMaHmAAEAcgIAAAAB97Oqk3E4gOTA0WF9lUti+6FDGqao08nCXJduFzxy4s8AAAAAAP3///8CECcAAAAAAAAXqRRcl9Sf+c1s0P5r5CGoefIJLL2g+YcdwgAAAAAAABYAFJQPdrykhhpou8p1nGgQ8V+jy+UPAAAAAAEBIBAnAAAAAAAAF6kUXJfUn/nNbND+a+QhqHnyCSy9oPmHAQcXFgAUyRIBhZwlI4RLT6NDHluovlrN3iABCGsCRzBEAiAOzRsNZ+2Et+VGCY/nXWO7WxGI3u39kpi025cUaJXQJgIgL6KtMqPfAwXGktQFWr9SNnOrHF2xjvKQI2VdeuQbxt0BIQIs+YA2N8B5O6nF4SgVEG765xfHZFKrLiKbjZuo8/9vPAAiAgKvIfgAREwuU3M7rbN8YQrVwMyBFBzOYjLoL8BTK7QnOBAStOnGAAAAgAEAAIDDAACAAAA='
         self.assertEqual(self.to_base64(psbt), expected)
@@ -307,6 +307,24 @@ class PSBTTests(unittest.TestCase):
                      (psbt, 0x1, clone), # Invalid flags
                      (psbt, 0x0, None)]: # NULL dest
             self.assertEqual(WALLY_EINVAL, wally_psbt_clone_alloc(*args))
+
+    def test_redundant(self):
+        """Test serializing redundant finalized input information"""
+        buf, buf_len = make_cbuffer('00' * 4096)
+        b64 = 'cHNidP8BAKACAAAAAqsJSaCMWvfEm4IS9Bfi8Vqz9cM9zxU4IagTn4d6W3vkAAAAAAD+////qwlJoIxa98SbghL0F+LxWrP1wz3PFTghqBOfh3pbe+QBAAAAAP7///8CYDvqCwAAAAAZdqkUdopAu9dAy+gdmI5x3ipNXHE5ax2IrI4kAAAAAAAAGXapFG9GILVT+glechue4O/p+gOcykWXiKwAAAAAAAEHakcwRAIgR1lmF5fAGwNrJZKJSGhiGDR9iYZLcZ4ff89X0eURZYcCIFMJ6r9Wqk2Ikf/REf3xM286KdqGbX+EhtdVRs7tr5MZASEDXNxh/HupccC1AaZGoqg7ECy0OIEhfKaC3Ibi1z+ogpIAAQEgAOH1BQAAAAAXqRQ1RebjO4MsRwUPJNPuuTycA5SLx4cBBBYAFIXRNTfy4mVAWjTbr6nj3aAfuCMIAAAA'
+        psbt = self.parse_base64(b64)
+        # Set a fake redeem script to the finalized input 0
+        redeem, redeem_len = make_cbuffer('00' * 64)
+        ret = wally_psbt_input_set_redeem_script(psbt.contents.inputs[0], redeem, redeem_len)
+        self.assertEqual(ret, WALLY_OK)
+        # This round trips by default, i.e. it doesn't include the redeem
+        # script since the input is finalized
+        serialized = self.to_base64(psbt)
+        self.assertEqual(serialized, b64)
+        # When SERIALIZE_FLAG_REDUNDANT is given, the redeem script is included
+        SERIALIZE_FLAG_REDUNDANT = 0x1
+        serialized = self.to_base64(psbt, None, SERIALIZE_FLAG_REDUNDANT)
+        self.assertNotEqual(serialized, b64)
 
 if __name__ == '__main__':
     unittest.main()

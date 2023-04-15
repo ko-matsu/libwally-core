@@ -76,10 +76,6 @@ def scriptpubkey_csv_2of2_then_1_from_bytes_len(pubkeys, csv_blocks, flags):
     # TODO: See scriptpubkey_csv_2of2_then_1_from_bytes_opt_len
     return 9 + 2 * (EC_PUBLIC_KEY_LEN + 1) + 4
 
-def scriptpubkey_csv_2of3_then_2_from_bytes_len(pubkeys, csv_blocks, flags):
-    # TODO: See scriptpubkey_csv_2of2_then_1_from_bytes_opt_len
-    return 13 + 3 * (EC_PUBLIC_KEY_LEN + 1) + 4
-
 def scriptpubkey_multisig_from_bytes_len(pubkeys, threshold, flags):
     return 3 + (len(pubkeys) // EC_PUBLIC_KEY_LEN) * (EC_PUBLIC_KEY_LEN + 1)
 
@@ -135,7 +131,10 @@ pbkdf2_hmac_sha512 = _wrap_bin(pbkdf2_hmac_sha512, PBKDF2_HMAC_SHA512_LEN)
 ec_public_key_from_private_key = _wrap_bin(ec_public_key_from_private_key, EC_PUBLIC_KEY_LEN)
 ec_public_key_decompress = _wrap_bin(ec_public_key_decompress, EC_PUBLIC_KEY_UNCOMPRESSED_LEN)
 ec_public_key_negate = _wrap_bin(ec_public_key_negate, EC_PUBLIC_KEY_LEN)
+ec_public_key_bip341_tweak = _wrap_bin(ec_public_key_bip341_tweak, EC_PUBLIC_KEY_LEN)
+ec_private_key_bip341_tweak = _wrap_bin(ec_private_key_bip341_tweak, EC_PRIVATE_KEY_LEN)
 ec_sig_from_bytes = _wrap_bin(ec_sig_from_bytes, ec_sig_from_bytes_len)
+ec_sig_from_bytes_aux = _wrap_bin(ec_sig_from_bytes_aux, ec_sig_from_bytes_aux_len)
 ec_sig_normalize = _wrap_bin(ec_sig_normalize, EC_SIGNATURE_LEN)
 ec_sig_to_der = _wrap_bin(ec_sig_to_der, EC_SIGNATURE_DER_MAX_LEN, resize=True)
 ec_sig_from_der = _wrap_bin(ec_sig_from_der, EC_SIGNATURE_LEN)
@@ -187,7 +186,6 @@ scriptpubkey_multisig_from_bytes = _wrap_bin(scriptpubkey_multisig_from_bytes, s
 scriptsig_multisig_from_bytes = _wrap_bin(scriptsig_multisig_from_bytes, scriptsig_multisig_from_bytes_len, resize=True)
 scriptpubkey_csv_2of2_then_1_from_bytes = _wrap_bin(scriptpubkey_csv_2of2_then_1_from_bytes, scriptpubkey_csv_2of2_then_1_from_bytes_len, resize=True)
 scriptpubkey_csv_2of2_then_1_from_bytes_opt = _wrap_bin(scriptpubkey_csv_2of2_then_1_from_bytes_opt, scriptpubkey_csv_2of2_then_1_from_bytes_opt_len, resize=True)
-scriptpubkey_csv_2of3_then_2_from_bytes = _wrap_bin(scriptpubkey_csv_2of3_then_2_from_bytes, scriptpubkey_csv_2of3_then_2_from_bytes_len, resize=True)
 script_push_from_bytes = _wrap_bin(script_push_from_bytes, script_push_from_bytes_len, resize=True)
 varint_to_bytes = _wrap_bin(varint_to_bytes, varint_get_length)
 varbuff_to_bytes = _wrap_bin(varbuff_to_bytes, varbuff_get_length)
@@ -213,6 +211,8 @@ tx_output_clone = tx_output_clone_alloc
 tx_init = tx_init_alloc
 tx_clone = tx_clone_alloc
 tx_get_txid = _wrap_bin(tx_get_txid, WALLY_TXHASH_LEN)
+get_hash_prevouts = _wrap_bin(get_hash_prevouts, SHA256_LEN)
+tx_get_hash_prevouts = _wrap_bin(tx_get_hash_prevouts, SHA256_LEN)
 tx_to_bytes = _wrap_bin(tx_to_bytes, tx_get_length)
 tx_get_btc_signature_hash = _wrap_bin(tx_get_btc_signature_hash, SHA256_LEN)
 tx_get_btc_taproot_signature_hash = _wrap_bin(tx_get_btc_taproot_signature_hash, SHA256_LEN)
@@ -299,6 +299,9 @@ if is_elements_build():
     explicit_surjectionproof = _wrap_bin(explicit_surjectionproof, ASSET_EXPLICIT_SURJECTIONPROOF_LEN)
     asset_blinding_key_from_seed = _wrap_bin(asset_blinding_key_from_seed, HMAC_SHA512_LEN)
     asset_blinding_key_to_ec_private_key = _wrap_bin(asset_blinding_key_to_ec_private_key, EC_PRIVATE_KEY_LEN)
+    asset_blinding_key_to_abf_vbf = _wrap_bin(asset_blinding_key_to_abf_vbf, WALLY_ABF_VBF_LEN)
+    asset_blinding_key_to_abf = _wrap_bin(asset_blinding_key_to_abf, BLINDING_FACTOR_LEN)
+    asset_blinding_key_to_vbf = _wrap_bin(asset_blinding_key_to_vbf, BLINDING_FACTOR_LEN)
     asset_pak_whitelistproof = _wrap_bin(asset_pak_whitelistproof, asset_pak_whitelistproof_len)
     bip32_key_get_pub_key_tweak_sum = _wrap_bin(bip32_key_get_pub_key_tweak_sum, WALLY_BIP32_TWEAK_SUM_LEN)
     tx_input_get_blinding_nonce = _wrap_bin(tx_input_get_blinding_nonce, SHA256_LEN)
@@ -411,3 +414,4 @@ def map_from_dict(d):
 psbt_from_bytes = _wrap_with_defaults(psbt_from_bytes, 1, 2, 0)
 psbt_from_base64 = _wrap_with_defaults(psbt_from_base64, 1, 2, 0)
 psbt_extract = _wrap_with_defaults(psbt_extract, 1, 2, 0)
+psbt_finalize = _wrap_with_defaults(psbt_finalize, 1, 2, 0)

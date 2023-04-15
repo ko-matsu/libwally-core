@@ -259,6 +259,7 @@ static jobjectArray create_jstringArray(JNIEnv *jenv, char **p, size_t len) {
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* abf, size_t abf_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* annex, size_t annex_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* asset, size_t asset_len) };
+%apply(char *STRING, size_t LENGTH) { (const unsigned char* aux_rand, size_t aux_rand_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* bytes, size_t bytes_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* chain_code, size_t chain_code_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* commitment, size_t commitment_len) };
@@ -270,6 +271,7 @@ static jobjectArray create_jstringArray(JNIEnv *jenv, char **p, size_t len) {
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* generator, size_t generator_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* genesis_blockhash, size_t genesis_blockhash_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* hash160, size_t hash160_len) };
+%apply(char *STRING, size_t LENGTH) { (const unsigned char* hash_prevouts, size_t hash_prevouts_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* hmac_key, size_t hmac_key_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* inflation_keys, size_t inflation_keys_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* inflation_keys_rangeproof, size_t inflation_keys_rangeproof_len) };
@@ -279,6 +281,7 @@ static jobjectArray create_jstringArray(JNIEnv *jenv, char **p, size_t len) {
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* key, size_t key_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* label, size_t label_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* mainchain_script, size_t mainchain_script_len) };
+%apply(char *STRING, size_t LENGTH) { (const unsigned char* merkle_root, size_t merkle_root_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* nonce, size_t nonce_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* nonce_hash, size_t nonce_hash_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* offline_keys, size_t offline_keys_len) };
@@ -307,6 +310,7 @@ static jobjectArray create_jstringArray(JNIEnv *jenv, char **p, size_t len) {
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* surjectionproof, size_t surjectionproof_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* tapleaf_script, size_t tapleaf_script_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* txhash, size_t txhash_len) };
+%apply(char *STRING, size_t LENGTH) { (const unsigned char* txhashes, size_t txhashes_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* txout_proof, size_t txout_proof_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* val, size_t val_len) };
 %apply(char *STRING, size_t LENGTH) { (const unsigned char* value, size_t value_len) };
@@ -340,6 +344,7 @@ static jobjectArray create_jstringArray(JNIEnv *jenv, char **p, size_t len) {
 %apply(uint32_t *STRING, size_t LENGTH) { (const uint32_t *child_path, size_t child_path_len) }
 %apply(uint32_t *STRING, size_t LENGTH) { (uint32_t *child_path_out, size_t child_path_out_len) }
 %apply(uint32_t *STRING, size_t LENGTH) { (const uint32_t *sighash, size_t sighash_len) }
+%apply(uint32_t *STRING, size_t LENGTH) { (const uint32_t *utxo_indices, size_t num_utxo_indices) }
 %apply(uint64_t *STRING, size_t LENGTH) { (const uint64_t *values, size_t num_values) }
 
 %typemap(in, numinputs=0) uint32_t *value_out (uint32_t val) {
@@ -510,6 +515,7 @@ static jobjectArray create_jstringArray(JNIEnv *jenv, char **p, size_t len) {
 %returns_size_t(wally_aes_cbc);
 %returns_array_(wally_asset_final_vbf, 8, 9, ASSET_TAG_LEN);
 %returns_array_(wally_asset_generator_from_bytes, 5, 6, ASSET_GENERATOR_LEN);
+%returns_size_t(wally_asset_rangeproof_get_maximum_len);
 %returns_size_t(wally_asset_rangeproof_with_nonce);
 %returns_size_t(wally_asset_rangeproof);
 %returns_array_(wally_asset_scalar_offset, 6, 7, EC_SCALAR_LEN);
@@ -519,6 +525,9 @@ static jobjectArray create_jstringArray(JNIEnv *jenv, char **p, size_t len) {
 %returns_uint64(wally_asset_unblind_with_nonce);
 %returns_uint64(wally_asset_unblind);
 %returns_array_(wally_asset_blinding_key_from_seed, 3, 4, HMAC_SHA512_LEN);
+%returns_array_(wally_asset_blinding_key_to_abf, 6, 7, BLINDING_FACTOR_LEN);
+%returns_array_(wally_asset_blinding_key_to_abf_vbf, 6, 7, WALLY_ABF_VBF_LEN);
+%returns_array_(wally_asset_blinding_key_to_vbf, 6, 7, BLINDING_FACTOR_LEN);
 %returns_array_(wally_asset_blinding_key_to_ec_private_key, 5, 6, EC_PRIVATE_KEY_LEN);
 %returns_array_(wally_asset_value_commitment, 6, 7, ASSET_COMMITMENT_LEN);
 %returns_string(wally_base58_from_bytes);
@@ -551,12 +560,16 @@ static jobjectArray create_jstringArray(JNIEnv *jenv, char **p, size_t len) {
 %returns_sarray(wally_descriptor_to_addresses);
 %returns_size_t(wally_descriptor_to_script);
 %returns_size_t(wally_descriptor_to_script_get_maximum_length);
+%returns_array_(wally_ec_private_key_bip341_tweak, 6, 7, EC_PRIVATE_KEY_LEN);
 %returns_void__(wally_ec_private_key_verify);
+%returns_array_(wally_ec_public_key_bip341_tweak, 6, 7, EC_PUBLIC_KEY_LEN);
 %returns_void__(wally_ec_public_key_verify);
 %returns_array_(wally_ec_public_key_decompress, 3, 4, EC_PUBLIC_KEY_UNCOMPRESSED_LEN);
 %returns_array_(wally_ec_public_key_negate, 3, 4, EC_PUBLIC_KEY_LEN);
 %returns_array_(wally_ec_public_key_from_private_key, 3, 4, EC_PUBLIC_KEY_LEN);
+%returns_size_t(wally_ec_sig_from_bytes_aux_len);
 %returns_size_t(wally_ec_sig_from_bytes_len);
+%returns_array_check_flag(wally_ec_sig_from_bytes_aux, 8, 9, jarg7, 10, EC_SIGNATURE_RECOVERABLE_LEN, EC_SIGNATURE_LEN);
 %returns_array_check_flag(wally_ec_sig_from_bytes, 6, 7, jarg5, 8, EC_SIGNATURE_RECOVERABLE_LEN, EC_SIGNATURE_LEN);
 %returns_array_(wally_ec_sig_normalize, 3, 4, EC_SIGNATURE_LEN);
 %returns_array_(wally_ec_sig_from_der, 3, 4, EC_SIGNATURE_LEN);
@@ -575,6 +588,7 @@ static jobjectArray create_jstringArray(JNIEnv *jenv, char **p, size_t len) {
 %returns_array_(wally_explicit_surjectionproof, 7, 8, ASSET_EXPLICIT_SURJECTIONPROOF_LEN);
 %returns_void__(wally_explicit_surjectionproof_verify);
 %returns_size_t(wally_format_bitcoin_message);
+%returns_array_(wally_get_hash_prevouts, 5, 6, SHA256_LEN);
 %returns_array_(wally_hash160, 3, 4, HASH160_LEN);
 %returns_string(wally_hex_from_bytes);
 %returns_size_t(wally_hex_n_to_bytes);
@@ -676,6 +690,7 @@ static jobjectArray create_jstringArray(JNIEnv *jenv, char **p, size_t len) {
 %returns_void__(wally_psbt_combine);
 %returns_struct(wally_psbt_extract, wally_tx);
 %returns_void__(wally_psbt_finalize);
+%returns_void__(wally_psbt_finalize_input);
 %returns_size_t(wally_psbt_find_input_keypath);
 %returns_size_t(wally_psbt_find_input_signature);
 %returns_size_t(wally_psbt_find_input_unknown);
@@ -895,7 +910,6 @@ static jobjectArray create_jstringArray(JNIEnv *jenv, char **p, size_t len) {
 %returns_size_t(wally_script_push_from_bytes);
 %returns_size_t(wally_scriptpubkey_csv_2of2_then_1_from_bytes);
 %returns_size_t(wally_scriptpubkey_csv_2of2_then_1_from_bytes_opt);
-%returns_size_t(wally_scriptpubkey_csv_2of3_then_2_from_bytes);
 %returns_size_t(wally_scriptpubkey_get_type);
 %returns_size_t(wally_scriptpubkey_op_return_from_bytes);
 %returns_size_t(wally_scriptpubkey_p2pkh_from_bytes);
@@ -947,6 +961,7 @@ static jobjectArray create_jstringArray(JNIEnv *jenv, char **p, size_t len) {
 %returns_array_(wally_tx_get_btc_signature_hash, 8, 9, SHA256_LEN);
 %returns_array_(wally_tx_get_btc_taproot_signature_hash, 14, 15, SHA256_LEN);
 %returns_array_(wally_tx_get_elements_signature_hash, 9, 10, SHA256_LEN);
+%returns_array_(wally_tx_get_hash_prevouts, 4, 5, SHA256_LEN);
 %returns_array_(wally_tx_get_input_blinding_nonce, 3, 4, SHA256_LEN);
 %returns_array_(wally_tx_get_input_entropy, 3, 4, SHA256_LEN);
 %rename("_tx_get_input_issuance_amount") wally_tx_get_input_issuance_amount;

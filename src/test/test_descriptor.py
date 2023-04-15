@@ -13,6 +13,15 @@ NETWORK_LIQUID_REG = 0x04
 MS_TAP = 0x1  # WALLY_MINISCRIPT_TAPSCRIPT
 MS_ONLY = 0x2 # WALLY_MINISCRIPT_ONLY
 
+MS_IS_RANGED = 0x1
+MS_IS_MULTIPATH = 0x2
+MS_IS_PRIVATE = 0x4
+MS_IS_UNCOMPRESSED = 0x08
+MS_IS_RAW = 0x010
+MS_IS_DESCRIPTOR = 0x20
+
+NO_CHECKSUM = 0x1 # WALLY_MS_CANONICAL_NO_CHECKSUM
+
 def wally_map_from_dict(d):
     m = pointer(wally_map())
     assert(wally_map_init_alloc(len(d.keys()), None, m) == WALLY_OK)
@@ -176,8 +185,25 @@ class DescriptorTests(unittest.TestCase):
         ]:
             d = c_void_p()
             ret = wally_descriptor_parse(descriptor, None, NETWORK_NONE, 0, d)
+            self.assertEqual(ret, WALLY_OK)
             ret, checksum = wally_descriptor_get_checksum(d, 0)
             self.assertEqual((ret, checksum), (WALLY_OK, expected))
+            wally_descriptor_free(d)
+
+    def test_canonicalize(self):
+        """Test canonicalization """
+        descriptor_str = 'wpkh(02f9308a019258c31049344f85f89d5229b531c845836f99b08601f113bce036f9)'
+        for descriptor, flags, expected in [
+            # 0: returns checksum
+            (descriptor_str, 0, descriptor_str + '#8zl0zxma'),
+            # WALLY_MS_CANONICAL_NO_CHECKSUM does not return checksum
+            (descriptor_str, NO_CHECKSUM, descriptor_str),
+        ]:
+            d = c_void_p()
+            ret = wally_descriptor_parse(descriptor, None, NETWORK_NONE, 0, d)
+            self.assertEqual(ret, WALLY_OK)
+            ret, canonical = wally_descriptor_canonicalize(d, flags)
+            self.assertEqual((ret, canonical), (WALLY_OK, expected))
             wally_descriptor_free(d)
 
     def test_canonicalize_checksum_bad_args(self):
@@ -186,8 +212,8 @@ class DescriptorTests(unittest.TestCase):
         d = c_void_p()
         ret = wally_descriptor_parse(descriptor, None, NETWORK_NONE, 0, d)
         bad_args = [
-            (None, 0), # NULL descriptor
-            (d,    1), # Bad flags
+            (None, 0),    # NULL descriptor
+            (d,    0xff), # Bad flags
         ]
 
         for fn in (wally_descriptor_canonicalize, wally_descriptor_get_checksum):
@@ -195,6 +221,40 @@ class DescriptorTests(unittest.TestCase):
                ret, out = fn(descriptor, flags)
                self.assertEqual((ret, out), (WALLY_EINVAL, None))
 
+    def test_features(self):
+        # Valid args
+        for descriptor, flags, expected in [
+            # Bip32 xpub
+            ('pkh(xpub661MyMwAqRbcFW31YEwpkMuc5THy2PSt5bDMsktWQcFF8syAmRUapSCGu8ED9W6oDMSgv6Zz8idoc4a6mr8BDzTJY47LJhkJ8UB7WEGuduB)',
+             0, MS_IS_DESCRIPTOR),
+            # Bip32 xpub with range
+            ('pkh(xpub661MyMwAqRbcFW31YEwpkMuc5THy2PSt5bDMsktWQcFF8syAmRUapSCGu8ED9W6oDMSgv6Zz8idoc4a6mr8BDzTJY47LJhkJ8UB7WEGuduB/*)',
+             0,  MS_IS_RANGED|MS_IS_DESCRIPTOR),
+            # BIP32 xprv
+            ('pkh(xprvA2YKGLieCs6cWCiczALiH1jzk3VCCS5M1pGQfWPkamCdR9UpBgE2Gb8AKAyVjKHkz8v37avcfRjdcnP19dVAmZrvZQfvTcXXSAiFNQ6tTtU/*)',
+             0, MS_IS_PRIVATE|MS_IS_RANGED|MS_IS_DESCRIPTOR),
+            # WIF
+            ('pkh(L1AAHuEC7XuDM7pJ7yHLEqYK1QspMo8n1kgxyZVdgvEpVC1rkUrM)',
+             0, MS_IS_PRIVATE|MS_IS_RAW|MS_IS_DESCRIPTOR),
+            # Hex pubkey, compressed
+            ('pk(03b428da420cd337c7208ed42c5331ebb407bb59ffbe3dc27936a227c619804284)',
+             0, MS_IS_RAW|MS_IS_DESCRIPTOR),
+            # Hex pubkey, uncompressed
+            ('pk(0414fc03b8df87cd7b872996810db8458d61da8448e531569c8517b469a119d267be5645686309c6e6736dbd93940707cc9143d3cf29f1b877ff340e2cb2d259cf)',
+             0, MS_IS_UNCOMPRESSED|MS_IS_RAW|MS_IS_DESCRIPTOR),
+            # Miniscript
+            ('j:and_v(vdv:after(1567547623),older(2016))',
+             MS_ONLY, 0),
+        ]:
+            d = c_void_p()
+            ret = wally_descriptor_parse(descriptor, None, NETWORK_NONE, flags, d)
+            ret, features = wally_descriptor_get_features(d)
+            self.assertEqual((ret, features), (WALLY_OK, expected))
+            wally_descriptor_free(d)
+
+        # Invalid args
+        ret, features = wally_descriptor_get_features(None) # NULL descriptor
+        self.assertEqual((ret, features), (WALLY_EINVAL, 0))
 
 if __name__ == '__main__':
     unittest.main()

@@ -11,24 +11,31 @@ struct wally_map;
 /** An opaque type holding a parsed minscript/descriptor expression */
 struct wally_descriptor;
 
-/* Flags for parsing miniscript/descriptors */
-#define WALLY_MINISCRIPT_WITNESS_SCRIPT   0x00 /** Witness script */
-#define WALLY_MINISCRIPT_TAPSCRIPT        0x01 /** Tapscript */
+/*** miniscript-flags Miniscript/Descriptor parsing flags */
+#define WALLY_MINISCRIPT_TAPSCRIPT        0x01 /** Tapscript, use x-only pubkeys */
 #define WALLY_MINISCRIPT_ONLY             0x02 /** Only allow miniscript (not descriptor) expressions */
 #define WALLY_MINISCRIPT_REQUIRE_CHECKSUM 0x04 /** Require a checksum to be present */
 
-#define WALLY_MS_IS_RANGED 0x01 /** Allows key ranges via '*' */
+/*** miniscript-features Miniscript/Descriptor feature flags */
+#define WALLY_MS_IS_RANGED       0x01 /** Allows key ranges via ``*`` */
+#define WALLY_MS_IS_MULTIPATH    0x02 /** Allows multiple paths via ``<a;b;c>`` */
+#define WALLY_MS_IS_PRIVATE      0x04 /** Contains at least one private key */
+#define WALLY_MS_IS_UNCOMPRESSED 0x08 /** Contains at least one uncompressed key */
+#define WALLY_MS_IS_RAW          0x10 /** Contains at least one raw key */
+#define WALLY_MS_IS_DESCRIPTOR   0x20 /** Contains only descriptor expressions (no miniscript) */
 
+/*** ms-canonicalization-flags Miniscript/Descriptor canonicalization flags */
+#define WALLY_MS_CANONICAL_NO_CHECKSUM 0x01 /** Do not include a checksum */
 
 /**
  * Parse an output descriptor or miniscript expression.
  *
  * :param descriptor: Output descriptor or miniscript expression to parse.
  * :param vars_in: Map of variable names to values, or NULL.
- * :param network: ``WALLY_NETWORK_`` constant describing the network the
- *|    descriptor belongs to, or WALLY_NETWORK_NONE for miniscript-only expressions.
- * :param flags: Include ``WALLY_MINISCRIPT_ONLY`` to disallow descriptor
- *|    expressions, ``WALLY_MINISCRIPT_TAPSCRIPT`` to use x-only pubkeys, or 0.
+ * :param network: Network the descriptor belongs to. Pass `WALLY_NETWORK_NONE`
+ *|    for miniscript-only expressions or to infer the network. Must
+ *|    be one of the :ref:`address-networks`.
+ * :param flags: :ref:`miniscript-flags`.
  * :param output: Destination for the resulting parsed descriptor.
  *|    The descriptor returned should be freed using `wally_descriptor_free`.
  *
@@ -55,7 +62,7 @@ WALLY_CORE_API int wally_descriptor_free(
  * Canonicalize a descriptor.
  *
  * :param descriptor: Parsed output descriptor or miniscript expression.
- * :param flags: For future use. Must be 0.
+ * :param flags: :ref:`ms-canonicalization-flags` controlling canonicalization.
  * :param output: Destination for the resulting canonical descriptor.
  *|    The string returned should be freed using `wally_free_string`.
  *
@@ -84,12 +91,13 @@ WALLY_CORE_API int wally_descriptor_get_checksum(
  * Get the network used in a parsed output descriptor or miniscript expression.
  *
  * :param descriptor: Parsed output descriptor or miniscript expression.
- * :param value_out: Destination for the resulting ``WALLY_NETWORK`` network.
+ * :param value_out: Destination for the resulting network, returned as one
+ *|    of the :ref:`address-networks`.
  *
- * A descriptor parsed with ``WALLY_NETWORK_NONE`` will infer its network from
+ * A descriptor parsed with `WALLY_NETWORK_NONE` will infer its network from
  * the contained key expressions. If the descriptor does not contain network
  * information (e.g. its keys are raw keys), then this function will
- * return ``WALLY_NETWORK_NONE``, and `wally_descriptor_set_network` must be
+ * return `WALLY_NETWORK_NONE`, and `wally_descriptor_set_network` must be
  * called to set a network for the descriptor before addresses can be
  * generated from it.
  */
@@ -101,10 +109,9 @@ WALLY_CORE_API int wally_descriptor_get_network(
  * set the network for a parsed output descriptor or miniscript expression.
  *
  * :param descriptor: Parsed output descriptor or miniscript expression.
- * :param network: The ``WALLY_NETWORK`` network constant describing the
- *|    network the descriptor should belong to.
+ * :param network: Network the descriptor should belong to. One of the :ref:`address-networks`.
  *
- * .. note:: The network can only be set if it is currently ``WALLY_NETWORK_NONE``.
+ * .. note:: The network can only be set if it is currently `WALLY_NETWORK_NONE`.
  */
 WALLY_CORE_API int wally_descriptor_set_network(
     struct wally_descriptor *descriptor,
@@ -114,7 +121,7 @@ WALLY_CORE_API int wally_descriptor_set_network(
  * Get the features used in a parsed output descriptor or miniscript expression.
  *
  * :param descriptor: Parsed output descriptor or miniscript expression.
- * :param value_out: Destination for the resulting ``WALLY_MS_`` feature flags.
+ * :param value_out: Destination for the resulting :ref:`miniscript-features`.
  */
 WALLY_CORE_API int wally_descriptor_get_features(
     const struct wally_descriptor *descriptor,
