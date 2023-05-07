@@ -266,6 +266,8 @@ check_include_file("sys/stat.h" HAVE_SYS_STAT_H)
 check_include_file("sys/types.h" HAVE_SYS_TYPES_H)
 check_include_file("dlfcn.h" HAVE_DLFCN_H)
 check_include_file("inttypes.h" HAVE_INTTYPES_H)
+check_include_file("mbedtls/sha256.h" HAVE_MBEDTLS_SHA256_H)
+check_include_file("mbedtls/sha512.h" HAVE_MBEDTLS_SHA512_H)
 
 if(NOT WIN32)
 TEST_BIG_ENDIAN(WORDS_BIGENDIAN)
@@ -329,6 +331,8 @@ set(ENABLE_MODULE_GENERATOR "1")
 set(ENABLE_MODULE_SCHNORRSIG "1")
 set(ENABLE_MODULE_EXTRAKEYS "1")
 set(ENABLE_MODULE_ECDSA_ADAPTOR "1")
+#set(ENABLE_MODULE_BPPP "1")
+set(ENABLE_MODULE_BPPP "0")
 
 check_cxx_source_compiles("int main() { __builtin_popcount(0); return 0;}"
   HAVE_BUILTIN_POPCOUNT)
