@@ -366,6 +366,44 @@ intgo _wrap_wally_secp_randomize_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, lo
 }
 
 
+intgo _wrap_wally_hex_verify_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0) {
+  char *arg1 = (char *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  
+  result = (int)wally_hex_verify((char const *)arg1);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_hex_n_verify_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, long long _swig_go_1) {
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  arg2 = (size_t)_swig_go_1; 
+  
+  result = (int)wally_hex_n_verify((char const *)arg1,arg2);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
 intgo _wrap_wally_hex_from_bytes_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, _gostring_* _swig_go_2) {
   unsigned char *arg1 = (unsigned char *) 0 ;
   size_t arg2 ;
@@ -406,6 +444,32 @@ intgo _wrap_wally_hex_to_bytes_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0,
   arg4 = *(size_t **)&_swig_go_3; 
   
   result = (int)wally_hex_to_bytes((char const *)arg1,arg2,arg3,arg4);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_hex_n_to_bytes_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, long long *_swig_go_4) {
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  size_t *arg5 = (size_t *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(size_t **)&_swig_go_4; 
+  
+  result = (int)wally_hex_n_to_bytes((char const *)arg1,arg2,arg3,arg4,arg5);
   _swig_go_result = result; 
   free(arg1); 
   return _swig_go_result;
@@ -476,6 +540,41 @@ intgo _wrap_wally_base58_to_bytes_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go
 }
 
 
+intgo _wrap_wally_base58_n_to_bytes_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, char *_swig_go_3, long long _swig_go_4, long long *_swig_go_5) {
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  uint32_t arg3 ;
+  unsigned char *arg4 = (unsigned char *) 0 ;
+  size_t arg5 ;
+  size_t *arg6 = (size_t *) 0 ;
+  uint32_t *argp3 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  arg2 = (size_t)_swig_go_1; 
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  arg4 = *(unsigned char **)&_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  arg6 = *(size_t **)&_swig_go_5; 
+  
+  result = (int)wally_base58_n_to_bytes((char const *)arg1,arg2,arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
 intgo _wrap_wally_base58_get_length_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, long long *_swig_go_1) {
   char *arg1 = (char *) 0 ;
   size_t *arg2 = (size_t *) 0 ;
@@ -490,6 +589,121 @@ intgo _wrap_wally_base58_get_length_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_
   arg2 = *(size_t **)&_swig_go_1; 
   
   result = (int)wally_base58_get_length((char const *)arg1,arg2);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_base58_n_get_length_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, long long _swig_go_1, long long *_swig_go_2) {
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  size_t *arg3 = (size_t *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(size_t **)&_swig_go_2; 
+  
+  result = (int)wally_base58_n_get_length((char const *)arg1,arg2,arg3);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_base64_from_bytes_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, _gostring_* _swig_go_3) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  uint32_t arg3 ;
+  char **arg4 = (char **) 0 ;
+  uint32_t *argp3 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  arg4 = *(char ***)&_swig_go_3; 
+  
+  result = (int)wally_base64_from_bytes((unsigned char const *)arg1,arg2,arg3,arg4);
+  _swig_go_result = result; 
+  {
+    if (arg4 && *arg4) {
+      _swig_go_3->n = strlen(*arg4);
+    }
+  }
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_base64_to_bytes_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, uint32_t *_swig_go_1, char *_swig_go_2, long long _swig_go_3, long long *_swig_go_4) {
+  char *arg1 = (char *) 0 ;
+  uint32_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  size_t *arg5 = (size_t *) 0 ;
+  uint32_t *argp2 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  
+  argp2 = (uint32_t *)_swig_go_1;
+  if (argp2 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg2 = (uint32_t)*argp2;
+  
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(size_t **)&_swig_go_4; 
+  
+  result = (int)wally_base64_to_bytes((char const *)arg1,arg2,arg3,arg4,arg5);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_base64_get_maximum_length_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, uint32_t *_swig_go_1, long long *_swig_go_2) {
+  char *arg1 = (char *) 0 ;
+  uint32_t arg2 ;
+  size_t *arg3 = (size_t *) 0 ;
+  uint32_t *argp2 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  
+  argp2 = (uint32_t *)_swig_go_1;
+  if (argp2 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg2 = (uint32_t)*argp2;
+  
+  arg3 = *(size_t **)&_swig_go_2; 
+  
+  result = (int)wally_base64_get_maximum_length((char const *)arg1,arg2,arg3);
   _swig_go_result = result; 
   free(arg1); 
   return _swig_go_result;
@@ -705,6 +919,51 @@ intgo _wrap_wally_sha512_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long 
 }
 
 
+intgo _wrap_wally_bip340_tagged_hash_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, _gostring_ _swig_go_2, char *_swig_go_3, long long _swig_go_4) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  char *arg3 = (char *) 0 ;
+  unsigned char *arg4 = (unsigned char *) 0 ;
+  size_t arg5 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  
+  arg3 = (char *)malloc(_swig_go_2.n + 1);
+  memcpy(arg3, _swig_go_2.p, _swig_go_2.n);
+  arg3[_swig_go_2.n] = '\0';
+  
+  arg4 = *(unsigned char **)&_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  
+  result = (int)wally_bip340_tagged_hash((unsigned char const *)arg1,arg2,(char const *)arg3,arg4,arg5);
+  _swig_go_result = result; 
+  free(arg3); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_ripemd160_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  
+  result = (int)wally_ripemd160((unsigned char const *)arg1,arg2,arg3,arg4);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
 intgo _wrap_wally_hash160_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3) {
   unsigned char *arg1 = (unsigned char *) 0 ;
   size_t arg2 ;
@@ -893,6 +1152,21 @@ intgo _wrap_wally_ec_public_key_verify_wallycore_d8a377d8fe8cbbab(char *_swig_go
 }
 
 
+intgo _wrap_wally_ec_xonly_public_key_verify_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  
+  result = (int)wally_ec_xonly_public_key_verify((unsigned char const *)arg1,arg2);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
 intgo _wrap_wally_ec_public_key_from_private_key_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3) {
   unsigned char *arg1 = (unsigned char *) 0 ;
   size_t arg2 ;
@@ -950,6 +1224,100 @@ intgo _wrap_wally_ec_public_key_negate_wallycore_d8a377d8fe8cbbab(char *_swig_go
 }
 
 
+intgo _wrap_wally_ec_public_key_bip341_tweak_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, uint32_t *_swig_go_4, char *_swig_go_5, long long _swig_go_6) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  uint32_t arg5 ;
+  unsigned char *arg6 = (unsigned char *) 0 ;
+  size_t arg7 ;
+  uint32_t *argp5 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  
+  argp5 = (uint32_t *)_swig_go_4;
+  if (argp5 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg5 = (uint32_t)*argp5;
+  
+  arg6 = *(unsigned char **)&_swig_go_5; 
+  arg7 = (size_t)_swig_go_6; 
+  
+  result = (int)wally_ec_public_key_bip341_tweak((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6,arg7);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_ec_private_key_bip341_tweak_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, uint32_t *_swig_go_4, char *_swig_go_5, long long _swig_go_6) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  uint32_t arg5 ;
+  unsigned char *arg6 = (unsigned char *) 0 ;
+  size_t arg7 ;
+  uint32_t *argp5 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  
+  argp5 = (uint32_t *)_swig_go_4;
+  if (argp5 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg5 = (uint32_t)*argp5;
+  
+  arg6 = *(unsigned char **)&_swig_go_5; 
+  arg7 = (size_t)_swig_go_6; 
+  
+  result = (int)wally_ec_private_key_bip341_tweak((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6,arg7);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_ec_sig_from_bytes_len_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, uint32_t *_swig_go_4, long long *_swig_go_5) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  uint32_t arg5 ;
+  size_t *arg6 = (size_t *) 0 ;
+  uint32_t *argp5 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  
+  argp5 = (uint32_t *)_swig_go_4;
+  if (argp5 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg5 = (uint32_t)*argp5;
+  
+  arg6 = *(size_t **)&_swig_go_5; 
+  
+  result = (int)wally_ec_sig_from_bytes_len((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
 intgo _wrap_wally_ec_sig_from_bytes_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, uint32_t *_swig_go_4, char *_swig_go_5, long long _swig_go_6) {
   unsigned char *arg1 = (unsigned char *) 0 ;
   size_t arg2 ;
@@ -977,6 +1345,76 @@ intgo _wrap_wally_ec_sig_from_bytes_wallycore_d8a377d8fe8cbbab(char *_swig_go_0,
   arg7 = (size_t)_swig_go_6; 
   
   result = (int)wally_ec_sig_from_bytes((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6,arg7);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_ec_sig_from_bytes_aux_len_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5, uint32_t *_swig_go_6, long long *_swig_go_7) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  uint32_t arg7 ;
+  size_t *arg8 = (size_t *) 0 ;
+  uint32_t *argp7 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  
+  argp7 = (uint32_t *)_swig_go_6;
+  if (argp7 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg7 = (uint32_t)*argp7;
+  
+  arg8 = *(size_t **)&_swig_go_7; 
+  
+  result = (int)wally_ec_sig_from_bytes_aux_len((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,(unsigned char const *)arg5,arg6,arg7,arg8);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_ec_sig_from_bytes_aux_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5, uint32_t *_swig_go_6, char *_swig_go_7, long long _swig_go_8) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  uint32_t arg7 ;
+  unsigned char *arg8 = (unsigned char *) 0 ;
+  size_t arg9 ;
+  uint32_t *argp7 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  
+  argp7 = (uint32_t *)_swig_go_6;
+  if (argp7 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg7 = (uint32_t)*argp7;
+  
+  arg8 = *(unsigned char **)&_swig_go_7; 
+  arg9 = (size_t)_swig_go_8; 
+  
+  result = (int)wally_ec_sig_from_bytes_aux((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,(unsigned char const *)arg5,arg6,arg7,arg8,arg9);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -1096,6 +1534,90 @@ intgo _wrap_wally_ec_sig_to_public_key_wallycore_d8a377d8fe8cbbab(char *_swig_go
 }
 
 
+intgo _wrap_wally_ec_scalar_verify_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  
+  result = (int)wally_ec_scalar_verify((unsigned char const *)arg1,arg2);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_ec_scalar_add_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  
+  result = (int)wally_ec_scalar_add((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_ec_scalar_subtract_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  
+  result = (int)wally_ec_scalar_subtract((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_ec_scalar_multiply_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  
+  result = (int)wally_ec_scalar_multiply((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
 intgo _wrap_BITCOIN_MESSAGE_MAX_LEN_wallycore_d8a377d8fe8cbbab() {
   int result;
   intgo _swig_go_result;
@@ -1155,6 +1677,78 @@ intgo _wrap_wally_ecdh_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _s
   arg6 = (size_t)_swig_go_5; 
   
   result = (int)wally_ecdh((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_s2c_sig_from_bytes_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5, uint32_t *_swig_go_6, char *_swig_go_7, long long _swig_go_8, char *_swig_go_9, long long _swig_go_10) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  uint32_t arg7 ;
+  unsigned char *arg8 = (unsigned char *) 0 ;
+  size_t arg9 ;
+  unsigned char *arg10 = (unsigned char *) 0 ;
+  size_t arg11 ;
+  uint32_t *argp7 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  
+  argp7 = (uint32_t *)_swig_go_6;
+  if (argp7 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg7 = (uint32_t)*argp7;
+  
+  arg8 = *(unsigned char **)&_swig_go_7; 
+  arg9 = (size_t)_swig_go_8; 
+  arg10 = *(unsigned char **)&_swig_go_9; 
+  arg11 = (size_t)_swig_go_10; 
+  
+  result = (int)wally_s2c_sig_from_bytes((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,(unsigned char const *)arg5,arg6,arg7,arg8,arg9,arg10,arg11);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_s2c_commitment_verify_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5, uint32_t *_swig_go_6) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  uint32_t arg7 ;
+  uint32_t *argp7 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  
+  argp7 = (uint32_t *)_swig_go_6;
+  if (argp7 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg7 = (uint32_t)*argp7;
+  
+  
+  result = (int)wally_s2c_commitment_verify((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,(unsigned char const *)arg5,arg6,arg7);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -1234,6 +1828,126 @@ intgo _wrap_wally_addr_segwit_to_bytes_wallycore_d8a377d8fe8cbbab(_gostring_ _sw
   _swig_go_result = result; 
   free(arg1); 
   free(arg2); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_addr_segwit_n_to_bytes_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, long long _swig_go_1, _gostring_ _swig_go_2, long long _swig_go_3, uint32_t *_swig_go_4, char *_swig_go_5, long long _swig_go_6, long long *_swig_go_7) {
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  char *arg3 = (char *) 0 ;
+  size_t arg4 ;
+  uint32_t arg5 ;
+  unsigned char *arg6 = (unsigned char *) 0 ;
+  size_t arg7 ;
+  size_t *arg8 = (size_t *) 0 ;
+  uint32_t *argp5 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  arg2 = (size_t)_swig_go_1; 
+  
+  arg3 = (char *)malloc(_swig_go_2.n + 1);
+  memcpy(arg3, _swig_go_2.p, _swig_go_2.n);
+  arg3[_swig_go_2.n] = '\0';
+  
+  arg4 = (size_t)_swig_go_3; 
+  
+  argp5 = (uint32_t *)_swig_go_4;
+  if (argp5 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg5 = (uint32_t)*argp5;
+  
+  arg6 = *(unsigned char **)&_swig_go_5; 
+  arg7 = (size_t)_swig_go_6; 
+  arg8 = *(size_t **)&_swig_go_7; 
+  
+  result = (int)wally_addr_segwit_n_to_bytes((char const *)arg1,arg2,(char const *)arg3,arg4,arg5,arg6,arg7,arg8);
+  _swig_go_result = result; 
+  free(arg1); 
+  free(arg3); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_addr_segwit_get_version_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, _gostring_ _swig_go_1, uint32_t *_swig_go_2, long long *_swig_go_3) {
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  uint32_t arg3 ;
+  size_t *arg4 = (size_t *) 0 ;
+  uint32_t *argp3 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  
+  arg2 = (char *)malloc(_swig_go_1.n + 1);
+  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
+  arg2[_swig_go_1.n] = '\0';
+  
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  arg4 = *(size_t **)&_swig_go_3; 
+  
+  result = (int)wally_addr_segwit_get_version((char const *)arg1,(char const *)arg2,arg3,arg4);
+  _swig_go_result = result; 
+  free(arg1); 
+  free(arg2); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_addr_segwit_n_get_version_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, long long _swig_go_1, _gostring_ _swig_go_2, long long _swig_go_3, uint32_t *_swig_go_4, long long *_swig_go_5) {
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  char *arg3 = (char *) 0 ;
+  size_t arg4 ;
+  uint32_t arg5 ;
+  size_t *arg6 = (size_t *) 0 ;
+  uint32_t *argp5 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  arg2 = (size_t)_swig_go_1; 
+  
+  arg3 = (char *)malloc(_swig_go_2.n + 1);
+  memcpy(arg3, _swig_go_2.p, _swig_go_2.n);
+  arg3[_swig_go_2.n] = '\0';
+  
+  arg4 = (size_t)_swig_go_3; 
+  
+  argp5 = (uint32_t *)_swig_go_4;
+  if (argp5 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg5 = (uint32_t)*argp5;
+  
+  arg6 = *(size_t **)&_swig_go_5; 
+  
+  result = (int)wally_addr_segwit_n_get_version((char const *)arg1,arg2,(char const *)arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  free(arg1); 
+  free(arg3); 
   return _swig_go_result;
 }
 
@@ -1779,6 +2493,66 @@ intgo _wrap_bip32_key_free_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0) {
 }
 
 
+intgo _wrap_bip32_key_init_wallycore_d8a377d8fe8cbbab(uint32_t *_swig_go_0, uint32_t *_swig_go_1, uint32_t *_swig_go_2, char *_swig_go_3, long long _swig_go_4, char *_swig_go_5, long long _swig_go_6, char *_swig_go_7, long long _swig_go_8, char *_swig_go_9, long long _swig_go_10, char *_swig_go_11, long long _swig_go_12, ext_key *_swig_go_13) {
+  uint32_t arg1 ;
+  uint32_t arg2 ;
+  uint32_t arg3 ;
+  unsigned char *arg4 = (unsigned char *) 0 ;
+  size_t arg5 ;
+  unsigned char *arg6 = (unsigned char *) 0 ;
+  size_t arg7 ;
+  unsigned char *arg8 = (unsigned char *) 0 ;
+  size_t arg9 ;
+  unsigned char *arg10 = (unsigned char *) 0 ;
+  size_t arg11 ;
+  unsigned char *arg12 = (unsigned char *) 0 ;
+  size_t arg13 ;
+  ext_key *arg14 = (ext_key *) 0 ;
+  uint32_t *argp1 ;
+  uint32_t *argp2 ;
+  uint32_t *argp3 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  argp1 = (uint32_t *)_swig_go_0;
+  if (argp1 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg1 = (uint32_t)*argp1;
+  
+  
+  argp2 = (uint32_t *)_swig_go_1;
+  if (argp2 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg2 = (uint32_t)*argp2;
+  
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  arg4 = *(unsigned char **)&_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  arg6 = *(unsigned char **)&_swig_go_5; 
+  arg7 = (size_t)_swig_go_6; 
+  arg8 = *(unsigned char **)&_swig_go_7; 
+  arg9 = (size_t)_swig_go_8; 
+  arg10 = *(unsigned char **)&_swig_go_9; 
+  arg11 = (size_t)_swig_go_10; 
+  arg12 = *(unsigned char **)&_swig_go_11; 
+  arg13 = (size_t)_swig_go_12; 
+  arg14 = *(ext_key **)&_swig_go_13; 
+  
+  result = (int)bip32_key_init(arg1,arg2,arg3,(unsigned char const *)arg4,arg5,(unsigned char const *)arg6,arg7,(unsigned char const *)arg8,arg9,(unsigned char const *)arg10,arg11,(unsigned char const *)arg12,arg13,arg14);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
 intgo _wrap_bip32_key_init_alloc_wallycore_d8a377d8fe8cbbab(uint32_t *_swig_go_0, uint32_t *_swig_go_1, uint32_t *_swig_go_2, char *_swig_go_3, long long _swig_go_4, char *_swig_go_5, long long _swig_go_6, char *_swig_go_7, long long _swig_go_8, char *_swig_go_9, long long _swig_go_10, char *_swig_go_11, long long _swig_go_12, ext_key **_swig_go_13) {
   uint32_t arg1 ;
   uint32_t arg2 ;
@@ -1839,7 +2613,120 @@ intgo _wrap_bip32_key_init_alloc_wallycore_d8a377d8fe8cbbab(uint32_t *_swig_go_0
 }
 
 
-intgo _wrap_bip32_key_from_seed_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, uint32_t *_swig_go_3, ext_key **_swig_go_4) {
+intgo _wrap_bip32_key_from_seed_custom_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, char *_swig_go_3, long long _swig_go_4, uint32_t *_swig_go_5, ext_key *_swig_go_6) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  uint32_t arg3 ;
+  unsigned char *arg4 = (unsigned char *) 0 ;
+  size_t arg5 ;
+  uint32_t arg6 ;
+  ext_key *arg7 = (ext_key *) 0 ;
+  uint32_t *argp3 ;
+  uint32_t *argp6 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  arg4 = *(unsigned char **)&_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  
+  argp6 = (uint32_t *)_swig_go_5;
+  if (argp6 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg6 = (uint32_t)*argp6;
+  
+  arg7 = *(ext_key **)&_swig_go_6; 
+  
+  result = (int)bip32_key_from_seed_custom((unsigned char const *)arg1,arg2,arg3,(unsigned char const *)arg4,arg5,arg6,arg7);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_from_seed__SWIG_0_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, uint32_t *_swig_go_3, ext_key *_swig_go_4) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  uint32_t arg3 ;
+  uint32_t arg4 ;
+  ext_key *arg5 = (ext_key *) 0 ;
+  uint32_t *argp3 ;
+  uint32_t *argp4 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  
+  argp4 = (uint32_t *)_swig_go_3;
+  if (argp4 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg4 = (uint32_t)*argp4;
+  
+  arg5 = *(ext_key **)&_swig_go_4; 
+  
+  result = (int)bip32_key_from_seed((unsigned char const *)arg1,arg2,arg3,arg4,arg5);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_from_seed_custom_alloc_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, char *_swig_go_3, long long _swig_go_4, uint32_t *_swig_go_5, ext_key **_swig_go_6) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  uint32_t arg3 ;
+  unsigned char *arg4 = (unsigned char *) 0 ;
+  size_t arg5 ;
+  uint32_t arg6 ;
+  ext_key **arg7 = (ext_key **) 0 ;
+  uint32_t *argp3 ;
+  uint32_t *argp6 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  arg4 = *(unsigned char **)&_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  
+  argp6 = (uint32_t *)_swig_go_5;
+  if (argp6 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg6 = (uint32_t)*argp6;
+  
+  arg7 = *(ext_key ***)&_swig_go_6; 
+  
+  result = (int)bip32_key_from_seed_custom_alloc((unsigned char const *)arg1,arg2,arg3,(unsigned char const *)arg4,arg5,arg6,arg7);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_from_seed__SWIG_1_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, uint32_t *_swig_go_3, ext_key **_swig_go_4) {
   unsigned char *arg1 = (unsigned char *) 0 ;
   size_t arg2 ;
   uint32_t arg3 ;
@@ -1900,7 +2787,24 @@ intgo _wrap_bip32_key_serialize_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, 
 }
 
 
-intgo _wrap_bip32_key_unserialize_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, ext_key **_swig_go_2) {
+intgo _wrap_bip32_key_unserialize__SWIG_0_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, ext_key *_swig_go_2) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  ext_key *arg3 = (ext_key *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(ext_key **)&_swig_go_2; 
+  
+  result = (int)bip32_key_unserialize((unsigned char const *)arg1,arg2,arg3);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_unserialize__SWIG_1_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, ext_key **_swig_go_2) {
   unsigned char *arg1 = (unsigned char *) 0 ;
   size_t arg2 ;
   ext_key **arg3 = (ext_key **) 0 ;
@@ -1917,7 +2821,40 @@ intgo _wrap_bip32_key_unserialize_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, l
 }
 
 
-intgo _wrap_bip32_key_from_parent_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, uint32_t *_swig_go_1, uint32_t *_swig_go_2, ext_key **_swig_go_3) {
+intgo _wrap_bip32_key_from_parent__SWIG_0_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, uint32_t *_swig_go_1, uint32_t *_swig_go_2, ext_key *_swig_go_3) {
+  ext_key *arg1 = (ext_key *) 0 ;
+  uint32_t arg2 ;
+  uint32_t arg3 ;
+  ext_key *arg4 = (ext_key *) 0 ;
+  uint32_t *argp2 ;
+  uint32_t *argp3 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(ext_key **)&_swig_go_0; 
+  
+  argp2 = (uint32_t *)_swig_go_1;
+  if (argp2 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg2 = (uint32_t)*argp2;
+  
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  arg4 = *(ext_key **)&_swig_go_3; 
+  
+  result = (int)bip32_key_from_parent((ext_key const *)arg1,arg2,arg3,arg4);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_from_parent__SWIG_1_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, uint32_t *_swig_go_1, uint32_t *_swig_go_2, ext_key **_swig_go_3) {
   ext_key *arg1 = (ext_key *) 0 ;
   uint32_t arg2 ;
   uint32_t arg3 ;
@@ -1950,7 +2887,35 @@ intgo _wrap_bip32_key_from_parent_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0
 }
 
 
-intgo _wrap_bip32_key_from_parent_path_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, uint32_t *_swig_go_1, long long _swig_go_2, uint32_t *_swig_go_3, ext_key **_swig_go_4) {
+intgo _wrap_bip32_key_from_parent_path__SWIG_0_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, uint32_t *_swig_go_1, long long _swig_go_2, uint32_t *_swig_go_3, ext_key *_swig_go_4) {
+  ext_key *arg1 = (ext_key *) 0 ;
+  uint32_t *arg2 = (uint32_t *) 0 ;
+  size_t arg3 ;
+  uint32_t arg4 ;
+  ext_key *arg5 = (ext_key *) 0 ;
+  uint32_t *argp4 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(ext_key **)&_swig_go_0; 
+  arg2 = *(uint32_t **)&_swig_go_1; 
+  arg3 = (size_t)_swig_go_2; 
+  
+  argp4 = (uint32_t *)_swig_go_3;
+  if (argp4 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg4 = (uint32_t)*argp4;
+  
+  arg5 = *(ext_key **)&_swig_go_4; 
+  
+  result = (int)bip32_key_from_parent_path((ext_key const *)arg1,(uint32_t const *)arg2,arg3,arg4,arg5);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_from_parent_path__SWIG_1_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, uint32_t *_swig_go_1, long long _swig_go_2, uint32_t *_swig_go_3, ext_key **_swig_go_4) {
   ext_key *arg1 = (ext_key *) 0 ;
   uint32_t *arg2 = (uint32_t *) 0 ;
   size_t arg3 ;
@@ -1973,6 +2938,198 @@ intgo _wrap_bip32_key_from_parent_path_wallycore_d8a377d8fe8cbbab(ext_key *_swig
   arg5 = *(ext_key ***)&_swig_go_4; 
   
   result = (int)bip32_key_from_parent_path_alloc((ext_key const *)arg1,(uint32_t const *)arg2,arg3,arg4,arg5);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_from_parent_path_str_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, _gostring_ _swig_go_1, uint32_t *_swig_go_2, uint32_t *_swig_go_3, ext_key *_swig_go_4) {
+  ext_key *arg1 = (ext_key *) 0 ;
+  char *arg2 = (char *) 0 ;
+  uint32_t arg3 ;
+  uint32_t arg4 ;
+  ext_key *arg5 = (ext_key *) 0 ;
+  uint32_t *argp3 ;
+  uint32_t *argp4 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(ext_key **)&_swig_go_0; 
+  
+  arg2 = (char *)malloc(_swig_go_1.n + 1);
+  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
+  arg2[_swig_go_1.n] = '\0';
+  
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  
+  argp4 = (uint32_t *)_swig_go_3;
+  if (argp4 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg4 = (uint32_t)*argp4;
+  
+  arg5 = *(ext_key **)&_swig_go_4; 
+  
+  result = (int)bip32_key_from_parent_path_str((ext_key const *)arg1,(char const *)arg2,arg3,arg4,arg5);
+  _swig_go_result = result; 
+  free(arg2); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_from_parent_path_str_n_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, _gostring_ _swig_go_1, long long _swig_go_2, uint32_t *_swig_go_3, uint32_t *_swig_go_4, ext_key *_swig_go_5) {
+  ext_key *arg1 = (ext_key *) 0 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  uint32_t arg4 ;
+  uint32_t arg5 ;
+  ext_key *arg6 = (ext_key *) 0 ;
+  uint32_t *argp4 ;
+  uint32_t *argp5 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(ext_key **)&_swig_go_0; 
+  
+  arg2 = (char *)malloc(_swig_go_1.n + 1);
+  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
+  arg2[_swig_go_1.n] = '\0';
+  
+  arg3 = (size_t)_swig_go_2; 
+  
+  argp4 = (uint32_t *)_swig_go_3;
+  if (argp4 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg4 = (uint32_t)*argp4;
+  
+  
+  argp5 = (uint32_t *)_swig_go_4;
+  if (argp5 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg5 = (uint32_t)*argp5;
+  
+  arg6 = *(ext_key **)&_swig_go_5; 
+  
+  result = (int)bip32_key_from_parent_path_str_n((ext_key const *)arg1,(char const *)arg2,arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  free(arg2); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_from_parent_path_str_alloc_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, _gostring_ _swig_go_1, uint32_t *_swig_go_2, uint32_t *_swig_go_3, ext_key **_swig_go_4) {
+  ext_key *arg1 = (ext_key *) 0 ;
+  char *arg2 = (char *) 0 ;
+  uint32_t arg3 ;
+  uint32_t arg4 ;
+  ext_key **arg5 = (ext_key **) 0 ;
+  uint32_t *argp3 ;
+  uint32_t *argp4 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(ext_key **)&_swig_go_0; 
+  
+  arg2 = (char *)malloc(_swig_go_1.n + 1);
+  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
+  arg2[_swig_go_1.n] = '\0';
+  
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  
+  argp4 = (uint32_t *)_swig_go_3;
+  if (argp4 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg4 = (uint32_t)*argp4;
+  
+  arg5 = *(ext_key ***)&_swig_go_4; 
+  
+  result = (int)bip32_key_from_parent_path_str_alloc((ext_key const *)arg1,(char const *)arg2,arg3,arg4,arg5);
+  _swig_go_result = result; 
+  free(arg2); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_from_parent_path_str_n_alloc_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, _gostring_ _swig_go_1, long long _swig_go_2, uint32_t *_swig_go_3, uint32_t *_swig_go_4, ext_key **_swig_go_5) {
+  ext_key *arg1 = (ext_key *) 0 ;
+  char *arg2 = (char *) 0 ;
+  size_t arg3 ;
+  uint32_t arg4 ;
+  uint32_t arg5 ;
+  ext_key **arg6 = (ext_key **) 0 ;
+  uint32_t *argp4 ;
+  uint32_t *argp5 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(ext_key **)&_swig_go_0; 
+  
+  arg2 = (char *)malloc(_swig_go_1.n + 1);
+  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
+  arg2[_swig_go_1.n] = '\0';
+  
+  arg3 = (size_t)_swig_go_2; 
+  
+  argp4 = (uint32_t *)_swig_go_3;
+  if (argp4 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg4 = (uint32_t)*argp4;
+  
+  
+  argp5 = (uint32_t *)_swig_go_4;
+  if (argp5 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg5 = (uint32_t)*argp5;
+  
+  arg6 = *(ext_key ***)&_swig_go_5; 
+  
+  result = (int)bip32_key_from_parent_path_str_n_alloc((ext_key const *)arg1,(char const *)arg2,arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  free(arg2); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_with_tweak_from_parent_path_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, uint32_t *_swig_go_1, long long _swig_go_2, uint32_t *_swig_go_3, ext_key *_swig_go_4) {
+  ext_key *arg1 = (ext_key *) 0 ;
+  uint32_t *arg2 = (uint32_t *) 0 ;
+  size_t arg3 ;
+  uint32_t arg4 ;
+  ext_key *arg5 = (ext_key *) 0 ;
+  uint32_t *argp4 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(ext_key **)&_swig_go_0; 
+  arg2 = *(uint32_t **)&_swig_go_1; 
+  arg3 = (size_t)_swig_go_2; 
+  
+  argp4 = (uint32_t *)_swig_go_3;
+  if (argp4 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg4 = (uint32_t)*argp4;
+  
+  arg5 = *(ext_key **)&_swig_go_4; 
+  
+  result = (int)bip32_key_with_tweak_from_parent_path((ext_key const *)arg1,(uint32_t const *)arg2,arg3,arg4,arg5);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -2035,7 +3192,49 @@ intgo _wrap_bip32_key_to_base58_wallycore_d8a377d8fe8cbbab(ext_key *_swig_go_0, 
 }
 
 
-intgo _wrap_bip32_key_from_base58_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, ext_key **_swig_go_1) {
+intgo _wrap_bip32_key_from_base58__SWIG_0_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, ext_key *_swig_go_1) {
+  char *arg1 = (char *) 0 ;
+  ext_key *arg2 = (ext_key *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  arg2 = *(ext_key **)&_swig_go_1; 
+  
+  result = (int)bip32_key_from_base58((char const *)arg1,arg2);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_from_base58_n_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, long long _swig_go_1, ext_key *_swig_go_2) {
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  ext_key *arg3 = (ext_key *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(ext_key **)&_swig_go_2; 
+  
+  result = (int)bip32_key_from_base58_n((char const *)arg1,arg2,arg3);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_from_base58__SWIG_1_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, ext_key **_swig_go_1) {
   char *arg1 = (char *) 0 ;
   ext_key **arg2 = (ext_key **) 0 ;
   int result;
@@ -2049,6 +3248,28 @@ intgo _wrap_bip32_key_from_base58_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go
   arg2 = *(ext_key ***)&_swig_go_1; 
   
   result = (int)bip32_key_from_base58_alloc((char const *)arg1,arg2);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_key_from_base58_n_alloc_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, long long _swig_go_1, ext_key **_swig_go_2) {
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  ext_key **arg3 = (ext_key **) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(ext_key ***)&_swig_go_2; 
+  
+  result = (int)bip32_key_from_base58_n_alloc((char const *)arg1,arg2,arg3);
   _swig_go_result = result; 
   free(arg1); 
   return _swig_go_result;
@@ -2081,6 +3302,166 @@ intgo _wrap_bip32_key_get_fingerprint_wallycore_d8a377d8fe8cbbab(ext_key *_swig_
   
   result = (int)bip32_key_get_fingerprint(arg1,arg2,arg3);
   _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_path_from_str_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, uint32_t *_swig_go_1, uint32_t *_swig_go_2, uint32_t *_swig_go_3, uint32_t *_swig_go_4, uint32_t *_swig_go_5, long long *_swig_go_6) {
+  char *arg1 = (char *) 0 ;
+  uint32_t arg2 ;
+  uint32_t arg3 ;
+  uint32_t arg4 ;
+  uint32_t *arg5 = (uint32_t *) 0 ;
+  uint32_t arg6 ;
+  size_t *arg7 = (size_t *) 0 ;
+  uint32_t *argp2 ;
+  uint32_t *argp3 ;
+  uint32_t *argp4 ;
+  uint32_t *argp6 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  
+  argp2 = (uint32_t *)_swig_go_1;
+  if (argp2 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg2 = (uint32_t)*argp2;
+  
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  
+  argp4 = (uint32_t *)_swig_go_3;
+  if (argp4 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg4 = (uint32_t)*argp4;
+  
+  arg5 = *(uint32_t **)&_swig_go_4; 
+  
+  argp6 = (uint32_t *)_swig_go_5;
+  if (argp6 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg6 = (uint32_t)*argp6;
+  
+  arg7 = *(size_t **)&_swig_go_6; 
+  
+  result = (int)bip32_path_from_str((char const *)arg1,arg2,arg3,arg4,arg5,arg6,arg7);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_path_from_str_n_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, uint32_t *_swig_go_3, uint32_t *_swig_go_4, uint32_t *_swig_go_5, uint32_t *_swig_go_6, long long *_swig_go_7) {
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  uint32_t arg3 ;
+  uint32_t arg4 ;
+  uint32_t arg5 ;
+  uint32_t *arg6 = (uint32_t *) 0 ;
+  uint32_t arg7 ;
+  size_t *arg8 = (size_t *) 0 ;
+  uint32_t *argp3 ;
+  uint32_t *argp4 ;
+  uint32_t *argp5 ;
+  uint32_t *argp7 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  arg2 = (size_t)_swig_go_1; 
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  
+  argp4 = (uint32_t *)_swig_go_3;
+  if (argp4 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg4 = (uint32_t)*argp4;
+  
+  
+  argp5 = (uint32_t *)_swig_go_4;
+  if (argp5 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg5 = (uint32_t)*argp5;
+  
+  arg6 = *(uint32_t **)&_swig_go_5; 
+  
+  argp7 = (uint32_t *)_swig_go_6;
+  if (argp7 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg7 = (uint32_t)*argp7;
+  
+  arg8 = *(size_t **)&_swig_go_7; 
+  
+  result = (int)bip32_path_from_str_n((char const *)arg1,arg2,arg3,arg4,arg5,arg6,arg7,arg8);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_path_str_get_features_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, uint32_t *_swig_go_1) {
+  char *arg1 = (char *) 0 ;
+  uint32_t *arg2 = (uint32_t *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  arg2 = *(uint32_t **)&_swig_go_1; 
+  
+  result = (int)bip32_path_str_get_features((char const *)arg1,arg2);
+  _swig_go_result = result; 
+  free(arg1); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip32_path_str_n_get_features_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2) {
+  char *arg1 = (char *) 0 ;
+  size_t arg2 ;
+  uint32_t *arg3 = (uint32_t *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(uint32_t **)&_swig_go_2; 
+  
+  result = (int)bip32_path_str_n_get_features((char const *)arg1,arg2,arg3);
+  _swig_go_result = result; 
+  free(arg1); 
   return _swig_go_result;
 }
 
@@ -2239,6 +3620,35 @@ intgo _wrap_bip39_mnemonic_to_seed_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_g
   arg5 = *(size_t **)&_swig_go_4; 
   
   result = (int)bip39_mnemonic_to_seed((char const *)arg1,(char const *)arg2,arg3,arg4,arg5);
+  _swig_go_result = result; 
+  free(arg1); 
+  free(arg2); 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_bip39_mnemonic_to_seed512_wallycore_d8a377d8fe8cbbab(_gostring_ _swig_go_0, _gostring_ _swig_go_1, char *_swig_go_2, long long _swig_go_3) {
+  char *arg1 = (char *) 0 ;
+  char *arg2 = (char *) 0 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  arg1 = (char *)malloc(_swig_go_0.n + 1);
+  memcpy(arg1, _swig_go_0.p, _swig_go_0.n);
+  arg1[_swig_go_0.n] = '\0';
+  
+  
+  arg2 = (char *)malloc(_swig_go_1.n + 1);
+  memcpy(arg2, _swig_go_1.p, _swig_go_1.n);
+  arg2[_swig_go_1.n] = '\0';
+  
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  
+  result = (int)bip39_mnemonic_to_seed512((char const *)arg1,(char const *)arg2,arg3,arg4);
   _swig_go_result = result; 
   free(arg1); 
   free(arg2); 
@@ -2447,6 +3857,32 @@ intgo _wrap_wally_tx_input_free_wallycore_d8a377d8fe8cbbab(wally_tx_input *_swig
 }
 
 
+intgo _wrap_wally_tx_output_init_wallycore_d8a377d8fe8cbbab(uint64_t *_swig_go_0, char *_swig_go_1, long long _swig_go_2, wally_tx_output *_swig_go_3) {
+  uint64_t arg1 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  size_t arg3 ;
+  wally_tx_output *arg4 = (wally_tx_output *) 0 ;
+  uint64_t *argp1 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  argp1 = (uint64_t *)_swig_go_0;
+  if (argp1 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint64_t");
+  }
+  arg1 = (uint64_t)*argp1;
+  
+  arg2 = *(unsigned char **)&_swig_go_1; 
+  arg3 = (size_t)_swig_go_2; 
+  arg4 = *(wally_tx_output **)&_swig_go_3; 
+  
+  result = (int)wally_tx_output_init(arg1,(unsigned char const *)arg2,arg3,arg4);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
 intgo _wrap_wally_tx_output_init_alloc_wallycore_d8a377d8fe8cbbab(uint64_t *_swig_go_0, char *_swig_go_1, long long _swig_go_2, wally_tx_output **_swig_go_3) {
   uint64_t arg1 ;
   unsigned char *arg2 = (unsigned char *) 0 ;
@@ -2483,6 +3919,21 @@ intgo _wrap_wally_tx_output_clone_alloc_wallycore_d8a377d8fe8cbbab(wally_tx_outp
   arg2 = *(wally_tx_output ***)&_swig_go_1; 
   
   result = (int)wally_tx_output_clone_alloc((wally_tx_output const *)arg1,arg2);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_tx_output_clone_wallycore_d8a377d8fe8cbbab(wally_tx_output *_swig_go_0, wally_tx_output *_swig_go_1) {
+  wally_tx_output *arg1 = (wally_tx_output *) 0 ;
+  wally_tx_output *arg2 = (wally_tx_output *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(wally_tx_output **)&_swig_go_0; 
+  arg2 = *(wally_tx_output **)&_swig_go_1; 
+  
+  result = (int)wally_tx_output_clone((wally_tx_output const *)arg1,arg2);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -2937,6 +4388,50 @@ intgo _wrap_wally_tx_get_txid_wallycore_d8a377d8fe8cbbab(wally_tx *_swig_go_0, c
 }
 
 
+intgo _wrap_wally_get_hash_prevouts_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  uint32_t *arg3 = (uint32_t *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(uint32_t **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  
+  result = (int)wally_get_hash_prevouts((unsigned char const *)arg1,arg2,(uint32_t const *)arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_tx_get_hash_prevouts_wallycore_d8a377d8fe8cbbab(wally_tx *_swig_go_0, long long _swig_go_1, long long _swig_go_2, char *_swig_go_3, long long _swig_go_4) {
+  wally_tx *arg1 = (wally_tx *) 0 ;
+  size_t arg2 ;
+  size_t arg3 ;
+  unsigned char *arg4 = (unsigned char *) 0 ;
+  size_t arg5 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(wally_tx **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = (size_t)_swig_go_2; 
+  arg4 = *(unsigned char **)&_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  
+  result = (int)wally_tx_get_hash_prevouts((wally_tx const *)arg1,arg2,arg3,arg4,arg5);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
 intgo _wrap_wally_tx_get_length_wallycore_d8a377d8fe8cbbab(wally_tx *_swig_go_0, uint32_t *_swig_go_1, long long *_swig_go_2) {
   wally_tx *arg1 = (wally_tx *) 0 ;
   uint32_t arg2 ;
@@ -3178,6 +4673,75 @@ intgo _wrap_wally_tx_get_btc_signature_hash_wallycore_d8a377d8fe8cbbab(wally_tx 
   arg9 = (size_t)_swig_go_8; 
   
   result = (int)wally_tx_get_btc_signature_hash((wally_tx const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6,arg7,arg8,arg9);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_tx_get_btc_taproot_signature_hash_wallycore_d8a377d8fe8cbbab(wally_tx *_swig_go_0, long long _swig_go_1, wally_map *_swig_go_2, uint64_t *_swig_go_3, long long _swig_go_4, char *_swig_go_5, long long _swig_go_6, uint32_t *_swig_go_7, uint32_t *_swig_go_8, char *_swig_go_9, long long _swig_go_10, uint32_t *_swig_go_11, uint32_t *_swig_go_12, char *_swig_go_13, long long _swig_go_14) {
+  wally_tx *arg1 = (wally_tx *) 0 ;
+  size_t arg2 ;
+  wally_map *arg3 = (wally_map *) 0 ;
+  uint64_t *arg4 = (uint64_t *) 0 ;
+  size_t arg5 ;
+  unsigned char *arg6 = (unsigned char *) 0 ;
+  size_t arg7 ;
+  uint32_t arg8 ;
+  uint32_t arg9 ;
+  unsigned char *arg10 = (unsigned char *) 0 ;
+  size_t arg11 ;
+  uint32_t arg12 ;
+  uint32_t arg13 ;
+  unsigned char *arg14 = (unsigned char *) 0 ;
+  size_t arg15 ;
+  uint32_t *argp8 ;
+  uint32_t *argp9 ;
+  uint32_t *argp12 ;
+  uint32_t *argp13 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(wally_tx **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(wally_map **)&_swig_go_2; 
+  arg4 = *(uint64_t **)&_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  arg6 = *(unsigned char **)&_swig_go_5; 
+  arg7 = (size_t)_swig_go_6; 
+  
+  argp8 = (uint32_t *)_swig_go_7;
+  if (argp8 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg8 = (uint32_t)*argp8;
+  
+  
+  argp9 = (uint32_t *)_swig_go_8;
+  if (argp9 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg9 = (uint32_t)*argp9;
+  
+  arg10 = *(unsigned char **)&_swig_go_9; 
+  arg11 = (size_t)_swig_go_10; 
+  
+  argp12 = (uint32_t *)_swig_go_11;
+  if (argp12 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg12 = (uint32_t)*argp12;
+  
+  
+  argp13 = (uint32_t *)_swig_go_12;
+  if (argp13 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg13 = (uint32_t)*argp13;
+  
+  arg14 = *(unsigned char **)&_swig_go_13; 
+  arg15 = (size_t)_swig_go_14; 
+  
+  result = (int)wally_tx_get_btc_taproot_signature_hash((wally_tx const *)arg1,arg2,(wally_map const *)arg3,(uint64_t const *)arg4,arg5,(unsigned char const *)arg6,arg7,arg8,arg9,(unsigned char const *)arg10,arg11,arg12,arg13,arg14,arg15);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -3443,6 +5007,43 @@ intgo _wrap_wally_tx_elements_output_commitment_free_wallycore_d8a377d8fe8cbbab(
   arg1 = *(wally_tx_output **)&_swig_go_0; 
   
   result = (int)wally_tx_elements_output_commitment_free(arg1);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_tx_elements_output_init_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5, char *_swig_go_6, long long _swig_go_7, char *_swig_go_8, long long _swig_go_9, char *_swig_go_10, long long _swig_go_11, wally_tx_output *_swig_go_12) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  unsigned char *arg7 = (unsigned char *) 0 ;
+  size_t arg8 ;
+  unsigned char *arg9 = (unsigned char *) 0 ;
+  size_t arg10 ;
+  unsigned char *arg11 = (unsigned char *) 0 ;
+  size_t arg12 ;
+  wally_tx_output *arg13 = (wally_tx_output *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  arg7 = *(unsigned char **)&_swig_go_6; 
+  arg8 = (size_t)_swig_go_7; 
+  arg9 = *(unsigned char **)&_swig_go_8; 
+  arg10 = (size_t)_swig_go_9; 
+  arg11 = *(unsigned char **)&_swig_go_10; 
+  arg12 = (size_t)_swig_go_11; 
+  arg13 = *(wally_tx_output **)&_swig_go_12; 
+  
+  result = (int)wally_tx_elements_output_init((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,(unsigned char const *)arg5,arg6,(unsigned char const *)arg7,arg8,(unsigned char const *)arg9,arg10,(unsigned char const *)arg11,arg12,arg13);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -3950,6 +5551,29 @@ intgo _wrap_wally_asset_generator_from_bytes_wallycore_d8a377d8fe8cbbab(char *_s
 }
 
 
+intgo _wrap_wally_ecdh_nonce_hash_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  
+  result = (int)wally_ecdh_nonce_hash((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
 intgo _wrap_wally_asset_final_vbf_wallycore_d8a377d8fe8cbbab(uint64_t *_swig_go_0, long long _swig_go_1, long long _swig_go_2, char *_swig_go_3, long long _swig_go_4, char *_swig_go_5, long long _swig_go_6, char *_swig_go_7, long long _swig_go_8) {
   uint64_t *arg1 = (uint64_t *) 0 ;
   size_t arg2 ;
@@ -3974,6 +5598,38 @@ intgo _wrap_wally_asset_final_vbf_wallycore_d8a377d8fe8cbbab(uint64_t *_swig_go_
   arg9 = (size_t)_swig_go_8; 
   
   result = (int)wally_asset_final_vbf((uint64_t const *)arg1,arg2,arg3,(unsigned char const *)arg4,arg5,(unsigned char const *)arg6,arg7,arg8,arg9);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_asset_scalar_offset_wallycore_d8a377d8fe8cbbab(uint64_t *_swig_go_0, char *_swig_go_1, long long _swig_go_2, char *_swig_go_3, long long _swig_go_4, char *_swig_go_5, long long _swig_go_6) {
+  uint64_t arg1 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  size_t arg3 ;
+  unsigned char *arg4 = (unsigned char *) 0 ;
+  size_t arg5 ;
+  unsigned char *arg6 = (unsigned char *) 0 ;
+  size_t arg7 ;
+  uint64_t *argp1 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  argp1 = (uint64_t *)_swig_go_0;
+  if (argp1 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint64_t");
+  }
+  arg1 = (uint64_t)*argp1;
+  
+  arg2 = *(unsigned char **)&_swig_go_1; 
+  arg3 = (size_t)_swig_go_2; 
+  arg4 = *(unsigned char **)&_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  arg6 = *(unsigned char **)&_swig_go_5; 
+  arg7 = (size_t)_swig_go_6; 
+  
+  result = (int)wally_asset_scalar_offset(arg1,(unsigned char const *)arg2,arg3,(unsigned char const *)arg4,arg5,arg6,arg7);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -4006,6 +5662,30 @@ intgo _wrap_wally_asset_value_commitment_wallycore_d8a377d8fe8cbbab(uint64_t *_s
   arg7 = (size_t)_swig_go_6; 
   
   result = (int)wally_asset_value_commitment(arg1,(unsigned char const *)arg2,arg3,(unsigned char const *)arg4,arg5,arg6,arg7);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_asset_rangeproof_get_maximum_len_wallycore_d8a377d8fe8cbbab(uint64_t *_swig_go_0, intgo _swig_go_1, long long *_swig_go_2) {
+  uint64_t arg1 ;
+  int arg2 ;
+  size_t *arg3 = (size_t *) 0 ;
+  uint64_t *argp1 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  argp1 = (uint64_t *)_swig_go_0;
+  if (argp1 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint64_t");
+  }
+  arg1 = (uint64_t)*argp1;
+  
+  arg2 = (int)_swig_go_1; 
+  arg3 = *(size_t **)&_swig_go_2; 
+  
+  result = (int)wally_asset_rangeproof_get_maximum_len(arg1,arg2,arg3);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -4149,6 +5829,80 @@ intgo _wrap_wally_asset_rangeproof_wallycore_d8a377d8fe8cbbab(uint64_t *_swig_go
 }
 
 
+intgo _wrap_wally_explicit_rangeproof_wallycore_d8a377d8fe8cbbab(uint64_t *_swig_go_0, char *_swig_go_1, long long _swig_go_2, char *_swig_go_3, long long _swig_go_4, char *_swig_go_5, long long _swig_go_6, char *_swig_go_7, long long _swig_go_8, char *_swig_go_9, long long _swig_go_10, long long *_swig_go_11) {
+  uint64_t arg1 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  size_t arg3 ;
+  unsigned char *arg4 = (unsigned char *) 0 ;
+  size_t arg5 ;
+  unsigned char *arg6 = (unsigned char *) 0 ;
+  size_t arg7 ;
+  unsigned char *arg8 = (unsigned char *) 0 ;
+  size_t arg9 ;
+  unsigned char *arg10 = (unsigned char *) 0 ;
+  size_t arg11 ;
+  size_t *arg12 = (size_t *) 0 ;
+  uint64_t *argp1 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  argp1 = (uint64_t *)_swig_go_0;
+  if (argp1 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint64_t");
+  }
+  arg1 = (uint64_t)*argp1;
+  
+  arg2 = *(unsigned char **)&_swig_go_1; 
+  arg3 = (size_t)_swig_go_2; 
+  arg4 = *(unsigned char **)&_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  arg6 = *(unsigned char **)&_swig_go_5; 
+  arg7 = (size_t)_swig_go_6; 
+  arg8 = *(unsigned char **)&_swig_go_7; 
+  arg9 = (size_t)_swig_go_8; 
+  arg10 = *(unsigned char **)&_swig_go_9; 
+  arg11 = (size_t)_swig_go_10; 
+  arg12 = *(size_t **)&_swig_go_11; 
+  
+  result = (int)wally_explicit_rangeproof(arg1,(unsigned char const *)arg2,arg3,(unsigned char const *)arg4,arg5,(unsigned char const *)arg6,arg7,(unsigned char const *)arg8,arg9,arg10,arg11,arg12);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_explicit_rangeproof_verify_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint64_t *_swig_go_2, char *_swig_go_3, long long _swig_go_4, char *_swig_go_5, long long _swig_go_6) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  uint64_t arg3 ;
+  unsigned char *arg4 = (unsigned char *) 0 ;
+  size_t arg5 ;
+  unsigned char *arg6 = (unsigned char *) 0 ;
+  size_t arg7 ;
+  uint64_t *argp3 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  
+  argp3 = (uint64_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint64_t");
+  }
+  arg3 = (uint64_t)*argp3;
+  
+  arg4 = *(unsigned char **)&_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  arg6 = *(unsigned char **)&_swig_go_5; 
+  arg7 = (size_t)_swig_go_6; 
+  
+  result = (int)wally_explicit_rangeproof_verify((unsigned char const *)arg1,arg2,arg3,(unsigned char const *)arg4,arg5,(unsigned char const *)arg6,arg7);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
 intgo _wrap_wally_asset_surjectionproof_size_wallycore_d8a377d8fe8cbbab(long long _swig_go_0, long long *_swig_go_1) {
   size_t arg1 ;
   size_t *arg2 = (size_t *) 0 ;
@@ -4159,6 +5913,47 @@ intgo _wrap_wally_asset_surjectionproof_size_wallycore_d8a377d8fe8cbbab(long lon
   arg2 = *(size_t **)&_swig_go_1; 
   
   result = (int)wally_asset_surjectionproof_size(arg1,arg2);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_asset_surjectionproof_len_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5, char *_swig_go_6, long long _swig_go_7, char *_swig_go_8, long long _swig_go_9, char *_swig_go_10, long long _swig_go_11, char *_swig_go_12, long long _swig_go_13, long long *_swig_go_14) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  unsigned char *arg7 = (unsigned char *) 0 ;
+  size_t arg8 ;
+  unsigned char *arg9 = (unsigned char *) 0 ;
+  size_t arg10 ;
+  unsigned char *arg11 = (unsigned char *) 0 ;
+  size_t arg12 ;
+  unsigned char *arg13 = (unsigned char *) 0 ;
+  size_t arg14 ;
+  size_t *arg15 = (size_t *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  arg7 = *(unsigned char **)&_swig_go_6; 
+  arg8 = (size_t)_swig_go_7; 
+  arg9 = *(unsigned char **)&_swig_go_8; 
+  arg10 = (size_t)_swig_go_9; 
+  arg11 = *(unsigned char **)&_swig_go_10; 
+  arg12 = (size_t)_swig_go_11; 
+  arg13 = *(unsigned char **)&_swig_go_12; 
+  arg14 = (size_t)_swig_go_13; 
+  arg15 = *(size_t **)&_swig_go_14; 
+  
+  result = (int)wally_asset_surjectionproof_len((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,(unsigned char const *)arg5,arg6,(unsigned char const *)arg7,arg8,(unsigned char const *)arg9,arg10,(unsigned char const *)arg11,arg12,(unsigned char const *)arg13,arg14,arg15);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -4204,6 +5999,56 @@ intgo _wrap_wally_asset_surjectionproof_wallycore_d8a377d8fe8cbbab(char *_swig_g
   arg17 = *(size_t **)&_swig_go_16; 
   
   result = (int)wally_asset_surjectionproof((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,(unsigned char const *)arg5,arg6,(unsigned char const *)arg7,arg8,(unsigned char const *)arg9,arg10,(unsigned char const *)arg11,arg12,(unsigned char const *)arg13,arg14,arg15,arg16,arg17);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_explicit_surjectionproof_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5, char *_swig_go_6, long long _swig_go_7) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  unsigned char *arg7 = (unsigned char *) 0 ;
+  size_t arg8 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  arg7 = *(unsigned char **)&_swig_go_6; 
+  arg8 = (size_t)_swig_go_7; 
+  
+  result = (int)wally_explicit_surjectionproof((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,(unsigned char const *)arg5,arg6,arg7,arg8);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_explicit_surjectionproof_verify_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, char *_swig_go_4, long long _swig_go_5) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  unsigned char *arg5 = (unsigned char *) 0 ;
+  size_t arg6 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(unsigned char **)&_swig_go_4; 
+  arg6 = (size_t)_swig_go_5; 
+  
+  result = (int)wally_explicit_surjectionproof_verify((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,(unsigned char const *)arg5,arg6);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -4345,6 +6190,102 @@ intgo _wrap_wally_asset_blinding_key_to_ec_private_key_wallycore_d8a377d8fe8cbba
 }
 
 
+intgo _wrap_wally_asset_blinding_key_to_abf_vbf_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, uint32_t *_swig_go_4, char *_swig_go_5, long long _swig_go_6) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  uint32_t arg5 ;
+  unsigned char *arg6 = (unsigned char *) 0 ;
+  size_t arg7 ;
+  uint32_t *argp5 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  
+  argp5 = (uint32_t *)_swig_go_4;
+  if (argp5 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg5 = (uint32_t)*argp5;
+  
+  arg6 = *(unsigned char **)&_swig_go_5; 
+  arg7 = (size_t)_swig_go_6; 
+  
+  result = (int)wally_asset_blinding_key_to_abf_vbf((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6,arg7);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_asset_blinding_key_to_abf_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, uint32_t *_swig_go_4, char *_swig_go_5, long long _swig_go_6) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  uint32_t arg5 ;
+  unsigned char *arg6 = (unsigned char *) 0 ;
+  size_t arg7 ;
+  uint32_t *argp5 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  
+  argp5 = (uint32_t *)_swig_go_4;
+  if (argp5 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg5 = (uint32_t)*argp5;
+  
+  arg6 = *(unsigned char **)&_swig_go_5; 
+  arg7 = (size_t)_swig_go_6; 
+  
+  result = (int)wally_asset_blinding_key_to_abf((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6,arg7);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_asset_blinding_key_to_vbf_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, uint32_t *_swig_go_4, char *_swig_go_5, long long _swig_go_6) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  uint32_t arg5 ;
+  unsigned char *arg6 = (unsigned char *) 0 ;
+  size_t arg7 ;
+  uint32_t *argp5 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  
+  argp5 = (uint32_t *)_swig_go_4;
+  if (argp5 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg5 = (uint32_t)*argp5;
+  
+  arg6 = *(unsigned char **)&_swig_go_5; 
+  arg7 = (size_t)_swig_go_6; 
+  
+  result = (int)wally_asset_blinding_key_to_vbf((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,arg6,arg7);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
 intgo _wrap_wally_asset_pak_whitelistproof_size_wallycore_d8a377d8fe8cbbab(long long _swig_go_0, long long *_swig_go_1) {
   size_t arg1 ;
   size_t *arg2 = (size_t *) 0 ;
@@ -4394,6 +6335,41 @@ intgo _wrap_wally_asset_pak_whitelistproof_wallycore_d8a377d8fe8cbbab(char *_swi
   arg14 = *(size_t **)&_swig_go_13; 
   
   result = (int)wally_asset_pak_whitelistproof((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,(unsigned char const *)arg6,arg7,(unsigned char const *)arg8,arg9,(unsigned char const *)arg10,arg11,arg12,arg13,arg14);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_asset_pak_whitelistproof_len_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, long long _swig_go_4, char *_swig_go_5, long long _swig_go_6, char *_swig_go_7, long long _swig_go_8, char *_swig_go_9, long long _swig_go_10, long long *_swig_go_11) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  size_t arg5 ;
+  unsigned char *arg6 = (unsigned char *) 0 ;
+  size_t arg7 ;
+  unsigned char *arg8 = (unsigned char *) 0 ;
+  size_t arg9 ;
+  unsigned char *arg10 = (unsigned char *) 0 ;
+  size_t arg11 ;
+  size_t *arg12 = (size_t *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  arg6 = *(unsigned char **)&_swig_go_5; 
+  arg7 = (size_t)_swig_go_6; 
+  arg8 = *(unsigned char **)&_swig_go_7; 
+  arg9 = (size_t)_swig_go_8; 
+  arg10 = *(unsigned char **)&_swig_go_9; 
+  arg11 = (size_t)_swig_go_10; 
+  arg12 = *(size_t **)&_swig_go_11; 
+  
+  result = (int)wally_asset_pak_whitelistproof_len((unsigned char const *)arg1,arg2,(unsigned char const *)arg3,arg4,arg5,(unsigned char const *)arg6,arg7,(unsigned char const *)arg8,arg9,(unsigned char const *)arg10,arg11,arg12);
   _swig_go_result = result; 
   return _swig_go_result;
 }
@@ -4805,7 +6781,153 @@ intgo _wrap_wally_scriptpubkey_csv_2of2_then_1_from_bytes_opt_wallycore_d8a377d8
 }
 
 
-intgo _wrap_wally_scriptpubkey_csv_2of3_then_2_from_bytes_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, uint32_t *_swig_go_3, char *_swig_go_4, long long _swig_go_5, long long *_swig_go_6) {
+intgo _wrap_wally_script_push_from_bytes_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, char *_swig_go_3, long long _swig_go_4, long long *_swig_go_5) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  uint32_t arg3 ;
+  unsigned char *arg4 = (unsigned char *) 0 ;
+  size_t arg5 ;
+  size_t *arg6 = (size_t *) 0 ;
+  uint32_t *argp3 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  arg4 = *(unsigned char **)&_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  arg6 = *(size_t **)&_swig_go_5; 
+  
+  result = (int)wally_script_push_from_bytes((unsigned char const *)arg1,arg2,arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_varint_get_length_wallycore_d8a377d8fe8cbbab(uint64_t *_swig_go_0, long long *_swig_go_1) {
+  uint64_t arg1 ;
+  size_t *arg2 = (size_t *) 0 ;
+  uint64_t *argp1 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  argp1 = (uint64_t *)_swig_go_0;
+  if (argp1 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint64_t");
+  }
+  arg1 = (uint64_t)*argp1;
+  
+  arg2 = *(size_t **)&_swig_go_1; 
+  
+  result = (int)wally_varint_get_length(arg1,arg2);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_varint_to_bytes_wallycore_d8a377d8fe8cbbab(uint64_t *_swig_go_0, char *_swig_go_1, long long _swig_go_2, long long *_swig_go_3) {
+  uint64_t arg1 ;
+  unsigned char *arg2 = (unsigned char *) 0 ;
+  size_t arg3 ;
+  size_t *arg4 = (size_t *) 0 ;
+  uint64_t *argp1 ;
+  int result;
+  intgo _swig_go_result;
+  
+  
+  argp1 = (uint64_t *)_swig_go_0;
+  if (argp1 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint64_t");
+  }
+  arg1 = (uint64_t)*argp1;
+  
+  arg2 = *(unsigned char **)&_swig_go_1; 
+  arg3 = (size_t)_swig_go_2; 
+  arg4 = *(size_t **)&_swig_go_3; 
+  
+  result = (int)wally_varint_to_bytes(arg1,arg2,arg3,arg4);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_varbuff_get_length_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, long long *_swig_go_2) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  size_t *arg3 = (size_t *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(size_t **)&_swig_go_2; 
+  
+  result = (int)wally_varbuff_get_length((unsigned char const *)arg1,arg2,arg3);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_varbuff_to_bytes_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, char *_swig_go_2, long long _swig_go_3, long long *_swig_go_4) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  unsigned char *arg3 = (unsigned char *) 0 ;
+  size_t arg4 ;
+  size_t *arg5 = (size_t *) 0 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  arg3 = *(unsigned char **)&_swig_go_2; 
+  arg4 = (size_t)_swig_go_3; 
+  arg5 = *(size_t **)&_swig_go_4; 
+  
+  result = (int)wally_varbuff_to_bytes((unsigned char const *)arg1,arg2,arg3,arg4,arg5);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_witness_program_from_bytes_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, char *_swig_go_3, long long _swig_go_4, long long *_swig_go_5) {
+  unsigned char *arg1 = (unsigned char *) 0 ;
+  size_t arg2 ;
+  uint32_t arg3 ;
+  unsigned char *arg4 = (unsigned char *) 0 ;
+  size_t arg5 ;
+  size_t *arg6 = (size_t *) 0 ;
+  uint32_t *argp3 ;
+  int result;
+  intgo _swig_go_result;
+  
+  arg1 = *(unsigned char **)&_swig_go_0; 
+  arg2 = (size_t)_swig_go_1; 
+  
+  argp3 = (uint32_t *)_swig_go_2;
+  if (argp3 == NULL) {
+    _swig_gopanic("Attempt to dereference null uint32_t");
+  }
+  arg3 = (uint32_t)*argp3;
+  
+  arg4 = *(unsigned char **)&_swig_go_3; 
+  arg5 = (size_t)_swig_go_4; 
+  arg6 = *(size_t **)&_swig_go_5; 
+  
+  result = (int)wally_witness_program_from_bytes((unsigned char const *)arg1,arg2,arg3,arg4,arg5,arg6);
+  _swig_go_result = result; 
+  return _swig_go_result;
+}
+
+
+intgo _wrap_wally_witness_program_from_bytes_and_version_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, uint32_t *_swig_go_3, char *_swig_go_4, long long _swig_go_5, long long *_swig_go_6) {
   unsigned char *arg1 = (unsigned char *) 0 ;
   size_t arg2 ;
   uint32_t arg3 ;
@@ -4838,67 +6960,7 @@ intgo _wrap_wally_scriptpubkey_csv_2of3_then_2_from_bytes_wallycore_d8a377d8fe8c
   arg6 = (size_t)_swig_go_5; 
   arg7 = *(size_t **)&_swig_go_6; 
   
-  result = (int)wally_scriptpubkey_csv_2of3_then_2_from_bytes((unsigned char const *)arg1,arg2,arg3,arg4,arg5,arg6,arg7);
-  _swig_go_result = result; 
-  return _swig_go_result;
-}
-
-
-intgo _wrap_wally_script_push_from_bytes_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, char *_swig_go_3, long long _swig_go_4, long long *_swig_go_5) {
-  unsigned char *arg1 = (unsigned char *) 0 ;
-  size_t arg2 ;
-  uint32_t arg3 ;
-  unsigned char *arg4 = (unsigned char *) 0 ;
-  size_t arg5 ;
-  size_t *arg6 = (size_t *) 0 ;
-  uint32_t *argp3 ;
-  int result;
-  intgo _swig_go_result;
-  
-  arg1 = *(unsigned char **)&_swig_go_0; 
-  arg2 = (size_t)_swig_go_1; 
-  
-  argp3 = (uint32_t *)_swig_go_2;
-  if (argp3 == NULL) {
-    _swig_gopanic("Attempt to dereference null uint32_t");
-  }
-  arg3 = (uint32_t)*argp3;
-  
-  arg4 = *(unsigned char **)&_swig_go_3; 
-  arg5 = (size_t)_swig_go_4; 
-  arg6 = *(size_t **)&_swig_go_5; 
-  
-  result = (int)wally_script_push_from_bytes((unsigned char const *)arg1,arg2,arg3,arg4,arg5,arg6);
-  _swig_go_result = result; 
-  return _swig_go_result;
-}
-
-
-intgo _wrap_wally_witness_program_from_bytes_wallycore_d8a377d8fe8cbbab(char *_swig_go_0, long long _swig_go_1, uint32_t *_swig_go_2, char *_swig_go_3, long long _swig_go_4, long long *_swig_go_5) {
-  unsigned char *arg1 = (unsigned char *) 0 ;
-  size_t arg2 ;
-  uint32_t arg3 ;
-  unsigned char *arg4 = (unsigned char *) 0 ;
-  size_t arg5 ;
-  size_t *arg6 = (size_t *) 0 ;
-  uint32_t *argp3 ;
-  int result;
-  intgo _swig_go_result;
-  
-  arg1 = *(unsigned char **)&_swig_go_0; 
-  arg2 = (size_t)_swig_go_1; 
-  
-  argp3 = (uint32_t *)_swig_go_2;
-  if (argp3 == NULL) {
-    _swig_gopanic("Attempt to dereference null uint32_t");
-  }
-  arg3 = (uint32_t)*argp3;
-  
-  arg4 = *(unsigned char **)&_swig_go_3; 
-  arg5 = (size_t)_swig_go_4; 
-  arg6 = *(size_t **)&_swig_go_5; 
-  
-  result = (int)wally_witness_program_from_bytes((unsigned char const *)arg1,arg2,arg3,arg4,arg5,arg6);
+  result = (int)wally_witness_program_from_bytes_and_version((unsigned char const *)arg1,arg2,arg3,arg4,arg5,arg6,arg7);
   _swig_go_result = result; 
   return _swig_go_result;
 }
